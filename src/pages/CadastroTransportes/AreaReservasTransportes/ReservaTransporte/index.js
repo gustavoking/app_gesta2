@@ -6,8 +6,11 @@ import { format } from 'date-fns';
 import { AuthContext } from '../../../../contexts/auth';
 import firebase from '../../../../services/firebase';
 import ModeloListaReserva from '../ModeloListaReserva';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ReservaTransporte({ route }) {
+
+    const navigation = useNavigation();
 
     const [ListaReservasGerais, setListaReservasGerais] = useState([]);
 
@@ -19,7 +22,7 @@ export default function ReservaTransporte({ route }) {
     const [chegada, setChegada] = useState(new Date());
 
     const { idTransporteReservado, setIdTransporteReservado,
-        user, placaTransporte, setPlacaTransporte, setIdUserReserva } = useContext(AuthContext);
+        user, placaTransporte, setPlacaTransporte } = useContext(AuthContext);
 
     const { idTrans, placaTrans } = route.params;
     setIdTransporteReservado(idTrans);
@@ -27,7 +30,7 @@ export default function ReservaTransporte({ route }) {
 
     useEffect(() => {
         async function loadListaReservasGerais() {
-            await firebase.database().ref('reservasGerais').on('value', (snapshot) => {
+            await firebase.database().ref('reservasGeraisTransporte').on('value', (snapshot) => {
                 setListaReservasGerais([]);
 
                 snapshot.forEach((maquina) => {
@@ -36,7 +39,8 @@ export default function ReservaTransporte({ route }) {
                         saidaReserva: maquina.val().saidaReserva,
                         chegadaReserva: maquina.val().chegadaReserva,
                         placaTransporteReserva: maquina.val().placaTransporteReserva,
-                        userReserva: maquina.val().userReserva
+                        userReserva: maquina.val().userReserva,
+                        id: maquina.val().id
                     };
                     setListaReservasGerais(oldArray => [...oldArray, data])
                     console.log(data)
@@ -53,16 +57,16 @@ export default function ReservaTransporte({ route }) {
         let id = reserva.push().key;
 
         reserva.child(id).set({
-            idReserva: id,
+            id: id,
             data: format(newDate, 'dd/MM/yyyy'),
             saida: format(saida, 'HH:mm'),
             chegada: format(chegada, 'HH:mm'),
             idUsuarioReserva: user.uid,
             idTransporteReservado: idTransporteReservado,
             placaTransporte: placaTransporte,
-            nomeUsuarioReserva: user.nome
+            nomeUsuarioReserva: user.nome,
         });
-
+        navigation.navigate('Cancelar', { idUserReserva: user.uid })
     }
 
 

@@ -1,11 +1,29 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
-// import { useNavigation } from '@react-navigation/native'
+import { View, StyleSheet, Text, Image, TouchableOpacity, Alert } from 'react-native';
+import firebase from '../../../../services/firebase';
 
-export default function ModeloListaReserva({ data }) {
+export default function ModeloListaReservaPessoal({ data }) {
 
-    // const navigation = useNavigation();
-    console.log(data)
+    const handleDelete = async () => {
+        await firebase.database().ref('reservasGeraisTransporte').child(data.id).remove()
+    }
+
+    const handleAlert = () => {
+        Alert.alert(
+            'Cancelar Reserva',
+            `Você deseja cancelar essa reserva?`,
+            [
+                {
+                    text: 'Não',
+                    style: 'cancel'
+                },
+                {
+                    text: 'Sim',
+                    onPress: () => handleDelete()
+                }
+            ]
+        )
+    }
 
     return (
         <View style={styles.container}>
@@ -55,6 +73,9 @@ export default function ModeloListaReserva({ data }) {
                     {data.userReserva}
                 </Text>
             </View>
+            <TouchableOpacity onPress={() => handleAlert()}>
+                <Text style={styles.cancelar}>CANCELAR</Text>
+            </TouchableOpacity>
         </View>
 
 
@@ -88,16 +109,16 @@ const styles = StyleSheet.create({
         height: 70,
         resizeMode: "stretch"
     },
-    container2: {
-        flex: 1,
-        backgroundColor: '#FFF',
-        alignItems: 'center',
-        marginBottom: 10,
-        padding: 10,
-        borderRadius: 5,
-        borderWidth: 5,
-        marginHorizontal: 15,
-        marginTop: 5,
-        borderColor: '#9ECEC5'
-    },
+    cancelar: {
+        backgroundColor: '#b20000',
+        borderWidth: 1,
+        borderColor: '#9ECEC5',
+        borderRadius: 10,
+        padding: 5,
+        marginTop: 10,
+        paddingLeft: 50,
+        paddingRight: 50,
+        fontSize: 18
+    }
+
 });

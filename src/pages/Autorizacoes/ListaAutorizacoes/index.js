@@ -17,9 +17,11 @@ export default function ListaAutorizacoes() {
             await firebase.database().ref('listaAutorizacoesAdm').on('value', (snapshot) => {
                 setListaAutorizacoes([]);
 
+
                 snapshot.forEach((maquina) => {
+                    console.log(maquina)
                     let data = {
-                        idReserva: maquina.val().idReserva,
+                        id: maquina.val().id,
                         data: maquina.val().data,
                         saida: maquina.val().saida,
                         chegada: maquina.val().chegada,
@@ -28,9 +30,9 @@ export default function ListaAutorizacoes() {
                         nomeUsuarioReserva: maquina.val().nomeUsuarioReserva,
                         idUsuarioReserva: maquina.val().idUsuarioReserva
                     };
-
                     setListaAutorizacoes(oldArray => [...oldArray, data])
                     console.log(data)
+
                 })
             })
         }

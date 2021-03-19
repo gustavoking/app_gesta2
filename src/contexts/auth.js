@@ -12,6 +12,7 @@ function AuthProvider({ children }) {
     const [idTransporteReservado, setIdTransporteReservado] = useState('');
     const [placaTransporte, setPlacaTransporte] = useState('');
 
+
     useEffect(() => {
         async function loadStorage() {
             const storageUser = await AsyncStorage.getItem('Auth_user');

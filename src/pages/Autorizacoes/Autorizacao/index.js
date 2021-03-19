@@ -10,25 +10,26 @@ export default function Transporte({ data, touch = false }) {
 
     const { user, idTransporteReservado } = useContext(AuthContext);
 
+
     async function handleAccept() {
-        let reservas = await firebase.database().ref('reservasGerais');
+        let reservas = await firebase.database().ref('reservasGeraisTransporte');
         let id = reservas.push().key;
 
         reservas.child(id).set({
             id: id,
-            idTransporte: idTransporteReservado,
-            userId: user.uid,
+            idTransporte: data.idTransporteReservado,
+            userId: data.idUsuarioReserva,
             dataReserva: data.data,
             saidaReserva: data.saida,
             chegadaReserva: data.chegada,
             placaTransporteReserva: data.placaTransporte,
             userReserva: data.nomeUsuarioReserva
         })
-        await firebase.database().ref('listaAutorizacoesAdm').child(data.idReserva).remove();
+        await firebase.database().ref('listaAutorizacoesAdm').child(data.id).remove();
     }
 
     async function handleDelete() {
-        await firebase.database().ref('listaAutorizacoesAdm').child(data.idReserva).remove();
+        await firebase.database().ref('listaAutorizacoesAdm').child(data.id).remove();
     }
 
     return (

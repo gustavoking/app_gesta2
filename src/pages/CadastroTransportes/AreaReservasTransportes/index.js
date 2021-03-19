@@ -11,7 +11,7 @@ export default function AreaReservasTransportes() {
         <View style={styles.container}>
             <Header titulo='Área de Reservas' />
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Cancelar')}>
                 <Text style={styles.textbutton}>Cancelar</Text>
             </TouchableOpacity>
 

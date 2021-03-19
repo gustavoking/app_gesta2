@@ -124,13 +124,12 @@ export default function DrawerServidor() {
             }}
         >
             <AppDrawer.Screen
-                name="Autorizações"
-                component={StackAutorizacoes}
-            />
-
-            <AppDrawer.Screen
                 name="Inicio"
                 component={Home}
+            />
+            <AppDrawer.Screen
+                name="Autorizações"
+                component={StackAutorizacoes}
             />
             <AppDrawer.Screen
                 name="Área de Ambientes"
