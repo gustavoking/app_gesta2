@@ -1,15 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import firebase from '../../../services/firebase';
 import { AuthContext } from '../../../contexts/auth';
 
-export default function Transporte({ data, touch = false }) {
+export default function Autorizacao({ data, touch = false }) {
 
     const navigation = useNavigation();
-
-    const { user, idTransporteReservado } = useContext(AuthContext);
-
 
     async function handleAccept() {
         let reservas = await firebase.database().ref('reservasGeraisTransporte');
@@ -25,6 +22,21 @@ export default function Transporte({ data, touch = false }) {
             placaTransporteReserva: data.placaTransporte,
             userReserva: data.nomeUsuarioReserva
         })
+
+        let historico = await firebase.database().ref('historicoReservasTransporte');
+        let idHistorico = reservas.push().key;
+
+        historico.child(id).set({
+            id: idHistorico,
+            idTransporte: data.idTransporteReservado,
+            userId: data.idUsuarioReserva,
+            dataReserva: data.data,
+            saidaReserva: data.saida,
+            chegadaReserva: data.chegada,
+            placaTransporteReserva: data.placaTransporte,
+            userReserva: data.nomeUsuarioReserva
+        })
+
         await firebase.database().ref('listaAutorizacoesAdm').child(data.id).remove();
     }
 
@@ -33,7 +45,6 @@ export default function Transporte({ data, touch = false }) {
     }
 
     return (
-
         <View style={styles.container}>
             <View style={styles.imagemView}>
                 <Image
