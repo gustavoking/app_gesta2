@@ -66,7 +66,6 @@ export default function ReservaTransporte({ route }) {
             placaTransporte: placaTransporte,
             nomeUsuarioReserva: user.nome,
         });
-        navigation.navigate('Cancelar', { idUserReserva: user.uid })
     }
 
 

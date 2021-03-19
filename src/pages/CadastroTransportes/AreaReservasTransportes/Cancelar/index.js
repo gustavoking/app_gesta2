@@ -59,11 +59,11 @@ const styles = StyleSheet.create({
         flex: 1
     },
     reservaisgerais: {
-        fontSize: 18,
+        fontSize: 17,
         fontWeight: 'bold',
         color: '#172220',
         backgroundColor: '#FECEA5',
-        marginLeft: 20,
+        marginLeft: 10,
         marginTop: 10,
         marginRight: 20,
         textAlign: 'center',

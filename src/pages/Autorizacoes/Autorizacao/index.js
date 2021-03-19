@@ -1,12 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native'
 import firebase from '../../../services/firebase';
-import { AuthContext } from '../../../contexts/auth';
 
-export default function Autorizacao({ data, touch = false }) {
-
-    const navigation = useNavigation();
+export default function Autorizacao({ data }) {
 
     async function handleAccept() {
         let reservas = await firebase.database().ref('reservasGeraisTransporte');
