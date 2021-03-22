@@ -10,8 +10,6 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function ReservaTransporte({ route }) {
 
-    const navigation = useNavigation();
-
     const [ListaReservasGerais, setListaReservasGerais] = useState([]);
 
     const [show, setShow] = useState(false);
@@ -25,6 +23,7 @@ export default function ReservaTransporte({ route }) {
         user, placaTransporte, setPlacaTransporte } = useContext(AuthContext);
 
     const { idTrans, placaTrans } = route.params;
+
     setIdTransporteReservado(idTrans);
     setPlacaTransporte(placaTrans);
 

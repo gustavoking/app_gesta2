@@ -11,6 +11,8 @@ function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true);
     const [idTransporteReservado, setIdTransporteReservado] = useState('');
     const [placaTransporte, setPlacaTransporte] = useState('');
+    const [salaReservada, setSalaReservada] = useState('');
+    const [blocoReservado, setBlocoReservado] = useState('');
 
 
     useEffect(() => {
@@ -132,7 +134,9 @@ function AuthProvider({ children }) {
         <AuthContext.Provider value={{
             signed: !!user, user, loading, signIn, signOut,
             idTransporteReservado, setIdTransporteReservado,
-            placaTransporte, setPlacaTransporte
+            placaTransporte, setPlacaTransporte,
+            salaReservada, setSalaReservada,
+            blocoReservado, setBlocoReservado
         }}>
             {children}
         </AuthContext.Provider>

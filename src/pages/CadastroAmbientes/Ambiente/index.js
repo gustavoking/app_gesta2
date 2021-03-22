@@ -39,7 +39,8 @@ export default function Ambiente({ data, touch = false }) {
                 </View>
             ) : (
                     <View style={styles.container}>
-                        <TouchableOpacity onPress={() => navigation.navigate('ReservaAmbiente')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('ReservaAmbiente',
+                            { idSala: data.key, salaReservadaA: data.sala, blocoReservadoA: data.bloco })}>
                             <View style={styles.imagemView}>
                                 <Image
                                     source={require('../../../assets/salaimg.png')}

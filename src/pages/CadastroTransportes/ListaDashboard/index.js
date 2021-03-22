@@ -1,25 +1,31 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import { AuthContext } from '../../../contexts/auth';
-import { differenceInMinutes, format, parseISO } from 'date-fns';
+import { differenceInMinutes, format, parseISO, isBefore } from 'date-fns';
 
 export default function ListaDashboard({ data }) {
 
     const { user } = useContext(AuthContext);
-    const [tempo, setTempo] = useState();
+    const [tempo, setTempo] = useState('');
 
     // useEffect(() => {
     //     function tempoRestante() {
-    //         const tempoAgora = format(new Date(), 'HH:mm')
-    //         const tempoRestante = differenceInMinutes(new Date().getMinutes, new Date().getMinutes + 60)
+    //         const [diaItem, mesItem, anoItem] = data.dataReserva.split('/');
+    //         const dateItem = new Date(`${anoItem}/${mesItem}/${diaItem}`);
+
+    //         const formatDiaHoje = format(new Date(), 'dd/MM/yyyy');
+    //         const [diaHoje, mesHoje, anoHoje] = formatDiaHoje.split('/');
+    //         const dateHoje = new Date(`${anoHoje}/${mesHoje}/${diaHoje}`);
+
+    //         const tempoRestante = isBefore(dateItem, dateHoje)
     //         setTempo(tempoRestante)
+    //         console.log(tempoRestante)
 
     //     }
 
     //     tempoRestante();
 
-
-    // }, [])
+    // }, [tempo, setTempo])
 
     return (
         <View>

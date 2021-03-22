@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import Header from '../../../../components/Header';
 import DatePicker from '../../../../components/DatePicker';
 import { format } from 'date-fns';
+import firebase from '../../../../services/firebase';
+import { AuthContext } from '../../../../contexts/auth';
+import ModeloListaReserva from '../../ModeloListaReserva'
 
-export default function ReservaAmbiente({ }) {
+export default function ReservaAmbiente({ route }) {
+
+    const [ListaReservasGerais, setListaReservasGerais] = useState([]);
 
     const [show, setShow] = useState(false);
     const [showSaida, setShowSaida] = useState(false);
@@ -12,6 +17,70 @@ export default function ReservaAmbiente({ }) {
     const [newDate, setNewDate] = useState(new Date());
     const [saida, setSaida] = useState(new Date());
     const [chegada, setChegada] = useState(new Date());
+
+    const { user, salaReservada, blocoReservado, setSalaReservada, setBlocoReservado } = useContext(AuthContext);
+
+    const { salaReservadaA, blocoReservadoA } = route.params;
+
+    setSalaReservada(salaReservadaA)
+    setBlocoReservado(blocoReservadoA)
+
+    useEffect(() => {
+        async function loadListaReservasGerais() {
+            await firebase.database().ref('reservasGeraisAmbiente').on('value', (snapshot) => {
+                setListaReservasGerais([]);
+
+                snapshot.forEach((maquina) => {
+                    let data = {
+                        data: maquina.val().data,
+                        inicio: maquina.val().inicio,
+                        termino: maquina.val().termino,
+                        salaReservada: maquina.val().salaReservada,
+                        nomeUsuarioReserva: maquina.val().nomeUsuarioReserva,
+                        blocoReservado: maquina.val().blocoReservado,
+                        id: maquina.val().id
+                    };
+                    setListaReservasGerais(oldArray => [...oldArray, data])
+                    console.log(data)
+                })
+            })
+        }
+
+        loadListaReservasGerais();
+
+    }, [])
+
+    async function funcaoReservar() {
+        let reserva = await firebase.database().ref('reservasGeraisAmbiente')
+        let id = reserva.push().key;
+
+        reserva.child(id).set({
+            id: id,
+            data: format(newDate, 'dd/MM/yyyy'),
+            inicio: format(saida, 'HH:mm'),
+            termino: format(chegada, 'HH:mm'),
+            idUsuarioReserva: user.uid,
+            nomeUsuarioReserva: user.nome,
+            salaReservada: salaReservada,
+            blocoReservado: blocoReservado
+
+        });
+
+        let reservaHistorico = await firebase.database().ref('historicoReservasAmbiente')
+        let idHist = reservaHistorico.push().key;
+
+        reservaHistorico.child(idHist).set({
+            id: idHist,
+            data: format(newDate, 'dd/MM/yyyy'),
+            inicio: format(saida, 'HH:mm'),
+            termino: format(chegada, 'HH:mm'),
+            idUsuarioReserva: user.uid,
+            nomeUsuarioReserva: user.nome,
+            salaReservada: salaReservada,
+            blocoReservado: blocoReservado
+
+        });
+    }
 
     const onChange = (date) => {
         setNewDate(date)
@@ -90,8 +159,9 @@ export default function ReservaAmbiente({ }) {
 
                 <TouchableOpacity
                     style={styles.btn}
+                    onPress={() => funcaoReservar()}
                 >
-                    <Text style={styles.btntext}>CONTINUAR</Text>
+                    <Text style={styles.btntext}>CONFIRMAR RESERVA</Text>
                 </TouchableOpacity>
 
                 {show && (
@@ -124,6 +194,14 @@ export default function ReservaAmbiente({ }) {
                         onChange={onChangeChegada}
                     />
                 )}
+
+
+                <Text></Text>
+                <Text style={styles.reservaisgerais}>RESERVAS DOS AMBIENTES</Text>
+                {
+                    ListaReservasGerais.map((data) => (<ModeloListaReserva data={data} />))
+                }
+
 
             </ScrollView>
         </View>
@@ -198,5 +276,17 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: '#FECEA5',
         borderRadius: 30,
+    },
+    reservaisgerais: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#172220',
+        backgroundColor: '#FECEA5',
+        marginLeft: 20,
+        marginTop: 10,
+        marginRight: 20,
+        textAlign: 'center',
+        borderWidth: 1,
+        borderRadius: 20
     }
 })
