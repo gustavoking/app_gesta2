@@ -1,23 +1,27 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Header from '../../components/Header';
-import { AuthContext } from '../../contexts/auth'
+import { AuthContext } from '../../contexts/auth';
+import ListaDashBoard from '../CadastroTransportes/ListaDashboard';
+import firebase from '../../services/firebase';
+import { format, } from 'date-fns';
 
 export default function Home() {
 
     const { user } = useContext(AuthContext);
 
+    const dataAgora = format(new Date(), 'dd/MM/yyyy');
+
     const [listaUserReserva, setListaUserReserva] = useState([]);
-    const [ListaTransportesFiltradas, setListaTransportesFiltradas] = useState([]);
-    const [search, setSearch] = useState('');
 
     useEffect(() => {
-        async function userReserva() {
+
+        async function listaPessoalTransporte() {
             await firebase.database().ref('reservasGeraisTransporte').on('value', (snapshot) => {
                 setListaUserReserva([])
 
                 snapshot.forEach((maquina) => {
-                    if (maquina.val().userId === user.uid) {
+                    if (maquina.val().userId === user.uid && dataAgora === maquina.val().dataReserva) {
                         let data = {
                             dataReserva: maquina.val().dataReserva,
                             saidaReserva: maquina.val().saidaReserva,
@@ -31,22 +35,41 @@ export default function Home() {
                 })
             })
         }
-        userReserva();
+        listaPessoalTransporte();
 
     }, [])
 
 
     return (
-        <View style={styles.container}>
-            <Header titulo='Bem-Vindo' />
-            <Text style={{ textAlign: 'center', color: '#3F5C57', fontSize: 40, marginTop: 10 }}>GESTA</Text>
 
+        <View style={styles.container}>
+            <ScrollView>
+                <Header titulo='Bem-Vindo' />
+                <Text style={{ textAlign: 'center', color: '#3F5C57', fontSize: 40, marginTop: 10 }}>GESTA</Text>
+                <Text style={styles.reservaisgerais}>Reservas Pessoais de Transporte</Text>
+                {
+                    listaUserReserva.map((data) => (<ListaDashBoard data={data} />))
+                }
+            </ScrollView>
         </View>
+
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+    },
+    reservaisgerais: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#172220',
+        backgroundColor: '#9ECEC5',
+        marginLeft: 20,
+        marginTop: 10,
+        marginRight: 20,
+        textAlign: 'center',
+        borderWidth: 1,
+        borderRadius: 20
     }
 });
