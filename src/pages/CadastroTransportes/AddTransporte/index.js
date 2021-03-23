@@ -34,7 +34,7 @@ export default function AddTransporte() {
                 ano: ano
             });
 
-            navigation.navigate('QrCode', { verify: 'Adicionar Transporte', placa: placa, ano: ano, modelo: modelo })
+            navigation.navigate('QrCode', { verify: 'Adicionar Transporte', valueTransporte: placa + '-' + ano + '-' + modelo })
 
             Keyboard.dismiss();
             setMarca('');

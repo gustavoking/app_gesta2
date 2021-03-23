@@ -24,7 +24,7 @@ export default function AddTransporte() {
                 qtdPessoas: qtdPessoas
             });
 
-            navigation.navigate('QrCode', { verify: 'Adicionar Ambiente', sala: sala, bloco: bloco, qtdPessoas: qtdPessoas })
+            navigation.navigate('QrCode', { verify: 'Adicionar Ambiente', valueAmbiente: sala + '-' + bloco + '-' + qtdPessoas })
 
             Keyboard.dismiss();
             setSala('');
