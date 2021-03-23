@@ -68,7 +68,7 @@ export default function QrCode({ route }) {
                 />
             </View>
             <TouchableOpacity onPress={getDataURL}>
-                <Text>Salvar Imagem</Text>
+                <Text style={styles.textbotao}>Salvar Imagem</Text>
             </TouchableOpacity>
         </View>
     );
@@ -83,5 +83,8 @@ const styles = StyleSheet.create({
     qrcode: {
         alignItems: 'center',
         marginTop: '30%'
+    },
+    textbotao: {
+
     }
 })
