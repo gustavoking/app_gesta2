@@ -11,8 +11,8 @@ export default function ListaDashboard({ data }) {
     useEffect(() => {
         function tempoRestante() {
 
-            const [diaItem, mesItem, anoItem] = data.dataReserva.split('/');
-            const [horaItem, minutoItem] = data.saidaReserva.split(':');
+            const [diaItem, mesItem, anoItem] = data.data.split('/');
+            const [horaItem, minutoItem] = data.inicio.split(':');
             const dateItem = new Date(anoItem, mesItem - 1, diaItem, horaItem - 3, minutoItem);
             const dataMenos3 = new Date()
             dataMenos3.setHours(dataMenos3.getHours() - 3)
@@ -47,33 +47,41 @@ export default function ListaDashboard({ data }) {
                                     <View style={styles.textosView}>
                                         <Text style={styles.textoNegrito}>
                                             <Text style={styles.textoNegrito}>
-                                                Placa:{' '}
-                                            </Text>
-                                            {data.placaTransporteReserva}
-                                        </Text>
-                                    </View>
-                                    <View style={styles.textosView}>
-                                        <Text style={styles.textoNegrito}>
-                                            <Text style={styles.textoNegrito}>
                                                 Data:{' '}
                                             </Text>
-                                            {data.dataReserva}
+                                            {data.data}
                                         </Text>
                                     </View>
                                     <View style={styles.textosView}>
                                         <Text style={styles.textoNegrito}>
                                             <Text style={styles.textoNegrito}>
-                                                Saida:{' '}
+                                                Sala:{' '}
                                             </Text>
-                                            {data.saidaReserva}
+                                            {data.salaReservada}
                                         </Text>
                                     </View>
                                     <View style={styles.textosView}>
                                         <Text style={styles.textoNegrito}>
                                             <Text style={styles.textoNegrito}>
-                                                Chegada:{' '}
+                                                Bloco:{' '}
                                             </Text>
-                                            {data.chegadaReserva}
+                                            {data.blocoReservado}
+                                        </Text>
+                                    </View>
+                                    <View style={styles.textosView}>
+                                        <Text style={styles.textoNegrito}>
+                                            <Text style={styles.textoNegrito}>
+                                                Inicio:{' '}
+                                            </Text>
+                                            {data.inicio}
+                                        </Text>
+                                    </View>
+                                    <View style={styles.textosView}>
+                                        <Text style={styles.textoNegrito}>
+                                            <Text style={styles.textoNegrito}>
+                                                Termino:{' '}
+                                            </Text>
+                                            {data.termino}
                                         </Text>
                                     </View>
                                 </View>
