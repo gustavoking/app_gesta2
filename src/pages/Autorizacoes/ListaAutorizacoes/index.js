@@ -6,6 +6,7 @@ import firebase from '../../../services/firebase';
 import { Input, Item } from 'native-base';
 import Autorizacao from '../Autorizacao';
 
+
 export default function ListaAutorizacoes() {
 
     const [ListaAutorizacoes, setListaAutorizacoes] = useState([]);

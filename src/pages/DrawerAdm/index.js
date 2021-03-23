@@ -34,7 +34,6 @@ import CancelarA from '../CadastroAmbientes/AreaReservasAmbientes/CancelarA';
 import ConfirmarA from '../CadastroAmbientes/AreaReservasAmbientes/ConfirmarA';
 import ReservaAmbiente from '../CadastroAmbientes/AreaReservasAmbientes/ReservaAmbiente';
 
-
 const Stack = createStackNavigator();
 
 function StackAutorizacoes() {
