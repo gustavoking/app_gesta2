@@ -1,5 +1,6 @@
 import React from 'react';
 import CustomDrawer from '../../components/CustomDrawer';
+import QrCode from '../../components/QrCode';
 
 import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack'

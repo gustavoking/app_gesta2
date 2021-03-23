@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { TouchableOpacity, Keyboard, Text, StyleSheet, TextInput, KeyboardAvoidingView, Image, ScrollView } from 'react-native';
 import Header from '../../../components/Header';
 import firebase from '../../../services/firebase';
+import { useNavigation } from '@react-navigation/native';
 
 export default function AddTransporte() {
+
+    const navigation = useNavigation();
 
     const [marca, setMarca] = useState('');
     const [quilometragem, setQuilometragem] = useState('');
@@ -31,6 +34,8 @@ export default function AddTransporte() {
                 ano: ano
             });
 
+            navigation.navigate('QrCode', { verify: 'Adicionar Transporte', placa: placa, ano: ano, modelo: modelo })
+
             Keyboard.dismiss();
             setMarca('');
             setQuilometragem('');
@@ -43,6 +48,7 @@ export default function AddTransporte() {
         } else {
             alert('PREENCHA TODOS OS CAMPOS!!')
         }
+
     }
 
     return (

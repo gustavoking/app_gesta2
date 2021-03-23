@@ -24,6 +24,7 @@ import Confirmar from '../CadastroTransportes/AreaReservasTransportes/Confirmar'
 import ReservaTransporte from '../CadastroTransportes/AreaReservasTransportes/ReservaTransporte'
 import Autorizacoes from '../Autorizacoes';
 import ListaAutorizacoes from '../Autorizacoes/ListaAutorizacoes';
+import QrCode from '../../components/QrCode';
 
 import CadastroAmbientes from '../CadastroAmbientes/index';
 import AddAmbiente from '../CadastroAmbientes/AddAmbiente/';
@@ -60,6 +61,7 @@ function AmbienteRoutes() {
             <Stack.Screen name="CancelarA" component={CancelarA} />
             <Stack.Screen name="ConfirmarA" component={ConfirmarA} />
             <Stack.Screen name="ReservaAmbiente" component={ReservaAmbiente} />
+            <Stack.Screen name="QrCode" component={QrCode} />
         </Stack.Navigator>
     )
 }
@@ -93,6 +95,7 @@ function StackRoutes() {
             <Stack.Screen name="Cancelar" component={Cancelar} />
             <Stack.Screen name="Confirmar" component={Confirmar} />
             <Stack.Screen name="ReservaTransporte" component={ReservaTransporte} />
+            <Stack.Screen name="QrCode" component={QrCode} />
         </Stack.Navigator>
     )
 }

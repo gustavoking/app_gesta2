@@ -1,6 +1,7 @@
 import React from 'react';
 
 import CustomDrawer from '../../components/CustomDrawer';
+import QrCode from '../../components/QrCode';
 
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { createStackNavigator } from '@react-navigation/stack'
@@ -35,6 +36,8 @@ function AmbienteRoutes() {
             <Stack.Screen name="CancelarA" component={CancelarA} />
             <Stack.Screen name="ConfirmarA" component={ConfirmarA} />
             <Stack.Screen name="ReservaAmbiente" component={ReservaAmbiente} />
+            <Stack.Screen name="QrCode" component={QrCode} />
+
         </Stack.Navigator>
     )
 }

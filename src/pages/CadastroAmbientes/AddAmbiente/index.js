@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { TouchableOpacity, Keyboard, Text, View, StyleSheet, TextInput, Image, ScrollView } from 'react-native';
 import Header from '../../../components/Header';
 import firebase from '../../../services/firebase';
-
+import { useNavigation } from '@react-navigation/native';
 
 export default function AddTransporte() {
+
+    const navigation = useNavigation();
 
     const [sala, setSala] = useState('');
     const [bloco, setBloco] = useState('');
@@ -21,6 +23,8 @@ export default function AddTransporte() {
                 bloco: bloco,
                 qtdPessoas: qtdPessoas
             });
+
+            navigation.navigate('QrCode', { verify: 'Adicionar Ambiente', sala: sala, bloco: bloco, qtdPessoas: qtdPessoas })
 
             Keyboard.dismiss();
             setSala('');
