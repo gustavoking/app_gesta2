@@ -11,6 +11,7 @@ export default function DatePicker({ date, setDateNow, mode, onClose, onChange }
                     value={date}
                     mode={mode}
                     display="spinner"
+                    minimumDate={new Date()}
                     onChange={(event, dateOnChange) => {
                         const currentDate = dateOnChange || date;
                         setDateNow(currentDate);

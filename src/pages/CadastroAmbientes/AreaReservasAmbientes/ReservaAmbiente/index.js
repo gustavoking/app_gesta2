@@ -6,8 +6,21 @@ import { format } from 'date-fns';
 import firebase from '../../../../services/firebase';
 import { AuthContext } from '../../../../contexts/auth';
 import ModeloListaReserva from '../../ModeloListaReserva'
+import ptBR from 'date-fns/locale/pt-BR';
 
 export default function ReservaAmbiente({ route }) {
+
+    // funcao para colocar tudo em maiusculo
+    function titleCase(str) {
+        var splitStr = str.toLowerCase().split(' ');
+
+        for (var i = 0; i < splitStr.length; i++) {
+
+            splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+        }
+
+        return splitStr.join(' ');
+    }
 
     const [ListaReservasGerais, setListaReservasGerais] = useState([]);
 
@@ -140,7 +153,7 @@ export default function ReservaAmbiente({ route }) {
                     onPress={abrirCalendario}>
                     <Text style={styles.btntext}>Abrir Calendário Para Reservar</Text>
                 </TouchableOpacity>
-                <Text style={styles.txt2}>{format(newDate, 'dd/MM/yyyy')}</Text>
+                <Text style={styles.txt2}>{titleCase(format(newDate, "eeee, dd MMMM, yyyy ", { locale: ptBR }))}</Text>
                 <Text style={styles.txt}>Preencha a hora de Inicio e Término</Text>
 
                 <View style={styles.container3}>
