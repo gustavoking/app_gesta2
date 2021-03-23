@@ -15,6 +15,11 @@ import SobreGustavo from '../Sobre/SobreGustavo';
 
 import CadastroAmbientes from '../CadastroAmbientes/index';
 import ListaAmbiente from '../CadastroAmbientes/ListaAmbiente';
+import AreaReservasAmbientes from '../CadastroAmbientes/AreaReservasAmbientes';
+import ReservarA from '../CadastroAmbientes/AreaReservasAmbientes/ReservarA';
+import CancelarA from '../CadastroAmbientes/AreaReservasAmbientes/CancelarA';
+import ConfirmarA from '../CadastroAmbientes/AreaReservasAmbientes/ConfirmarA';
+import ReservaAmbiente from '../CadastroAmbientes/AreaReservasAmbientes/ReservaAmbiente';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +30,11 @@ function AmbienteRoutes() {
         }}>
             <Stack.Screen name="CadastroAmbientes" component={CadastroAmbientes} />
             <Stack.Screen name="ListaAmbiente" component={ListaAmbiente} />
+            <Stack.Screen name="AreaReservasAmbientes" component={AreaReservasAmbientes} />
+            <Stack.Screen name="ReservarA" component={ReservarA} />
+            <Stack.Screen name="CancelarA" component={CancelarA} />
+            <Stack.Screen name="ConfirmarA" component={ConfirmarA} />
+            <Stack.Screen name="ReservaAmbiente" component={ReservaAmbiente} />
         </Stack.Navigator>
     )
 }

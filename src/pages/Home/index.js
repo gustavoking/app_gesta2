@@ -45,11 +45,16 @@ export default function Home() {
         <View style={styles.container}>
             <ScrollView>
                 <Header titulo='Bem-Vindo' />
-                <Text style={{ textAlign: 'center', color: '#3F5C57', fontSize: 40, marginTop: 10 }}>GESTA</Text>
-                <Text style={styles.reservaisgerais}>Reservas Pessoais de Transporte</Text>
-                {
-                    listaUserReserva.map((data) => (<ListaDashBoard data={data} />))
-                }
+
+                <View>
+                    <Text style={{ textAlign: 'center', color: '#3F5C57', fontSize: 40, marginTop: 10 }}>GESTA</Text>
+                    <Text style={styles.reservaisgerais}>Reservas Pessoais de Transporte</Text>
+                    {
+                        listaUserReserva.map((data) => (<ListaDashBoard data={data} />))
+                    }
+                </View>
+
+
             </ScrollView>
         </View>
 
