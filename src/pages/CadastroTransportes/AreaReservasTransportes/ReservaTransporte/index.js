@@ -6,9 +6,20 @@ import { format } from 'date-fns';
 import { AuthContext } from '../../../../contexts/auth';
 import firebase from '../../../../services/firebase';
 import ModeloListaReserva from '../ModeloListaReserva';
-import { useNavigation } from '@react-navigation/native';
+import ptBR from 'date-fns/locale/pt-BR';
 
 export default function ReservaTransporte({ route }) {
+
+    function titleCase(str) {
+        var splitStr = str.toLowerCase().split(' ');
+
+        for (var i = 0; i < splitStr.length; i++) {
+
+            splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+        }
+
+        return splitStr.join(' ');
+    }
 
     const [ListaReservasGerais, setListaReservasGerais] = useState([]);
 
@@ -120,7 +131,7 @@ export default function ReservaTransporte({ route }) {
                     onPress={abrirCalendario}>
                     <Text style={styles.btntext}>Abrir Calendário Para Reservar</Text>
                 </TouchableOpacity>
-                <Text style={styles.txt2}>{format(newDate, 'dd/MM/yyyy')}</Text>
+                <Text style={styles.txt2}>{titleCase(format(newDate, "eeee, dd MMMM, yyyy ", { locale: ptBR }))}</Text>
                 <Text style={styles.txt}>Preencha a hora de Saída e Chegada</Text>
 
                 <View style={styles.container3}>
