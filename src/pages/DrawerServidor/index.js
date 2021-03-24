@@ -20,6 +20,7 @@ import AreaReservasTransportes from '../CadastroTransportes/AreaReservasTranspor
 import Reservar from '../CadastroTransportes/AreaReservasTransportes/Reservar';
 import Cancelar from '../CadastroTransportes/AreaReservasTransportes/Cancelar';
 import Confirmar from '../CadastroTransportes/AreaReservasTransportes/Confirmar';
+import Devolver from '../CadastroTransportes/AreaReservasTransportes/Devolver';
 import ReservaTransporte from '../CadastroTransportes/AreaReservasTransportes/ReservaTransporte'
 
 
@@ -29,6 +30,7 @@ import AreaReservasAmbientes from '../CadastroAmbientes/AreaReservasAmbientes';
 import ReservarA from '../CadastroAmbientes/AreaReservasAmbientes/ReservarA';
 import CancelarA from '../CadastroAmbientes/AreaReservasAmbientes/CancelarA';
 import ConfirmarA from '../CadastroAmbientes/AreaReservasAmbientes/ConfirmarA';
+import DevolverA from '../CadastroAmbientes/AreaReservasAmbientes/DevolverA';
 import ReservaAmbiente from '../CadastroAmbientes/AreaReservasAmbientes/ReservaAmbiente';
 
 const Stack = createStackNavigator();
@@ -44,6 +46,7 @@ function AmbienteRoutes() {
             <Stack.Screen name="ReservarA" component={ReservarA} />
             <Stack.Screen name="CancelarA" component={CancelarA} />
             <Stack.Screen name="ConfirmarA" component={ConfirmarA} />
+            <Stack.Screen name="DevolverA" component={DevolverA} />
             <Stack.Screen name="ReservaAmbiente" component={ReservaAmbiente} />
         </Stack.Navigator>
     )
@@ -75,6 +78,7 @@ function StackRoutes() {
             <Stack.Screen name="Reservar" component={Reservar} />
             <Stack.Screen name="Cancelar" component={Cancelar} />
             <Stack.Screen name="Confirmar" component={Confirmar} />
+            <Stack.Screen name="Devolver" component={Devolver} />
             <Stack.Screen name="ReservaTransporte" component={ReservaTransporte} />
         </Stack.Navigator>
     )

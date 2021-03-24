@@ -68,32 +68,39 @@ export default function ReservaAmbiente({ route }) {
         let reserva = await firebase.database().ref('reservasGeraisAmbiente')
         let id = reserva.push().key;
 
-        reserva.child(id).set({
-            id: id,
-            data: format(newDate, 'dd/MM/yyyy'),
-            inicio: format(saida, 'HH:mm'),
-            termino: format(chegada, 'HH:mm'),
-            idUsuarioReserva: user.uid,
-            nomeUsuarioReserva: user.nome,
-            salaReservada: salaReservada,
-            blocoReservado: blocoReservado
+        let dataAgora = new Date();
 
-        });
+        if (chegada > saida && dataAgora < saida && dataAgora < chegada) {
 
-        let reservaHistorico = await firebase.database().ref('historicoReservasAmbiente')
-        let idHist = reservaHistorico.push().key;
+            reserva.child(id).set({
+                id: id,
+                data: format(newDate, 'dd/MM/yyyy'),
+                inicio: format(saida, 'HH:mm'),
+                termino: format(chegada, 'HH:mm'),
+                idUsuarioReserva: user.uid,
+                nomeUsuarioReserva: user.nome,
+                salaReservada: salaReservada,
+                blocoReservado: blocoReservado
 
-        reservaHistorico.child(idHist).set({
-            id: idHist,
-            data: format(newDate, 'dd/MM/yyyy'),
-            inicio: format(saida, 'HH:mm'),
-            termino: format(chegada, 'HH:mm'),
-            idUsuarioReserva: user.uid,
-            nomeUsuarioReserva: user.nome,
-            salaReservada: salaReservada,
-            blocoReservado: blocoReservado
+            });
 
-        });
+            let reservaHistorico = await firebase.database().ref('historicoReservasAmbiente')
+            let idHist = reservaHistorico.push().key;
+
+            reservaHistorico.child(idHist).set({
+                id: idHist,
+                data: format(newDate, 'dd/MM/yyyy'),
+                inicio: format(saida, 'HH:mm'),
+                termino: format(chegada, 'HH:mm'),
+                idUsuarioReserva: user.uid,
+                nomeUsuarioReserva: user.nome,
+                salaReservada: salaReservada,
+                blocoReservado: blocoReservado
+
+            });
+        } else {
+            alert('Por favor insira um horario de chegada maior do que de saida')
+        }
     }
 
     const onChange = (date) => {

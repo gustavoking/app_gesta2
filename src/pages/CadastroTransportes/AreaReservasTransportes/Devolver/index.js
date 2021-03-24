@@ -5,7 +5,7 @@ import { AuthContext } from '../../../../contexts/auth';
 import firebase from '../../../../services/firebase';
 import ListaTransporte from '../ListaTransporte';
 
-export default function Confirmar() {
+export default function DevolverA() {
 
     const [listaUserReserva, setListaUserReserva] = useState([])
 
@@ -40,12 +40,12 @@ export default function Confirmar() {
     return (
         <View style={styles.container}>
             <ScrollView>
-                <Header titulo='Confirmar' />
+                <Header titulo='Devolver' />
                 <View>
-                    <Text style={styles.reservaisgerais}>CONFIRMAR USO DO TRANSPORTE</Text>
+                    <Text style={styles.reservaisgerais}>DEVOLVER TRANSPORTE</Text>
 
                     {
-                        listaUserReserva.map((data) => (<ListaTransporte touch data={data} />))
+                        listaUserReserva.map((data) => (<ListaTransporte data={data} />))
                     }
 
                 </View>

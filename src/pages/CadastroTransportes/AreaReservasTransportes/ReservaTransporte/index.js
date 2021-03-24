@@ -63,19 +63,27 @@ export default function ReservaTransporte({ route }) {
     }, [])
 
     async function funcaoReservar() {
+
         let reserva = await firebase.database().ref('listaAutorizacoesAdm')
         let id = reserva.push().key;
 
-        reserva.child(id).set({
-            id: id,
-            data: format(newDate, 'dd/MM/yyyy'),
-            saida: format(saida, 'HH:mm'),
-            chegada: format(chegada, 'HH:mm'),
-            idUsuarioReserva: user.uid,
-            idTransporteReservado: idTransporteReservado,
-            placaTransporte: placaTransporte,
-            nomeUsuarioReserva: user.nome,
-        });
+        let dataAgora = new Date();
+
+        if (chegada > saida && dataAgora < saida && dataAgora < chegada) {
+            reserva.child(id).set({
+                id: id,
+                data: format(newDate, 'dd/MM/yyyy'),
+                saida: format(saida, 'HH:mm'),
+                chegada: format(chegada, 'HH:mm'),
+                idUsuarioReserva: user.uid,
+                idTransporteReservado: idTransporteReservado,
+                placaTransporte: placaTransporte,
+                nomeUsuarioReserva: user.nome,
+            });
+        } else {
+            alert('Por favor insira um horario de chegada maior do que de saida')
+        }
+
     }
 
 
