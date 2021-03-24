@@ -67,7 +67,9 @@ export default function QrCode({ route }) {
                     getRef={refQrCode}
                 />
             </View>
-            <TouchableOpacity onPress={getDataURL}>
+            <TouchableOpacity
+                style={styles.botao}
+                onPress={getDataURL}>
                 <Text style={styles.textbotao}>Salvar Imagem</Text>
             </TouchableOpacity>
         </View>
@@ -77,14 +79,27 @@ export default function QrCode({ route }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#3F5C57'
+        backgroundColor: '#3F5C57',
 
     },
     qrcode: {
         alignItems: 'center',
-        marginTop: '30%'
+        marginTop: '30%',
+
+    },
+    botao: {
+        marginLeft: 60,
+        width: '70%',
+        marginTop: 35,
+        height: 50,
+        backgroundColor: '#FECEA5',
+        borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     textbotao: {
-
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#3F5C57',
     }
 })
