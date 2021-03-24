@@ -1,16 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity, Alert } from 'react-native';
-import firebase from '../../../../services/firebase';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ModeloListaReservaPessoal({ data, touch = false }) {
 
-    function confirmar() {
-
-    }
-
-    function devolver() {
-
-    }
+    const navigation = useNavigation();
 
     return (
         <View>
@@ -62,7 +56,7 @@ export default function ModeloListaReservaPessoal({ data, touch = false }) {
                             {data.userReserva}
                         </Text>
                     </View>
-                    <TouchableOpacity onPress={() => devolver()}>
+                    <TouchableOpacity onPress={() => navigation.navigate('QrCodeCancelar')}>
                         <Text style={styles.cancelar}>DEVOLVER</Text>
                     </TouchableOpacity>
                 </View>
@@ -114,8 +108,8 @@ export default function ModeloListaReservaPessoal({ data, touch = false }) {
                                 {data.userReserva}
                             </Text>
                         </View>
-                        <TouchableOpacity onPress={() => confirmar()}>
-                            <Text style={styles.cancelar}>CONFIRMAR</Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('QrCodeConfirmar')}>
+                            <Text style={styles.confirmar}>CONFIRMAR</Text>
                         </TouchableOpacity>
                     </View>
                 )}
@@ -152,7 +146,18 @@ const styles = StyleSheet.create({
         resizeMode: "stretch"
     },
     cancelar: {
-        backgroundColor: '#b20000',
+        backgroundColor: '#2E8B57',
+        borderWidth: 1,
+        borderColor: '#9ECEC5',
+        borderRadius: 10,
+        padding: 5,
+        marginTop: 10,
+        paddingLeft: 50,
+        paddingRight: 50,
+        fontSize: 18
+    },
+    confirmar: {
+        backgroundColor: 'green',
         borderWidth: 1,
         borderColor: '#9ECEC5',
         borderRadius: 10,

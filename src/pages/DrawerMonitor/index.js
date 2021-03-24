@@ -22,6 +22,8 @@ import CancelarA from '../CadastroAmbientes/AreaReservasAmbientes/CancelarA';
 import ConfirmarA from '../CadastroAmbientes/AreaReservasAmbientes/ConfirmarA';
 import DevolverA from '../CadastroAmbientes/AreaReservasAmbientes/DevolverA';
 import ReservaAmbiente from '../CadastroAmbientes/AreaReservasAmbientes/ReservaAmbiente';
+import QrCodeCancelarA from '../CadastroAmbientes/AreaReservasAmbientes/QrCodeCancelarA'
+import QrCodeConfirmarA from '../CadastroAmbientes/AreaReservasAmbientes/QrCodeConfirmarA'
 
 const Stack = createStackNavigator();
 
@@ -39,6 +41,8 @@ function AmbienteRoutes() {
             <Stack.Screen name="DevolverA" component={DevolverA} />
             <Stack.Screen name="ReservaAmbiente" component={ReservaAmbiente} />
             <Stack.Screen name="QrCode" component={QrCode} />
+            <Stack.Screen name="QrCodeCancelarA" component={QrCodeCancelarA} />
+            <Stack.Screen name="QrCodeConfirmarA" component={QrCodeConfirmarA} />
 
         </Stack.Navigator>
     )

@@ -22,6 +22,8 @@ import Cancelar from '../CadastroTransportes/AreaReservasTransportes/Cancelar';
 import Confirmar from '../CadastroTransportes/AreaReservasTransportes/Confirmar';
 import Devolver from '../CadastroTransportes/AreaReservasTransportes/Devolver';
 import ReservaTransporte from '../CadastroTransportes/AreaReservasTransportes/ReservaTransporte'
+import QrCodeCancelar from '../CadastroTransportes/AreaReservasTransportes/QrCodeCancelar';
+import QrCodeConfirmar from '../CadastroTransportes/AreaReservasTransportes/QrCodeConfirmar';
 
 
 import CadastroAmbientes from '../CadastroAmbientes/index';
@@ -32,6 +34,9 @@ import CancelarA from '../CadastroAmbientes/AreaReservasAmbientes/CancelarA';
 import ConfirmarA from '../CadastroAmbientes/AreaReservasAmbientes/ConfirmarA';
 import DevolverA from '../CadastroAmbientes/AreaReservasAmbientes/DevolverA';
 import ReservaAmbiente from '../CadastroAmbientes/AreaReservasAmbientes/ReservaAmbiente';
+import QrCodeCancelarA from '../CadastroAmbientes/AreaReservasAmbientes/QrCodeCancelarA'
+import QrCodeConfirmarA from '../CadastroAmbientes/AreaReservasAmbientes/QrCodeConfirmarA'
+
 
 const Stack = createStackNavigator();
 
@@ -48,6 +53,9 @@ function AmbienteRoutes() {
             <Stack.Screen name="ConfirmarA" component={ConfirmarA} />
             <Stack.Screen name="DevolverA" component={DevolverA} />
             <Stack.Screen name="ReservaAmbiente" component={ReservaAmbiente} />
+            <Stack.Screen name="QrCodeCancelarA" component={QrCodeCancelarA} />
+            <Stack.Screen name="QrCodeConfirmarA" component={QrCodeConfirmarA} />
+
         </Stack.Navigator>
     )
 }
@@ -80,6 +88,9 @@ function StackRoutes() {
             <Stack.Screen name="Confirmar" component={Confirmar} />
             <Stack.Screen name="Devolver" component={Devolver} />
             <Stack.Screen name="ReservaTransporte" component={ReservaTransporte} />
+            <Stack.Screen name="QrCodeCancelar" component={QrCodeCancelar} />
+            <Stack.Screen name="QrCodeConfirmar" component={QrCodeConfirmar} />
+
         </Stack.Navigator>
     )
 }
