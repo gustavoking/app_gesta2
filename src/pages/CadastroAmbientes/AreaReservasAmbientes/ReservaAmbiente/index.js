@@ -65,11 +65,6 @@ export default function ReservaAmbiente({ route }) {
 
     async function funcaoReservar() {
 
-        // firebase.database().ref('reservasGeraisAmbiente').on('value', (snapshot) => {
-        //     snapshot.forEach((maquina) => {
-        // })
-
-
         let reserva = await firebase.database().ref('reservasGeraisAmbiente')
         let id = reserva.push().key;
 
