@@ -27,7 +27,6 @@ export default function Cancelar() {
                 placaTransporteReserva: maquina.val().placaTransporteReserva,
                 userReserva: maquina.val().userReserva,
                 id: maquina.val().id,
-                idTransporte: maquina.val().idTransporte,
               };
               setListaUserReserva((oldArray) => [...oldArray, data]);
             }
