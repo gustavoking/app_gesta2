@@ -28,7 +28,6 @@ export default function ListaAmbiente() {
           snapshot.forEach((maquina) => {
             console.log('maquina' + maquina);
             let data = {
-              qr: maquina.val().qr,
               key: maquina.key,
               sala: maquina.val().sala,
               bloco: maquina.val().bloco,
