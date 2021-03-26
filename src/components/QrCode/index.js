@@ -11,9 +11,11 @@ import Header from '../Header';
 import QRCode from 'react-native-qrcode-svg';
 import RNFS from 'react-native-fs';
 import CameraRoll from '@react-native-community/cameraroll';
-import {base64} from '../../utils';
+import {useNavigation} from '@react-navigation/native';
 
 export default function QrCode({route}) {
+  const navigation = useNavigation();
+
   const {verify, valueAmbiente = null, valueTransporte = null} = route.params;
 
   let refQrCode = useRef(null);
@@ -59,6 +61,9 @@ export default function QrCode({route}) {
                 'QRCode Salvo no Diretório Downloads',
                 ToastAndroid.LONG,
               );
+            })
+            .then(() => {
+              navigation.goBack();
             });
         });
       });

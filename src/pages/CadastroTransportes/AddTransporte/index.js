@@ -45,12 +45,11 @@ export default function AddTransporte() {
         placa: placa,
         tipo: tipo,
         ano: ano,
-        QrCodeAmbiente: placa + '-' + ano + '-' + modelo,
       });
 
       navigation.navigate('QrCode', {
         verify: 'Adicionar Transporte',
-        valueTransporte: placa + '-' + ano + '-' + modelo,
+        valueTransporte: placa,
       });
 
       Keyboard.dismiss();

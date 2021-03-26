@@ -22,19 +22,18 @@ export default function AddTransporte() {
 
   async function addSala() {
     if (sala !== '' && bloco !== '' && qtdPessoas !== '') {
-      let ambiente = await firebase.database().ref('ambientes');
+      let ambiente = firebase.database().ref('ambientes');
       let id = ambiente.push().key;
-
-      ambiente.child(id).set({
+      console.log(sala + '-' + bloco + '-' + qtdPessoas);
+      await ambiente.child(id).set({
         sala: sala,
         bloco: bloco,
         qtdPessoas: qtdPessoas,
-        QrCodeAmbiente: sala + '-' + bloco + '-' + qtdPessoas,
       });
 
       navigation.navigate('QrCode', {
         verify: 'Adicionar Ambiente',
-        valueAmbiente: sala + '-' + bloco + '-' + qtdPessoas,
+        valueAmbiente: sala + '-' + bloco,
       });
 
       Keyboard.dismiss();
