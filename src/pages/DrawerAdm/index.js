@@ -28,6 +28,7 @@ import ListaAutorizacoes from '../Autorizacoes/ListaAutorizacoes';
 import QrCode from '../../components/QrCode';
 import QrCodeCancelar from '../CadastroTransportes/AreaReservasTransportes/QrCodeCancelar';
 import QrCodeConfirmar from '../CadastroTransportes/AreaReservasTransportes/QrCodeConfirmar';
+import TrocarQuilometragem from '../CadastroTransportes/AreaReservasTransportes/TrocarQuilometragem';
 
 import CadastroAmbientes from '../CadastroAmbientes/index';
 import AddAmbiente from '../CadastroAmbientes/AddAmbiente/';
@@ -118,6 +119,10 @@ function StackRoutes() {
       <Stack.Screen name="QrCode" component={QrCode} />
       <Stack.Screen name="QrCodeCancelar" component={QrCodeCancelar} />
       <Stack.Screen name="QrCodeConfirmar" component={QrCodeConfirmar} />
+      <Stack.Screen
+        name="TrocarQuilometragem"
+        component={TrocarQuilometragem}
+      />
     </Stack.Navigator>
   );
 }

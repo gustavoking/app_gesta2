@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import Header from '../../../../components/Header';

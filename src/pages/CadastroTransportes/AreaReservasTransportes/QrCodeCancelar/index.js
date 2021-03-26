@@ -2,19 +2,20 @@ import React from 'react';
 import {View} from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import Header from '../../../../components/Header';
+import {useNavigation} from '@react-navigation/native';
 import firebase from '../../../../services/firebase';
+import {useEffect} from 'react/cjs/react.production.min';
 
 export default function QrCodeCancelar({route}) {
+  const {data} = route.params;
 
-  const { data } = route.params;
+  const navigation = useNavigation();
 
-  const success = () => {
+  navigation.navigate('TrocarQuilometragem', {data: data});
+
+  const success = (e) => {
     if (data.placaTransporteReserva === e.data) {
-        await firebase
-          .database()
-          .ref('reservasGeraisTransporte')
-          .child(data.id)
-          .remove();
+      navigation.navigate('TrocarQuilometragem', {data: data});
     } else {
       alert('QrCode Lido nao é referente ao transporte reservado');
     }

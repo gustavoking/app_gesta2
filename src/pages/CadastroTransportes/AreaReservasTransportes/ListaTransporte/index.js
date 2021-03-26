@@ -53,7 +53,7 @@ export default function ModeloListaReservaPessoal({data, touch = false}) {
             </Text>
           </View>
           <TouchableOpacity
-            onPress={() => navigation.navigate('QrCodeCancelar')}>
+            onPress={() => navigation.navigate('QrCodeCancelar', {data: data})}>
             <Text style={styles.cancelar}>DEVOLVER</Text>
           </TouchableOpacity>
         </View>
