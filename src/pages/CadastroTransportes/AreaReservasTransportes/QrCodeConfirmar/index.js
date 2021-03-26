@@ -28,12 +28,11 @@ export default function QrCodeConfirmar({route}) {
 
     const difference = dataMenos3.getTime() > dataItemMais5.getTime(); // This will give difference in milliseconds
     if (difference) {
-      console.log('passou');
+      await firebase.database().ref('reservasGeraisTransporte').child(data.id).remove()
     } else {
       console.log('nao passou');
     }
-    console.log('difference', difference);
-    console.log('dateItem', dateItem);
+
   }, []);
   const {user} = useContext(AuthContext);
 
