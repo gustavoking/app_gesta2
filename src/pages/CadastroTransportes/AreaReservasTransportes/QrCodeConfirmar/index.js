@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, ToastAndroid} from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import Header from '../../../../components/Header';
 import firebase from '../../../../services/firebase';
@@ -33,8 +33,14 @@ export default function QrCodeConfirmar({route}) {
           .child(data.id)
           .remove();
         console.log('passou');
+        ToastAndroid.show(
+          'Reserva Expirada, passaram-se 10 minutos',
+          ToastAndroid.LONG,
+        );
       } else {
         console.log('nao passou');
+
+        ToastAndroid.show('Reserva Confirmada', ToastAndroid.LONG);
         return;
       }
     } else {
@@ -43,22 +49,25 @@ export default function QrCodeConfirmar({route}) {
   };
 
   return (
-    <View>
+    <View styles={styles.container}>
       <Header />
+      <Text style={styles.text}>
+        SCANEIE O QR CODE PARA CONFIRMAR O TRANSPORTE
+      </Text>
       <QRCodeScanner onRead={success} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  centerText: {
+  container: {
     flex: 1,
-    fontSize: 18,
-    padding: 32,
-    color: '#777',
+    backgroundColor: '#3F5C57',
   },
-  textBold: {
-    fontWeight: '500',
-    color: '#000',
+  text: {
+    color: '#9ECEC5',
+    fontWeight: 'bold',
+    fontSize: 16,
+    textAlign: 'center',
   },
 });
