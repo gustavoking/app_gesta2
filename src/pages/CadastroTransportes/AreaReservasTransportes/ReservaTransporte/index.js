@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  ToastAndroid
 } from 'react-native';
 import Header from '../../../../components/Header';
 import DatePicker from '../../../../components/DatePicker';
@@ -91,6 +92,10 @@ export default function ReservaTransporte({route}) {
         placaTransporte: placaTransporte,
         nomeUsuarioReserva: user.nome,
       });
+      ToastAndroid.show(
+        'Reserva de Transporte Realizada',
+        ToastAndroid.LONG,
+      );
     } else {
       alert('Por favor insira um horario de chegada maior do que de saida');
     }
