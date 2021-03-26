@@ -9,7 +9,11 @@ import {format} from 'date-fns';
 import {useEffect} from 'react';
 
 export default function QrCodeConfirmar({route}) {
-  useEffect(() => {
+  const {user} = useContext(AuthContext);
+
+  const {data} = route.params;
+
+  const success = async () => {
     const [diaItem, mesItem, anoItem] = data.dataReserva.split('/');
     const [horaItem, minutoItem] = data.saidaReserva.split(':');
     const dateItem = new Date(
@@ -28,17 +32,17 @@ export default function QrCodeConfirmar({route}) {
 
     const difference = dataMenos3.getTime() > dataItemMais5.getTime(); // This will give difference in milliseconds
     if (difference) {
-      await firebase.database().ref('reservasGeraisTransporte').child(data.id).remove()
+      await firebase
+        .database()
+        .ref('reservasGeraisTransporte')
+        .child(data.id)
+        .remove();
+      console.log('passou');
     } else {
       console.log('nao passou');
+      return;
     }
-
-  }, []);
-  const {user} = useContext(AuthContext);
-
-  const {data} = route.params;
-
-  const success = () => {};
+  };
 
   return (
     <View>
