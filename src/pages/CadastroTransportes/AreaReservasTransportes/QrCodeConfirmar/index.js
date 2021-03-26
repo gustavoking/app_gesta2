@@ -23,7 +23,7 @@ export default function QrCodeConfirmar({route}) {
       dataMenos3.setHours(dataMenos3.getHours() - 3);
 
       const dataItemMais5 = dateItem;
-      dataItemMais5.setMinutes(dateItem.getMinutes() + 1);
+      dataItemMais5.setMinutes(dateItem.getMinutes() + 10);
 
       const difference = dataMenos3.getTime() > dataItemMais5.getTime(); // This will give difference in milliseconds
       if (difference) {
