@@ -9,8 +9,6 @@ export default function QrCodeCancelar({route}) {
 
   const navigation = useNavigation();
 
-  navigation.navigate('TrocarQuilometragem', {data: data});
-
   const success = (e) => {
     if (data.placaTransporteReserva === e.data) {
       navigation.navigate('TrocarQuilometragem', {data: data});

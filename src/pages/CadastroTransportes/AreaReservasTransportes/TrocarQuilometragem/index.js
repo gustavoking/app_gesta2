@@ -39,6 +39,12 @@ export default function TrocarQuilometragem({route}) {
                   });
                 ToastAndroid.show('Quilometragem Alterada', ToastAndroid.LONG);
                 setShow(false);
+
+                firebase
+                  .database()
+                  .ref('reservasGeraisTransporte')
+                  .child(data.id)
+                  .remove();
               }
             }
           });
