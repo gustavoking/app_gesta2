@@ -19,7 +19,10 @@ export default function Confirmar() {
           setListaUserReserva([]);
 
           snapshot.forEach((maquina) => {
-            if (maquina.val().idUsuarioReserva === user.uid) {
+            if (
+              maquina.val().idUsuarioReserva === user.uid &&
+              maquina.val().reservaEstado === 'reservado'
+            ) {
               let data = {
                 data: maquina.val().data,
                 inicio: maquina.val().inicio,
@@ -28,6 +31,7 @@ export default function Confirmar() {
                 nomeUsuarioReserva: maquina.val().nomeUsuarioReserva,
                 blocoReservado: maquina.val().blocoReservado,
                 id: maquina.val().id,
+                reservaEstado: maquina.val().reservaEstado,
               };
               setListaUserReserva((oldArray) => [...oldArray, data]);
             }

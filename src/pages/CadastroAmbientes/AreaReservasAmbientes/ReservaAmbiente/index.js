@@ -94,6 +94,7 @@ export default function ReservaAmbiente({route}) {
         nomeUsuarioReserva: user.nome,
         salaReservada: salaReservada,
         blocoReservado: blocoReservado,
+        reservaEstado: 'reservado',
       });
 
       let reservaHistorico = await firebase

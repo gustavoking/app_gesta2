@@ -91,8 +91,12 @@ export default function ReservaTransporte({route}) {
         idTransporteReservado: idTransporteReservado,
         placaTransporte: placaTransporte,
         nomeUsuarioReserva: user.nome,
+        reservaEstado: 'aguardando autorizacao',
       });
-      ToastAndroid.show('Reserva de Transporte Realizada', ToastAndroid.LONG);
+      ToastAndroid.show(
+        'Reserva de Transporte Realizada, Aguarde Confirmação do Administrador',
+        ToastAndroid.LONG,
+      );
     } else {
       alert('Por favor insira um horario de chegada maior do que de saida');
     }

@@ -6,6 +6,7 @@ export default function ListaAmbiente({data, touch = false}) {
   const navigation = useNavigation();
 
   console.log('data', data);
+
   return (
     <View>
       {!touch ? (
@@ -105,7 +106,9 @@ export default function ListaAmbiente({data, touch = false}) {
           </View>
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate('QrCodeConfirmarA', {data: data})
+              navigation.navigate('QrCodeConfirmarA', {
+                data: data,
+              })
             }>
             <Text style={styles.confirmar}>CONFIRMAR</Text>
           </TouchableOpacity>

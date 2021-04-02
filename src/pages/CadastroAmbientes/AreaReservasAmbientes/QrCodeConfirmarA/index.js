@@ -22,13 +22,29 @@ export default function QrCodeConfirmarA({route}) {
         minutoItem,
       );
 
+      // Variavel para comparar e verificar se passou 10 minutos desde o inicio da reserva e impedir a confirmação
+      const dataItemMais10 = new Date(
+        anoItem,
+        mesItem - 1,
+        diaItem,
+        horaItem - 3,
+        minutoItem + 10,
+      );
+
+      // Variavel para comparar e verificar e deixar a pessoa confirmar reserva no minimo
+      //10 minutos antes do horario de inicio
+      const dataItemMenos10 = new Date(
+        anoItem,
+        mesItem - 1,
+        diaItem,
+        horaItem - 3,
+        minutoItem - 10,
+      );
+
       const dataMenos3 = new Date();
       dataMenos3.setHours(dataMenos3.getHours() - 3);
 
-      const dataItemMais5 = dateItem;
-      dataItemMais5.setMinutes(dateItem.getMinutes() + 10);
-
-      const difference = dataMenos3.getTime() > dataItemMais5.getTime(); // This will give difference in milliseconds
+      const difference = dataMenos3.getTime() > dataItemMais10.getTime(); // This will give difference in milliseconds
       if (difference) {
         await firebase
           .database()
@@ -42,8 +58,22 @@ export default function QrCodeConfirmarA({route}) {
         );
       } else {
         console.log('nao passou');
-        ToastAndroid.show('Reserva Confirmada', ToastAndroid.LONG);
-        return;
+        if (dataMenos3.getTime() >= dataItemMenos10.getTime()) {
+          console.log('reserva confirmada com sucesso!!');
+          ToastAndroid.show('Reserva Confirmada', ToastAndroid.LONG);
+          await firebase
+            .database()
+            .ref('reservasGeraisAmbiente')
+            .child(data.id)
+            .update({
+              reservaEstado: 'confirmado',
+            });
+          return;
+        } else {
+          alert(
+            'Só é possível confirmar essa reserva no mínimo 10 minutos antes do horario de inicio',
+          );
+        }
       }
     } else {
       alert('QrCode Lido nao é referente ao ambiente reservado');
@@ -51,22 +81,25 @@ export default function QrCodeConfirmarA({route}) {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <Header />
+      <Text style={styles.text}>
+        SCANEIE O QR CODE PARA CONFIRMAR O AMBIENTE
+      </Text>
       <QRCodeScanner onRead={success} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  centerText: {
+  container: {
     flex: 1,
-    fontSize: 18,
-    padding: 32,
-    color: '#777',
+    backgroundColor: '#3F5C57',
   },
-  textBold: {
-    fontWeight: '500',
-    color: '#000',
+  text: {
+    color: '#9ECEC5',
+    fontWeight: 'bold',
+    fontSize: 16,
+    textAlign: 'center',
   },
 });

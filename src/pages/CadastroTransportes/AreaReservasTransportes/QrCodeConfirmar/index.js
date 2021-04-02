@@ -11,19 +11,28 @@ export default function QrCodeConfirmar({route}) {
     if (data.placaTransporteReserva === e.data) {
       const [diaItem, mesItem, anoItem] = data.dataReserva.split('/');
       const [horaItem, minutoItem] = data.saidaReserva.split(':');
-      const dateItem = new Date(
+
+      // Variavel para comparar e verificar se passou 10 minutos desde o inicio da reserva e impedir a confirmação
+      const dataItemMais10 = new Date(
         anoItem,
         mesItem - 1,
         diaItem,
         horaItem - 3,
-        minutoItem,
+        minutoItem + 10,
+      );
+
+      // Variavel para comparar e verificar e deixar a pessoa confirmar reserva no minimo
+      //10 minutos antes do horario de inicio
+      const dataItemMenos10 = new Date(
+        anoItem,
+        mesItem - 1,
+        diaItem,
+        horaItem - 3,
+        minutoItem - 10,
       );
 
       const dataMenos3 = new Date();
       dataMenos3.setHours(dataMenos3.getHours() - 3);
-
-      const dataItemMais5 = dateItem;
-      dataItemMais5.setMinutes(dateItem.getMinutes() + 10);
 
       const difference = dataMenos3.getTime() > dataItemMais5.getTime(); // This will give difference in milliseconds
       if (difference) {
@@ -39,9 +48,21 @@ export default function QrCodeConfirmar({route}) {
         );
       } else {
         console.log('nao passou');
-
-        ToastAndroid.show('Reserva Confirmada', ToastAndroid.LONG);
-        return;
+        if (dataMenos3.getTime() >= dataItemMenos10.getTime()) {
+          ToastAndroid.show('Reserva Confirmada', ToastAndroid.LONG);
+          await firebase
+            .database()
+            .ref('reservasGeraisTransporte')
+            .child(data.id)
+            .update({
+              reservaEstado: 'confirmado',
+            });
+          return;
+        } else {
+          alert(
+            'Só é possível confirmar essa reserva no mínimo 10 minutos antes do horario de inicio',
+          );
+        }
       }
     } else {
       alert('QrCode Lido nao é referente ao transporte reservado');
