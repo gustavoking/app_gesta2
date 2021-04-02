@@ -14,13 +14,6 @@ export default function QrCodeConfirmarA({route}) {
     if (valor === e.data) {
       const [diaItem, mesItem, anoItem] = data.data.split('/');
       const [horaItem, minutoItem] = data.inicio.split(':');
-      const dateItem = new Date(
-        anoItem,
-        mesItem - 1,
-        diaItem,
-        horaItem - 3,
-        minutoItem,
-      );
 
       // Variavel para comparar e verificar se passou 10 minutos desde o inicio da reserva e impedir a confirmação
       const dataItemMais10 = new Date(
