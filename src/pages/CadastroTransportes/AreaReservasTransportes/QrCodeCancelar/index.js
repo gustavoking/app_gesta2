@@ -15,7 +15,7 @@ export default function QrCodeCancelar({route}) {
         navigation.navigate('TrocarQuilometragem', {data: data});
       } else {
         alert(
-          'Não é possível devolver um transporte em que a utilização nao foi confirmada',
+          'Não é possível devolver um transporte em que a utilização não foi confirmada',
         );
       }
     } else {

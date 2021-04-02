@@ -22,7 +22,7 @@ export default function QrCodeCancelarA({route}) {
         ToastAndroid.show('Reserva Devolvida', ToastAndroid.LONG);
       } else {
         alert(
-          'Não é possível devolver um ambiente em que a utilização nao foi confirmada',
+          'Não é possível devolver um ambiente em que a utilização não foi confirmada',
         );
       }
     } else {
