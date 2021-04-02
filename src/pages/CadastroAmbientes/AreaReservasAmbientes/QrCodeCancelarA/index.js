@@ -13,12 +13,18 @@ export default function QrCodeCancelarA({route}) {
 
   const success = async (e) => {
     if (valor === e.data) {
-      await firebase
-        .database()
-        .ref('reservasGeraisAmbiente')
-        .child(data.id)
-        .remove();
-      ToastAndroid.show('Reserva Devolvida', ToastAndroid.LONG);
+      if (data.reservaEstado === 'confirmado') {
+        await firebase
+          .database()
+          .ref('reservasGeraisAmbiente')
+          .child(data.id)
+          .remove();
+        ToastAndroid.show('Reserva Devolvida', ToastAndroid.LONG);
+      } else {
+        alert(
+          'Não é possível devolver um ambiente em que a utilização nao foi confirmada',
+        );
+      }
     } else {
       alert('QrCode Lido nao é referente ao ambiente reservado');
     }

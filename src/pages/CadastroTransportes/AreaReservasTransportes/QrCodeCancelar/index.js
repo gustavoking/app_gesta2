@@ -11,7 +11,13 @@ export default function QrCodeCancelar({route}) {
 
   const success = (e) => {
     if (data.placaTransporteReserva === e.data) {
-      navigation.navigate('TrocarQuilometragem', {data: data});
+      if (data.reservaEstado === 'confirmado') {
+        navigation.navigate('TrocarQuilometragem', {data: data});
+      } else {
+        alert(
+          'Não é possível devolver um transporte em que a utilização nao foi confirmada',
+        );
+      }
     } else {
       alert('QrCode Lido nao é referente ao transporte reservado');
     }

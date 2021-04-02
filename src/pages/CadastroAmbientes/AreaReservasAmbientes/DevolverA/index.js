@@ -28,6 +28,7 @@ export default function DevolverA() {
                 nomeUsuarioReserva: maquina.val().nomeUsuarioReserva,
                 blocoReservado: maquina.val().blocoReservado,
                 id: maquina.val().id,
+                reservaEstado: maquina.val().reservaEstado,
               };
               setListaUserReserva((oldArray) => [...oldArray, data]);
             }
