@@ -34,7 +34,7 @@ export default function QrCodeConfirmar({route}) {
       const dataMenos3 = new Date();
       dataMenos3.setHours(dataMenos3.getHours() - 3);
 
-      const difference = dataMenos3.getTime() > dataItemMais5.getTime(); // This will give difference in milliseconds
+      const difference = dataMenos3.getTime() > dataItemMais10.getTime(); // This will give difference in milliseconds
       if (difference) {
         await firebase
           .database()
