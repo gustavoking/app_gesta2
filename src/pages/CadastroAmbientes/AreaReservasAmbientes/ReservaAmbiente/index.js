@@ -68,6 +68,7 @@ export default function ReservaAmbiente({route}) {
               nomeUsuarioReserva: maquina.val().nomeUsuarioReserva,
               blocoReservado: maquina.val().blocoReservado,
               id: maquina.val().id,
+              reservaEstado: maquina.val().reservaEstado,
             };
             setListaReservasGerais((oldArray) => [...oldArray, data]);
             console.log(data);
