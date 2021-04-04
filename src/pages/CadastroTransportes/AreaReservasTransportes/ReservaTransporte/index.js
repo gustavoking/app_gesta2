@@ -66,6 +66,7 @@ export default function ReservaTransporte({route}) {
               placaTransporteReserva: maquina.val().placaTransporteReserva,
               userReserva: maquina.val().userReserva,
               id: maquina.val().id,
+              reservaEstado: maquina.val().reservaEstado
             };
             setListaReservasGerais((oldArray) => [...oldArray, data]);
           });
