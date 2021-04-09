@@ -16,14 +16,14 @@ export default function Profile() {
     if (user.tipo === 'servidor') {
       return (
         <Image
-          source={require('../../assets/servidorimg.png')}
+          source={require('../../assets/servidor.png')}
           style={styles.imagem}
         />
       );
     } else if (user.tipo === 'monitor') {
       return (
         <Image
-          source={require('../../assets/studentimg.png')}
+          source={require('../../assets/monitor.png')}
           style={styles.imagem}
         />
       );
