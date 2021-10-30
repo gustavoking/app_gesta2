@@ -8,14 +8,16 @@ export default function SobreAplicativo() {
         <View style={styles.container}>
             <Header titulo='Sobre' />
             <View style={styles.container2}>
+
                 <Image style={styles.img}
-                    source={require('../../../assets/gestasobreimg.png')}
+                    source={require('../../../assets/icon_gesta.png')}
                 />
+
                 <Text style={styles.text}>O aplicativo</Text>
-                <View style={{ marginLeft: 40, marginRight: 20 }}>
-                    <Text style={styles.text2}>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                <View style={{marginLeft: '10%', marginRight: '10%'}}>
+                    <Text style={styles.text2}>Gestão de Transportes e Ambientes (GESTA)
+                    como solução mobile para o gerenciamento dos veículos e espaços pedagógicos
+                    do Instituto Federal de Santa Catarina (IFSC), câmpus Xanxerê.
                 </Text>
                 </View>
             </View>
@@ -29,10 +31,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#172220',
     },
     img: {
-        height: 80,
-        width: 80,
-        borderRadius: 120,
-        marginTop: 20
+        height: '20%',
+        width: '30%',
+        marginTop: '5%',
+        borderRadius: 120
     },
     container2: {
         alignItems: 'center',
@@ -44,13 +46,14 @@ const styles = StyleSheet.create({
         color: '#FFF',
         fontWeight: 'bold',
         fontSize: 25,
-        marginTop: 10
+        marginTop: '5%',
+        textAlign: 'center'
     },
     text2: {
-        marginTop: 20,
-        marginLeft: 10,
+        marginTop: '10%',
         color: '#FFF',
         fontWeight: 'bold',
         fontSize: 23,
+        textAlign: 'center'
     },
 })

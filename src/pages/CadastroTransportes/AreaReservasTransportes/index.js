@@ -11,19 +11,20 @@ export default function AreaReservasTransportes() {
         <View style={styles.container}>
             <Header titulo='Área de Reservas' />
 
-            <TouchableOpacity onPress={() => navigation.navigate('Cancelar')}>
-                <Text style={styles.textbutton}>Cancelar</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Reservar')}>
+                <Text style={styles.textbutton}>Reservar</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('Confirmar')}>
                 <Text style={styles.textbutton}>Confirmar</Text>
             </TouchableOpacity>
+
             <TouchableOpacity onPress={() => navigation.navigate('Devolver')}>
                 <Text style={styles.textbutton}>Devolver</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate('Reservar')}>
-                <Text style={styles.textbutton}>Reservar</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Cancelar')}>
+                <Text style={styles.textbutton}>Cancelar</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.goBack()}>

@@ -13,7 +13,7 @@ export default function Sobre() {
             <TouchableOpacity onPress={() => navigation.navigate('SobreAplicativo')}>
                 <View style={styles.container2}>
                     <Image style={styles.img}
-                        source={require('../../assets/gestasobreimg.png')}
+                        source={require('../../assets/icon_gesta.png')}
                     />
                     <Text style={styles.text}>O aplicativo</Text>
                     <Image style={styles.imgseta}
@@ -62,10 +62,8 @@ export default function Sobre() {
                 </View>
             </TouchableOpacity>
 
-            <TouchableOpacity
-                style={styles.btn}
-                onPress={() => navigation.goBack()}>
-                <Text style={styles.btntext}>VOLTAR</Text>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Text style={styles.textbutton}>Voltar</Text>
             </TouchableOpacity>
         </View>
 
@@ -78,12 +76,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#3F5C57',
     },
     container2: {
-        marginTop: 10,
+        marginTop: 20,
         backgroundColor: '#172220',
-        borderWidth: 1,
-        borderColor: '#FFF',
         flexDirection: 'row',
-        padding: 13,
+        padding: '10%',
         alignItems: 'center',
         justifyContent: 'space-between'
 
@@ -95,14 +91,14 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     img: {
-        height: 80,
-        width: 80,
+        height: '250%',
+        width: '20%',
         borderRadius: 90,
-        marginRight: 20
+        marginRight: '5%'
     },
     btn: {
-        marginTop: 2,
-        padding: 15,
+        marginTop: '5%',
+        padding: '3%',
         backgroundColor: '#FECEA5',
     },
     btntext: {
@@ -112,7 +108,13 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     imgseta: {
-        height: 40,
-        width: 40
-    }
+        height: '140%',
+        width: '10%'
+    },
+    textbutton: {
+      fontSize: 23,
+      marginTop: '6%',
+      color: '#9ECEC5',
+      textAlign: 'center'
+  }
 })

@@ -14,20 +14,20 @@ export default function CadastroAmbientes() {
         <View style={styles.container}>
             <Header titulo='Área de Ambientes' />
 
-            {user.tipo === 'administrador' && (
-                <TouchableOpacity onPress={() => navigation.navigate('AddAmbiente')}>
-                    <Text style={styles.textbutton}>Adicionar Ambiente</Text>
-                </TouchableOpacity>
-            )}
-
             <TouchableOpacity onPress={() => navigation.navigate('AreaReservasAmbientes')}>
                 <Text style={styles.textbutton}>   Área de Reservas</Text>
             </TouchableOpacity>
+
 
             <TouchableOpacity onPress={() => navigation.navigate('ListaAmbiente')}>
                 <Text style={styles.textbutton}>Lista de Ambientes</Text>
             </TouchableOpacity>
 
+            {user.tipo === 'administrador' && (
+                <TouchableOpacity onPress={() => navigation.navigate('AddAmbiente')}>
+                    <Text style={styles.textbutton}>Adicionar Ambiente</Text>
+                </TouchableOpacity>
+            )}
         </View>
     );
 }

@@ -11,19 +11,20 @@ export default function AreaReservasAmbientes() {
         <View style={styles.container}>
             <Header titulo='Área de Reservas' />
 
-            <TouchableOpacity onPress={() => navigation.navigate('CancelarA')}>
-                <Text style={styles.textbutton}>Cancelar</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('ReservarA')}>
+                <Text style={styles.textbutton}>Reservar</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('ConfirmarA')}>
                 <Text style={styles.textbutton}>Confirmar</Text>
             </TouchableOpacity>
+
             <TouchableOpacity onPress={() => navigation.navigate('DevolverA')}>
                 <Text style={styles.textbutton}>Devolver</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate('ReservarA')}>
-                <Text style={styles.textbutton}>Reservar</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('CancelarA')}>
+                <Text style={styles.textbutton}>Cancelar</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.goBack()}>

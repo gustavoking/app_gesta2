@@ -7,7 +7,7 @@ import { Input, Item } from 'native-base';
 import Autorizacao from '../Autorizacao';
 
 
-export default function ListaAutorizacoes() {
+export default function ListaAutorizacoes({navigation}) {
 
     const [ListaAutorizacoes, setListaAutorizacoes] = useState([]);
     const [ListaAutorizacoesFiltradas, setListaAutorizacoesFiltradas] = useState([]);
@@ -71,6 +71,10 @@ export default function ListaAutorizacoes() {
                         ListaAutorizacoesFiltradas.map((data) => (<Autorizacao data={data} />))
                     }
                 </View>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Text style={styles.textbutton}>Voltar</Text>
+            </TouchableOpacity>
+
             </View>
         </ScrollView>
     );
@@ -88,5 +92,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#3F5C57'
-    }
+    },
+    textbutton: {
+      fontSize: 23,
+      marginTop: '6%',
+      color: '#9ECEC5',
+      textAlign: 'center'
+  }
 })
