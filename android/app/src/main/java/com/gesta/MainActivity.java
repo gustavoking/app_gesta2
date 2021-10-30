@@ -1,4 +1,4 @@
-package com.appgesta;
+package com.gesta;
 
 import com.facebook.react.ReactActivity;
 

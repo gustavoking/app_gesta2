@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     marginBottom: -15,
   },
   ImageTelaLogin: {
-    marginLeft: 70,
+    alignSelf: 'center',
     width: 250,
     height: 250,
   },
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     width: '70%',
     marginTop: 35,
     height: 60,
-    backgroundColor: '#FECEA5',
+    backgroundColor: 'white',
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
