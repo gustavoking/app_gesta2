@@ -10,34 +10,23 @@ export default function Transporte({data, touch = false}) {
       {!touch ? (
         <View style={styles.container}>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Marca: </Text>
-              {data.marca}
+            <Text style={styles.textoNegrito}>Marca: {data.marca}</Text>
+
+            <Text style={styles.textoNegrito}>Ano: {data.ano}</Text>
+
+            <Text style={styles.textoNegrito}>Modelo: {data.modelo}</Text>
+
+            <Text style={styles.textoNegrito}>
+              Quilometragem: {data.quilometragem}
             </Text>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Ano: </Text>
-              {data.ano}
+
+            <Text style={styles.textoNegrito}>
+              Combustivel: {data.combustivel}{' '}
             </Text>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Modelo: </Text>
-              {data.modelo}
-            </Text>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Quilometragem: </Text>
-              {data.quilometragem}
-            </Text>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Combustivel: </Text>
-              {data.combustivel}
-            </Text>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>placa: </Text>
-              {data.placa}
-            </Text>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>tipo: </Text>
-              {data.tipo}
-            </Text>
+
+            <Text style={styles.textoNegrito}>placa: {data.placa}</Text>
+
+            <Text style={styles.textoNegrito}>tipo: {data.tipo}</Text>
           </View>
         </View>
       ) : (
@@ -51,34 +40,23 @@ export default function Transporte({data, touch = false}) {
           }>
           <View style={styles.container}>
             <View style={styles.textosView}>
-              <Text style={{color: '#FFF'}}>
-                <Text style={styles.textoNegrito}>Marca: </Text>
-                {data.marca}
+              <Text style={styles.textoNegrito}>Marca: {data.marca} </Text>
+
+              <Text style={styles.textoNegrito}>Ano: {data.ano}</Text>
+
+              <Text style={styles.textoNegrito}>Modelo: {data.modelo}</Text>
+
+              <Text style={styles.textoNegrito}>
+                Quilometragem: {data.quilometragem}
               </Text>
-              <Text style={{color: '#FFF'}}>
-                <Text style={styles.textoNegrito}>Ano: </Text>
-                {data.ano}
+
+              <Text style={styles.textoNegrito}>
+                Combustivel: {data.combustivel}
               </Text>
-              <Text style={{color: '#FFF'}}>
-                <Text style={styles.textoNegrito}>Modelo: </Text>
-                {data.modelo}
-              </Text>
-              <Text style={{color: '#FFF'}}>
-                <Text style={styles.textoNegrito}>Quilometragem: </Text>
-                {data.quilometragem}
-              </Text>
-              <Text style={{color: '#FFF'}}>
-                <Text style={styles.textoNegrito}>Combustivel: </Text>
-                {data.combustivel}
-              </Text>
-              <Text style={{color: '#FFF'}}>
-                <Text style={styles.textoNegrito}>placa: </Text>
-                {data.placa}
-              </Text>
-              <Text style={{color: '#FFF'}}>
-                <Text style={styles.textoNegrito}>tipo: </Text>
-                {data.tipo}
-              </Text>
+
+              <Text style={styles.textoNegrito}>placa: {data.placa}</Text>
+
+              <Text style={styles.textoNegrito}>tipo: {data.tipo}</Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -90,28 +68,23 @@ export default function Transporte({data, touch = false}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    backgroundColor: '#172220',
-    alignItems: 'center',
-    marginBottom: 10,
     padding: 10,
-    borderRadius: 5,
-    borderWidth: 2,
-    marginHorizontal: 15,
+    borderRadius: 1,
+    borderWidth: 1,
+    marginHorizontal: 58,
     marginTop: 5,
+    borderTopColor: '#9ECEC5',
+    borderBottomColor: '#3F5C57',
+    borderRightColor: '#3F5C57',
+    borderLeftColor: '#3F5C57',
   },
   textosView: {
     flex: 1,
     marginLeft: 10,
+    textAlign: 'center',
   },
   textoNegrito: {
-    color: '#9ECEC5',
-    fontWeight: 'normal',
-  },
-  imagem: {
-    backgroundColor: 'white',
-    width: 70,
-    height: 70,
-    resizeMode: 'stretch',
+    color: '#FFF',
+    textAlign: 'center',
   },
 });

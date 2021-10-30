@@ -82,9 +82,7 @@ export default function QrCodeConfirmarA({route, navigation}) {
   return (
     <View style={styles.container}>
       <Header />
-      <Text style={styles.text}>
-        SCANEIE O QR CODE PARA CONFIRMAR O AMBIENTE
-      </Text>
+
       <QRCodeScanner onRead={success} />
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Text style={styles.textbutton}>Voltar</Text>

@@ -62,29 +62,26 @@ export default function ModeloListaReserva({data}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#172220',
+    backgroundColor: '#3F5C57',
     alignItems: 'center',
     marginBottom: 10,
     padding: 10,
-    borderRadius: 5,
-    borderWidth: 5,
-    marginHorizontal: 15,
+    marginHorizontal: 53,
     marginTop: 5,
-    borderColor: '#9ECEC5',
+    borderTopColor: '#9ECEC5',
+    borderWidth: 1,
+    borderRightColor: '#3F5C57',
+    borderLeftColor: '#3F5C57',
+    borderBottomColor: '#3F5C57',
+    borderRadius: 1,
   },
   textosView: {
     flex: 1,
     marginLeft: 10,
   },
   textoNegrito: {
-    color: '#9ECEC5',
+    color: 'white',
     fontWeight: 'normal',
-  },
-  imagem: {
-    backgroundColor: 'white',
-    width: 70,
-    height: 70,
-    resizeMode: 'stretch',
   },
   container2: {
     flex: 1,

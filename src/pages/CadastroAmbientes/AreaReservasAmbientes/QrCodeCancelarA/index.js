@@ -39,9 +39,7 @@ export default function QrCodeCancelarA({route}) {
   return (
     <View style={styles.container}>
       <Header />
-      <Text style={styles.text}>
-        SCANEIE O QR CODE PARA DEVOLVER O AMBIENTE
-      </Text>
+
       <QRCodeScanner onRead={success} />
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Text style={styles.textbutton}>Voltar</Text>

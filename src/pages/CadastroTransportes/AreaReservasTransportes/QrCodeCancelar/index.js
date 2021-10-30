@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import Header from '../../../../components/Header';
 import {useNavigation} from '@react-navigation/native';
@@ -26,10 +26,11 @@ export default function QrCodeCancelar({route}) {
   return (
     <View style={styles.container}>
       <Header />
-      <Text style={styles.text}>
-        SCANEIE O QR CODE PARA DEVOLVER O TRANSPORTE
-      </Text>
+
       <QRCodeScanner onRead={success} />
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Text style={styles.textbutton}>Voltar</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -43,6 +44,13 @@ const styles = StyleSheet.create({
     color: '#9ECEC5',
     fontWeight: 'normal',
     fontSize: 20,
+    textAlign: 'center',
+  },
+  textbutton: {
+    marginVertical: 15,
+    fontSize: 20,
+    marginTop: 50,
+    color: '#9ECEC5',
     textAlign: 'center',
   },
 });

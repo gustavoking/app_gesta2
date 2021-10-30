@@ -152,7 +152,7 @@ export default function ReservaTransporte({route, navigation}) {
       </TouchableOpacity>
 
       <View style={styles.container3}>
-        <Text style={styles.btntext2}>Hora Saida</Text>
+        <Text style={styles.btntext2}>Hora Saída</Text>
 
         <Text style={styles.btntext2}>Hora Chegada</Text>
       </View>

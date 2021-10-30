@@ -73,14 +73,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   textoNegrito: {
-    color: '#9ECEC5',
+    color: 'white',
     fontWeight: 'normal',
-  },
-  imagem: {
-    backgroundColor: 'white',
-    width: 70,
-    height: 70,
-    resizeMode: 'stretch',
   },
   container2: {
     flex: 1,

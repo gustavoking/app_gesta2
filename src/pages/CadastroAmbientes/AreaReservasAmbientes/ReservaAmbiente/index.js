@@ -151,72 +151,70 @@ export default function ReservaAmbiente({route, navigation}) {
     <View style={styles.container}>
       <Header titulo="Reservar" />
 
-      <ScrollView>
-        <TouchableOpacity style={styles.btn} onPress={abrirCalendario}>
-          <Text style={styles.btntext}>Abrir Calendário Para Reservar</Text>
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.btn3} onPress={abrirCalendario}>
         <Text style={styles.txt2}>
+          {' '}
           {titleCase(format(newDate, 'eeee, dd MMMM, yyyy ', {locale: ptBR}))}
         </Text>
-        <Text style={styles.txt}>Preencha a hora de Inicio e Término</Text>
+      </TouchableOpacity>
 
-        <View style={styles.container3}>
-          <Text style={styles.btntext2}>Hora Inicio</Text>
+      <View style={styles.container3}>
+        <Text style={styles.btntext2}>Hora Início</Text>
 
-          <Text style={styles.btntext2}>Hora Término</Text>
-        </View>
-        <View style={styles.container2}>
-          <TouchableOpacity onPress={abrirSaida}>
-            <Text style={styles.text}>{format(saida, 'HH:mm')}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={abrirChegada}>
-            <Text style={styles.text}>{format(chegada, 'HH:mm')}</Text>
-          </TouchableOpacity>
-        </View>
-
-        <TouchableOpacity style={styles.btn} onPress={() => funcaoReservar()}>
-          <Text style={styles.btntext}>CONFIRMAR RESERVA</Text>
+        <Text style={styles.btntext2}>Hora Término</Text>
+      </View>
+      <View style={styles.container2}>
+        <TouchableOpacity onPress={abrirSaida}>
+          <Text style={styles.text}>{format(saida, 'HH:mm')}</Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={abrirChegada}>
+          <Text style={styles.text}>{format(chegada, 'HH:mm')}</Text>
+        </TouchableOpacity>
+      </View>
+      <TouchableOpacity style={styles.btn3} onPress={() => funcaoReservar()}>
+        <Text style={styles.txt2}>Confirmar Reserva</Text>
+      </TouchableOpacity>
 
-        {show ? (
-          <DatePicker
-            onClose={() => setShow(false)}
-            date={newDate}
-            setDateNow={setNewDate}
-            mode="datetime"
-            onChange={onChange}
-          />
-        ) : (
-          <View></View>
-        )}
-        {showSaida ? (
-          <DatePicker
-            onClose={() => setShowSaida(false)}
-            date={saida}
-            setDateNow={setSaida}
-            mode="time"
-            onChange={onChangeSaida}
-          />
-        ) : (
-          <View></View>
-        )}
-        {showChegada ? (
-          <DatePicker
-            onClose={() => setShowChegada(false)}
-            date={chegada}
-            setDateNow={setChegada}
-            mode="time"
-            onChange={onChangeChegada}
-          />
-        ) : (
-          <View></View>
-        )}
+      {show ? (
+        <DatePicker
+          onClose={() => setShow(false)}
+          date={newDate}
+          setDateNow={setNewDate}
+          mode="datetime"
+          onChange={onChange}
+        />
+      ) : (
+        <View></View>
+      )}
+      {showSaida ? (
+        <DatePicker
+          onClose={() => setShowSaida(false)}
+          date={saida}
+          setDateNow={setSaida}
+          mode="time"
+          onChange={onChangeSaida}
+        />
+      ) : (
+        <View></View>
+      )}
+      {showChegada ? (
+        <DatePicker
+          onClose={() => setShowChegada(false)}
+          date={chegada}
+          setDateNow={setChegada}
+          mode="time"
+          onChange={onChangeChegada}
+        />
+      ) : (
+        <View></View>
+      )}
 
-        <Text />
-        <Text style={styles.reservaisgerais}>RESERVAS DOS AMBIENTES</Text>
+      <Text />
+      <ScrollView>
         {ListaReservasGerais.map((data) => (
           <ModeloListaReserva data={data} />
         ))}
+        <View style={styles.linha}></View>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text style={styles.textbutton}>Voltar</Text>
         </TouchableOpacity>
@@ -228,26 +226,21 @@ export default function ReservaAmbiente({route, navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#172220',
+    backgroundColor: '#3F5C57',
   },
-  btn: {
-    marginTop: 15,
+  linha: {
+    borderTopColor: '#9ECEC5',
     borderWidth: 1,
-    padding: 10,
-    backgroundColor: '#FECEA5',
-    marginLeft: 50,
-    marginRight: 50,
-    borderRadius: 50,
-  },
-  btntext: {
-    textAlign: 'center',
-    fontWeight: 'normal',
-    color: '#3F5C57',
+    borderRightColor: '#3F5C57',
+    borderLeftColor: '#3F5C57',
+    borderBottomColor: '#3F5C57',
+    borderRadius: 1,
+    marginHorizontal: 53,
   },
   btntext2: {
     textAlign: 'center',
     fontWeight: 'normal',
-    color: '#FECEA5',
+    color: '#9ECEC5',
     fontSize: 20,
     marginTop: 10,
   },
@@ -285,30 +278,25 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'normal',
   },
-  btn2: {
-    marginTop: 15,
-    borderWidth: 1,
-    padding: 10,
-    backgroundColor: '#FECEA5',
-    borderRadius: 30,
-  },
-  reservaisgerais: {
-    fontSize: 20,
-    fontWeight: 'normal',
-    color: '#172220',
-    backgroundColor: '#FECEA5',
-    marginLeft: 20,
-    marginTop: 10,
-    marginRight: 20,
-    textAlign: 'center',
-    borderWidth: 1,
-    borderRadius: 20,
-  },
   textbutton: {
     marginVertical: 15,
     fontSize: 20,
     marginTop: 50,
     color: '#9ECEC5',
     textAlign: 'center',
+  },
+  txt2: {
+    color: '#3F5C57',
+    fontSize: 20,
+    textAlign: 'center',
+    marginTop: '3%',
+  },
+  btn3: {
+    backgroundColor: 'white',
+    borderRadius: 90,
+    marginTop: '5%',
+    marginHorizontal: '10%',
+    borderWidth: 1,
+    height: '7%',
   },
 });
