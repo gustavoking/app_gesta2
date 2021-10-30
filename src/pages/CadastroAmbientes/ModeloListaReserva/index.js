@@ -9,12 +9,6 @@ export default function ModeloListaReserva({data}) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.imagemView}>
-        <Image
-          source={require('../../../assets/salaimg.png')}
-          style={styles.imagem}
-        />
-      </View>
       <View style={styles.textosView}>
         <Text style={{color: '#FFF'}}>
           <Text style={styles.textoNegrito}>Data: </Text>

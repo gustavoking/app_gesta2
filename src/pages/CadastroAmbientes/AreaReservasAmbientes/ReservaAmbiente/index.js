@@ -16,7 +16,7 @@ import {AuthContext} from '../../../../contexts/auth';
 import ModeloListaReserva from '../../ModeloListaReserva';
 import ptBR from 'date-fns/locale/pt-BR';
 
-export default function ReservaAmbiente({route}) {
+export default function ReservaAmbiente({route, navigation}) {
   // funcao para colocar tudo em maiusculo
   function titleCase(str) {
     var splitStr = str.toLowerCase().split(' ');
@@ -139,22 +139,12 @@ export default function ReservaAmbiente({route}) {
     setShow(true);
   }
 
-  function fecharCalendario() {
-    setShow(false);
-  }
   function abrirSaida() {
     setShowSaida(true);
   }
 
-  function fecharSaida() {
-    setShowSaida(false);
-  }
   function abrirChegada() {
     setShowChegada(true);
-  }
-
-  function fecharChegada() {
-    setShowChegada(false);
   }
 
   return (
@@ -188,32 +178,38 @@ export default function ReservaAmbiente({route}) {
           <Text style={styles.btntext}>CONFIRMAR RESERVA</Text>
         </TouchableOpacity>
 
-        {show && (
+        {show ? (
           <DatePicker
-            onClose={fecharCalendario}
+            onClose={() => setShow(false)}
             date={newDate}
             setDateNow={setNewDate}
             mode="datetime"
             onChange={onChange}
           />
+        ) : (
+          <View></View>
         )}
-        {showSaida && (
+        {showSaida ? (
           <DatePicker
-            onClose={fecharSaida}
+            onClose={() => setShowSaida(false)}
             date={saida}
             setDateNow={setSaida}
             mode="time"
             onChange={onChangeSaida}
           />
+        ) : (
+          <View></View>
         )}
-        {showChegada && (
+        {showChegada ? (
           <DatePicker
-            onClose={fecharChegada}
+            onClose={() => setShowChegada(false)}
             date={chegada}
             setDateNow={setChegada}
             mode="time"
             onChange={onChangeChegada}
           />
+        ) : (
+          <View></View>
         )}
 
         <Text />
@@ -221,6 +217,9 @@ export default function ReservaAmbiente({route}) {
         {ListaReservasGerais.map((data) => (
           <ModeloListaReserva data={data} />
         ))}
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={styles.textbutton}>Voltar</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
@@ -304,5 +303,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderWidth: 1,
     borderRadius: 20,
+  },
+  textbutton: {
+    marginVertical: 15,
+    fontSize: 23,
+    marginTop: 50,
+    color: '#9ECEC5',
+    textAlign: 'center',
   },
 });

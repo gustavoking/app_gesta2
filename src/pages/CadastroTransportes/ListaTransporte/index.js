@@ -12,7 +12,7 @@ import firebase from '../../../services/firebase';
 import {Input, Item} from 'native-base';
 import Transporte from '../Transporte';
 
-export default function ListaTransporte() {
+export default function ListaTransporte({navigation}) {
   const [ListaTransportes, setListaTransportes] = useState([]);
   const [ListaTransportesFiltradas, setListaTransportesFiltradas] = useState(
     [],
@@ -74,12 +74,15 @@ export default function ListaTransporte() {
             color="black"
           />
         </Item>
-
+        <Text></Text>
         <View>
           {ListaTransportesFiltradas.map((data) => (
             <Transporte data={data} />
           ))}
         </View>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={styles.textbutton}>Voltar</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -87,7 +90,7 @@ export default function ListaTransporte() {
 
 const styles = StyleSheet.create({
   iconpesquisar: {
-    backgroundColor: '#FECEA5',
+    backgroundColor: 'white',
     marginLeft: 10,
     marginRight: 10,
     borderRadius: 20,
@@ -97,5 +100,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#3F5C57',
+  },
+  textbutton: {
+    marginVertical: 15,
+    fontSize: 23,
+    marginTop: 50,
+    color: '#9ECEC5',
+    textAlign: 'center',
   },
 });

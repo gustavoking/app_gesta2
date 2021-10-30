@@ -1,11 +1,17 @@
-import React, {useContext, useState, TouchableOpacity, useEffect} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import React, {useContext, useState, useEffect} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import Header from '../../../../components/Header';
 import {AuthContext} from '../../../../contexts/auth';
 import firebase from '../../../../services/firebase';
 import ListaTransporte from '../ListaTransporte';
 
-export default function Confirmar() {
+export default function Confirmar({navigation}) {
   const [listaUserReserva, setListaUserReserva] = useState([]);
 
   const {user} = useContext(AuthContext);
@@ -54,6 +60,9 @@ export default function Confirmar() {
             <ListaTransporte touch data={data} />
           ))}
         </View>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={styles.textbutton}>Voltar</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
@@ -75,5 +84,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderWidth: 1,
     borderRadius: 20,
+  },
+  textbutton: {
+    marginVertical: 15,
+    fontSize: 23,
+    marginTop: 50,
+    color: '#9ECEC5',
+    textAlign: 'center',
   },
 });

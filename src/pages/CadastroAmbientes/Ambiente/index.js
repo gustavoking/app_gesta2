@@ -10,12 +10,6 @@ export default function Ambiente({data, touch = false}) {
     <View>
       {!touch ? (
         <View style={styles.container}>
-          <View style={styles.imagemView}>
-            <Image
-              source={require('../../../assets/salaimg.png')}
-              style={styles.imagem}
-            />
-          </View>
           <View style={styles.textosView}>
             <Text style={{color: '#FFF'}}>
               <Text style={styles.textoNegrito}>Sala: </Text>
@@ -32,20 +26,14 @@ export default function Ambiente({data, touch = false}) {
           </View>
         </View>
       ) : (
-        <View style={styles.container}>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('ReservaAmbiente', {
-                salaReservadaA: data.sala,
-                blocoReservadoA: data.bloco,
-              })
-            }>
-            <View style={styles.imagemView}>
-              <Image
-                source={require('../../../assets/salaimg.png')}
-                style={styles.imagem}
-              />
-            </View>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('ReservaAmbiente', {
+              salaReservadaA: data.sala,
+              blocoReservadoA: data.bloco,
+            })
+          }>
+          <View style={styles.container}>
             <View style={styles.textosView}>
               <Text style={{color: '#FFF'}}>
                 <Text style={styles.textoNegrito}>Sala: </Text>
@@ -60,8 +48,8 @@ export default function Ambiente({data, touch = false}) {
                 {data.qtdPessoas}
               </Text>
             </View>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
       )}
     </View>
   );

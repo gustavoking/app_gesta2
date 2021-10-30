@@ -9,12 +9,6 @@ export default function Transporte({data, touch = false}) {
     <View>
       {!touch ? (
         <View style={styles.container}>
-          <View style={styles.imagemView}>
-            <Image
-              source={require('../../../assets/carroimg.png')}
-              style={styles.imagem}
-            />
-          </View>
           <View style={styles.textosView}>
             <Text style={{color: '#FFF'}}>
               <Text style={styles.textoNegrito}>Marca: </Text>
@@ -47,21 +41,15 @@ export default function Transporte({data, touch = false}) {
           </View>
         </View>
       ) : (
-        <View style={styles.container}>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('ReservaTransporte', {
-                idTrans: data.key,
-                placaTrans: data.placa,
-                QrCodeTransporte: data.QrCodeTransporte,
-              })
-            }>
-            <View style={styles.imagemView}>
-              <Image
-                source={require('../../../assets/carroimg.png')}
-                style={styles.imagem}
-              />
-            </View>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('ReservaTransporte', {
+              idTrans: data.key,
+              placaTrans: data.placa,
+              QrCodeTransporte: data.QrCodeTransporte,
+            })
+          }>
+          <View style={styles.container}>
             <View style={styles.textosView}>
               <Text style={{color: '#FFF'}}>
                 <Text style={styles.textoNegrito}>Marca: </Text>
@@ -92,8 +80,8 @@ export default function Transporte({data, touch = false}) {
                 {data.tipo}
               </Text>
             </View>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
       )}
     </View>
   );

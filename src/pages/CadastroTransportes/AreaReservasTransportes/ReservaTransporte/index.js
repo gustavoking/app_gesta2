@@ -16,7 +16,7 @@ import firebase from '../../../../services/firebase';
 import ModeloListaReserva from '../ModeloListaReserva';
 import ptBR from 'date-fns/locale/pt-BR';
 
-export default function ReservaTransporte({route}) {
+export default function ReservaTransporte({route, navigation}) {
   function titleCase(str) {
     var splitStr = str.toLowerCase().split(' ');
 
@@ -66,7 +66,7 @@ export default function ReservaTransporte({route}) {
               placaTransporteReserva: maquina.val().placaTransporteReserva,
               userReserva: maquina.val().userReserva,
               id: maquina.val().id,
-              reservaEstado: maquina.val().reservaEstado
+              reservaEstado: maquina.val().reservaEstado,
             };
             setListaReservasGerais((oldArray) => [...oldArray, data]);
           });
@@ -145,14 +145,11 @@ export default function ReservaTransporte({route}) {
     <View style={styles.container}>
       <ScrollView>
         <Header titulo="Reservar" />
-
-        <TouchableOpacity style={styles.btn} onPress={abrirCalendario}>
-          <Text style={styles.btntext}>Abrir Calendário Para Reservar</Text>
+        <TouchableOpacity onPress={abrirCalendario}>
+          <Text style={styles.txt2}>
+            {titleCase(format(newDate, 'eeee, dd MMMM, yyyy ', {locale: ptBR}))}
+          </Text>
         </TouchableOpacity>
-        <Text style={styles.txt2}>
-          {titleCase(format(newDate, 'eeee, dd MMMM, yyyy ', {locale: ptBR}))}
-        </Text>
-        <Text style={styles.txt}>Preencha a hora de Saída e Chegada</Text>
 
         <View style={styles.container3}>
           <Text style={styles.btntext2}>Hora Saida</Text>
@@ -201,11 +198,13 @@ export default function ReservaTransporte({route}) {
         )}
         <Text />
         <View>
-          <Text style={styles.reservaisgerais}>RESERVAS DOS TRANSPORTES</Text>
           {ListaReservasGerais.map((data) => (
             <ModeloListaReserva data={data} />
           ))}
         </View>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={styles.textbutton}>Voltar</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
@@ -220,7 +219,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     borderWidth: 1,
     padding: 10,
-    backgroundColor: '#FECEA5',
+    backgroundColor: 'white',
     marginLeft: 50,
     marginRight: 50,
     borderRadius: 50,
@@ -232,24 +231,22 @@ const styles = StyleSheet.create({
   },
   btntext2: {
     textAlign: 'center',
-    fontWeight: 'bold',
-    color: '#FECEA5',
+    color: '#9ECEC5',
     fontSize: 18,
     marginTop: 10,
   },
   txt: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#FFF',
+    color: '#9ECEC5',
     textAlign: 'center',
-    marginTop: 40,
+    marginTop: '3%',
   },
   txt2: {
     color: '#9ECEC5',
     fontSize: 20,
     textAlign: 'center',
     marginTop: 20,
-    fontWeight: 'bold',
   },
   container2: {
     flexDirection: 'row',
@@ -267,9 +264,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#FFF',
-    fontSize: 25,
+    fontSize: 20,
     textAlign: 'center',
-    fontWeight: 'bold',
   },
   btn2: {
     marginTop: 15,
@@ -289,5 +285,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderWidth: 1,
     borderRadius: 20,
+  },
+  textbutton: {
+    marginVertical: 15,
+    fontSize: 23,
+    marginTop: 50,
+    color: '#9ECEC5',
+    textAlign: 'center',
   },
 });

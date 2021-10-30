@@ -8,12 +8,6 @@ export default function ModeloListaReserva({data}) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.imagemView}>
-        <Image
-          source={require('../../../../assets/carroimg.png')}
-          style={styles.imagem}
-        />
-      </View>
       <View style={styles.textosView}>
         <Text style={{color: '#FFF'}}>
           <Text style={styles.textoNegrito}>Data: </Text>
@@ -65,11 +59,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10,
     padding: 10,
-    borderRadius: 5,
-    borderWidth: 5,
-    marginHorizontal: 15,
+    marginHorizontal: 53,
     marginTop: 5,
-    borderColor: '#9ECEC5',
+    borderTopColor: '#9ECEC5',
+    borderWidth: 1,
+    borderRightColor: '#172220',
+    borderLeftColor: '#172220',
+    borderBottomColor: '#172220',
+    borderRadius: 1,
   },
   textosView: {
     flex: 1,

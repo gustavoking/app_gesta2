@@ -12,7 +12,7 @@ import firebase from '../../../services/firebase';
 import {Input, Item} from 'native-base';
 import Ambiente from '../Ambiente';
 
-export default function ListaAmbiente() {
+export default function ListaAmbiente({navigation}) {
   const [ListaAmbientes, setListaAmbientes] = useState([]);
   const [ListaAmbientesFiltradas, setListaAmbientesFiltradas] = useState([]);
   const [search, setSearch] = useState('');
@@ -68,12 +68,15 @@ export default function ListaAmbiente() {
             color="black"
           />
         </Item>
-
+        <Text></Text>
         <View>
           {ListaAmbientesFiltradas.map((data) => (
             <Ambiente key={data.key} data={data} />
           ))}
         </View>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={styles.textbutton}>Voltar</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -81,7 +84,7 @@ export default function ListaAmbiente() {
 
 const styles = StyleSheet.create({
   iconpesquisar: {
-    backgroundColor: '#FECEA5',
+    backgroundColor: 'white',
     marginLeft: 10,
     marginRight: 10,
     borderRadius: 20,
@@ -91,5 +94,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#3F5C57',
+  },
+  textbutton: {
+    fontSize: 23,
+    marginTop: '10%',
+    color: '#9ECEC5',
+    textAlign: 'center',
   },
 });

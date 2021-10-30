@@ -16,9 +16,7 @@ export default function Sobre() {
                         source={require('../../assets/icon_gesta.png')}
                     />
                     <Text style={styles.text}>O aplicativo</Text>
-                    <Image style={styles.imgseta}
-                        source={require('../../assets/setasobre.png')}
-                    />
+
                 </View>
             </TouchableOpacity>
 
@@ -29,9 +27,6 @@ export default function Sobre() {
                         source={require('../../assets/fresegesta.png')}
                     />
                     <Text style={styles.text}>Arthur Varnier Frese</Text>
-                    <Image style={styles.imgseta}
-                        source={require('../../assets/setasobre.png')}
-                    />
                 </View>
             </TouchableOpacity>
 
@@ -42,9 +37,6 @@ export default function Sobre() {
                         source={require('../../assets/caiogesta.png')}
                     />
                     <Text style={styles.text}>Caio Sulzbacher Pessoa</Text>
-                    <Image style={styles.imgseta}
-                        source={require('../../assets/setasobre.png')}
-                    />
                 </View>
             </TouchableOpacity>
 
@@ -55,9 +47,6 @@ export default function Sobre() {
                         source={require('../../assets/gustavogesta.png')}
                     />
                     <Text style={styles.text}>Gustavo Rostirolla</Text>
-                    <Image style={styles.imgseta}
-                        source={require('../../assets/setasobre.png')}
-                    />
 
                 </View>
             </TouchableOpacity>
@@ -76,19 +65,18 @@ const styles = StyleSheet.create({
         backgroundColor: '#3F5C57',
     },
     container2: {
-        marginTop: 20,
-        backgroundColor: '#172220',
+        marginTop: '6%',
+        backgroundColor: '#9ECEC5',
         flexDirection: 'row',
         padding: '10%',
         alignItems: 'center',
-        justifyContent: 'space-between'
-
     },
     text: {
-        color: '#FFF',
+        color: '#172220',
         fontWeight: 'bold',
         fontSize: 18,
-        textAlign: 'center'
+        textAlign: 'center',
+        marginLeft: '10%'
     },
     img: {
         height: '250%',
@@ -96,21 +84,7 @@ const styles = StyleSheet.create({
         borderRadius: 90,
         marginRight: '5%'
     },
-    btn: {
-        marginTop: '5%',
-        padding: '3%',
-        backgroundColor: '#FECEA5',
-    },
-    btntext: {
-        textAlign: 'center',
-        fontWeight: 'bold',
-        color: '#3F5C57',
-        fontSize: 18,
-    },
-    imgseta: {
-        height: '140%',
-        width: '10%'
-    },
+
     textbutton: {
       fontSize: 23,
       marginTop: '6%',

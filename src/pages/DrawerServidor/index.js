@@ -122,7 +122,6 @@ export default function DrawerServidor() {
           marginLeft: 15,
         },
         activeTintColor: '#FFF',
-        activeBackgroundColor: '#FECEA5',
         inactiveTintColor: '#DDD',
       }}>
       <AppDrawer.Screen name="Inicio" component={Home} />

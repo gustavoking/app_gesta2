@@ -1,11 +1,17 @@
-import React, {useContext, useState, TouchableOpacity, useEffect} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import React, {useContext, useState, useEffect} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import Header from '../../../../components/Header';
 import {AuthContext} from '../../../../contexts/auth';
 import firebase from '../../../../services/firebase';
 import ModeloListaReservaPessoal from '../ModeloListaReservaPessoal';
 
-export default function Cancelar() {
+export default function Cancelar({navigation}) {
   const [listaUserReserva, setListaUserReserva] = useState([]);
 
   const {user} = useContext(AuthContext);
@@ -49,6 +55,9 @@ export default function Cancelar() {
             <ModeloListaReservaPessoal data={data} />
           ))}
         </View>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={styles.textbutton}>Voltar</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
@@ -70,5 +79,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderWidth: 1,
     borderRadius: 20,
+  },
+  textbutton: {
+    marginVertical: 15,
+    fontSize: 23,
+    marginTop: 50,
+    color: '#9ECEC5',
+    textAlign: 'center',
   },
 });
