@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   botaolinha: {
     marginHorizontal: 53,
-    marginTop: 5,
+    marginTop: '1',
     borderTopColor: '#9ECEC5',
     borderWidth: 1,
     borderRightColor: '#3F5C57',

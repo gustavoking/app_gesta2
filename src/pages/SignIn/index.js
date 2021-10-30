@@ -28,7 +28,7 @@ export default function SignIn() {
       <KeyboardAvoidingView behavior="position" enabled>
         <Image
           style={styles.ImageTelaLogin}
-          source={require('../../assets/ImageTelaLoginGesta.png')}
+          source={require('../../assets/gestaLogo.png')}
         />
         <View>
           <TextInput
@@ -86,23 +86,23 @@ const styles = StyleSheet.create({
     borderRightWidth: 0,
     borderWidth: 2,
     width: '70%',
-    marginTop: 10,
-    marginLeft: 60,
-    height: 60,
+    marginTop: '5%',
+    marginLeft: '15%',
+    height: '17%',
     fontSize: 20,
     color: '#9ECEC5',
-    marginBottom: -15,
+    marginBottom: '0.1%',
   },
   ImageTelaLogin: {
     alignSelf: 'center',
-    width: 250,
-    height: 250,
+    width: '50%',
+    height: '35%',
   },
   BotaoLogin: {
-    marginLeft: 60,
+    marginLeft: '15%',
     width: '70%',
-    marginTop: 35,
-    height: 60,
+    marginTop: '10%',
+    height: '10%',
     backgroundColor: 'white',
     borderRadius: 30,
     justifyContent: 'center',
@@ -114,19 +114,15 @@ const styles = StyleSheet.create({
     color: '#3F5C57',
   },
   BotaoAcessoSenha: {
-    marginLeft: 110,
+    marginLeft: '25%',
     width: '50%',
-    marginTop: 13,
+    marginTop: '3%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   Txtcolor2: {
     fontSize: 20,
     color: '#9ECEC5',
-    marginRight: 9,
-  },
-  ImageDigital: {
-    marginTop: 18,
-    marginLeft: 160,
+    marginRight: '2%',
   },
 });

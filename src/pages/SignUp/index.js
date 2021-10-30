@@ -41,12 +41,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     fontWeight: 'normal',
-    fontStyle: 'italic',
   },
   textadm: {
     color: '#FECEA5',
     fontWeight: 'normal',
-    marginTop: 20,
+    marginTop: '2%',
     fontSize: 20,
   },
   textemail: {
@@ -55,8 +54,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   img: {
-    height: 100,
-    width: 100,
+    height: '20%',
+    width: '30%',
     borderRadius: 90,
   },
   view1: {
