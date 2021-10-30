@@ -15,7 +15,7 @@ export default function CustomDrawer(props) {
       <View
         style={{alignItems: 'center', justifyContent: 'center', marginTop: 25}}>
         <Text style={{color: '#FFF', fontSize: 20, marginTop: 5}}>
-          Bem Vindo
+          Bem-vindo
         </Text>
         <Text
           style={{

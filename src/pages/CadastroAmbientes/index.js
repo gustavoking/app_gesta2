@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     marginVertical: 15,
     fontSize: 20,
     marginTop: 45,
-    marginLeft: '22%',
+    textAlign: 'center',
     color: '#9ECEC5',
   },
   textbutton1: {

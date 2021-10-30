@@ -10,20 +10,13 @@ export default function Ambiente({data, touch = false}) {
     <View>
       {!touch ? (
         <View style={styles.container}>
-          <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Sala: </Text>
-              {data.sala}
-            </Text>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Bloco: </Text>
-              {data.bloco}
-            </Text>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Máximo de Alunos: </Text>
-              {data.qtdPessoas}
-            </Text>
-          </View>
+          <Text style={styles.textoNegrito}>Sala: {data.sala}</Text>
+
+          <Text style={styles.textoNegrito}>Bloco: {data.bloco}</Text>
+
+          <Text style={styles.textoNegrito}>
+            Máximo de Alunos: {data.qtdPessoas}
+          </Text>
         </View>
       ) : (
         <TouchableOpacity
@@ -34,20 +27,14 @@ export default function Ambiente({data, touch = false}) {
             })
           }>
           <View style={styles.container}>
-            <View style={styles.textosView}>
-              <Text style={{color: '#FFF'}}>
-                <Text style={styles.textoNegrito}>Sala: </Text>
-                {data.sala}
-              </Text>
-              <Text style={{color: '#FFF'}}>
-                <Text style={styles.textoNegrito}>Bloco: </Text>
-                {data.bloco}
-              </Text>
-              <Text style={{color: '#FFF'}}>
-                <Text style={styles.textoNegrito}>Máximo de Alunos: </Text>
-                {data.qtdPessoas}
-              </Text>
-            </View>
+            <Text style={styles.textoNegrito}>Sala: {data.sala}</Text>
+
+            <Text style={styles.textoNegrito}>Bloco: {data.bloco}</Text>
+
+            <Text style={styles.textoNegrito}>
+              {' '}
+              Máximo de Alunos: {data.qtdPessoas}
+            </Text>
           </View>
         </TouchableOpacity>
       )}
@@ -58,28 +45,20 @@ export default function Ambiente({data, touch = false}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    backgroundColor: '#172220',
-    alignItems: 'center',
-    marginBottom: 10,
     padding: 10,
-    borderRadius: 5,
-    borderWidth: 2,
-    marginHorizontal: 15,
+    borderRadius: 1,
+    borderWidth: 1,
+    marginHorizontal: 58,
     marginTop: 5,
+    borderTopColor: '#9ECEC5',
+    borderBottomColor: '#3F5C57',
+    borderRightColor: '#3F5C57',
+    borderLeftColor: '#3F5C57',
   },
-  textosView: {
-    flex: 1,
-    marginLeft: 10,
-  },
+
   textoNegrito: {
-    color: '#9ECEC5',
+    color: 'white',
     fontWeight: 'normal',
-  },
-  imagem: {
-    backgroundColor: 'white',
-    width: 70,
-    height: 70,
-    resizeMode: 'stretch',
+    textAlign: 'center',
   },
 });

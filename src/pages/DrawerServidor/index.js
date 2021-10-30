@@ -118,7 +118,7 @@ export default function DrawerServidor() {
       }}
       drawerContentOptions={{
         labelStyle: {
-          fontSize: 20,
+          fontSize: 18,
           marginLeft: 15,
         },
         activeTintColor: '#FFF',

@@ -72,7 +72,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Header titulo="Bem-Vindo" />
+      <Header titulo="Bem-vindo" />
 
       <ScrollView>
         <View>
@@ -88,13 +88,14 @@ export default function Home() {
           {user.tipo === 'administrador' || user.tipo === 'servidor' ? (
             <View>
               <Text style={styles.reservaisgerais}>
-                Reservas Pessoais de Transporte
+                Lista de Transportes Reservados
               </Text>
               {listaUserReserva.map((data) => (
                 <ListaDashBoard data={data} />
               ))}
-              <Text style={styles.reservaisgerais}>
-                Reservas Pessoais de Ambiente
+              <View style={styles.linhaAcima}></View>
+              <Text style={styles.reservaisgerais2}>
+                Lista de Ambientes Reservados
               </Text>
               {listaUserReservaAmbiente.map((item) => (
                 <ListaDashBoardAmbiente data={item} />
@@ -103,7 +104,7 @@ export default function Home() {
           ) : (
             <View>
               <Text style={styles.reservaisgerais}>
-                Reservas Pessoais de Ambiente
+                Lista de Ambientes Reservados
               </Text>
               {listaUserReservaAmbiente.map((item) => (
                 <ListaDashBoardAmbiente data={item} />
@@ -119,17 +120,31 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#3F5C57',
+  },
+  linhaAcima: {
+    borderRadius: 1,
+    borderWidth: 1,
+    marginHorizontal: 58,
+    marginTop: '5%',
+    borderTopColor: '#9ECEC5',
+    borderBottomColor: '#3F5C57',
+    borderRightColor: '#3F5C57',
+    borderLeftColor: '#3F5C57',
   },
   reservaisgerais: {
     fontSize: 20,
-    fontWeight: 'normal',
-    color: '#172220',
-    backgroundColor: '#9ECEC5',
+    color: '#9ECEC5',
     marginLeft: 20,
-    marginTop: 10,
     marginRight: 20,
     textAlign: 'center',
-    borderWidth: 1,
-    borderRadius: 20,
+  },
+  reservaisgerais2: {
+    fontSize: 20,
+    color: '#9ECEC5',
+    marginLeft: 20,
+    marginRight: 20,
+    textAlign: 'center',
+    marginTop: '5%',
   },
 });

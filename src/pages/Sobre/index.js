@@ -87,11 +87,10 @@ const styles = StyleSheet.create({
     color: '#9ECEC5',
     fontSize: 20,
     textAlign: 'center',
-    marginLeft: '10%',
   },
   img: {
     height: '250%',
-    width: '20%',
+    width: '25%',
     borderRadius: 90,
     marginRight: '5%',
   },

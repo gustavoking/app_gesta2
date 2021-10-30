@@ -145,59 +145,59 @@ export default function ReservaTransporte({route, navigation}) {
     <View style={styles.container}>
       <Header titulo="Reservar" />
 
+      <TouchableOpacity style={styles.btn3} onPress={abrirCalendario}>
+        <Text style={styles.txt2}>
+          {titleCase(format(newDate, 'eeee, dd MMMM, yyyy ', {locale: ptBR}))}
+        </Text>
+      </TouchableOpacity>
+
+      <View style={styles.container3}>
+        <Text style={styles.btntext2}>Hora Saida</Text>
+
+        <Text style={styles.btntext2}>Hora Chegada</Text>
+      </View>
+      <View style={styles.container2}>
+        <TouchableOpacity onPress={abrirSaida}>
+          <Text style={styles.text}>{format(saida, 'HH:mm')}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={abrirChegada}>
+          <Text style={styles.text}>{format(chegada, 'HH:mm')}</Text>
+        </TouchableOpacity>
+      </View>
+
+      <TouchableOpacity style={styles.btn3} onPress={() => funcaoReservar()}>
+        <Text style={styles.txt2}>CONFIRMAR RESERVA</Text>
+      </TouchableOpacity>
+
+      {show && (
+        <DatePicker
+          onClose={fecharCalendario}
+          date={newDate}
+          setDateNow={setNewDate}
+          mode="datetime"
+          onChange={onChange}
+        />
+      )}
+      {showSaida && (
+        <DatePicker
+          onClose={fecharSaida}
+          date={saida}
+          setDateNow={setSaida}
+          mode="time"
+          onChange={onChangeSaida}
+        />
+      )}
+      {showChegada && (
+        <DatePicker
+          onClose={fecharChegada}
+          date={chegada}
+          setDateNow={setChegada}
+          mode="time"
+          onChange={onChangeChegada}
+        />
+      )}
+      <Text />
       <ScrollView>
-        <TouchableOpacity style={styles.btn3} onPress={abrirCalendario}>
-          <Text style={styles.txt2}>
-            {titleCase(format(newDate, 'eeee, dd MMMM, yyyy ', {locale: ptBR}))}
-          </Text>
-        </TouchableOpacity>
-
-        <View style={styles.container3}>
-          <Text style={styles.btntext2}>Hora Saida</Text>
-
-          <Text style={styles.btntext2}>Hora Chegada</Text>
-        </View>
-        <View style={styles.container2}>
-          <TouchableOpacity onPress={abrirSaida}>
-            <Text style={styles.text}>{format(saida, 'HH:mm')}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={abrirChegada}>
-            <Text style={styles.text}>{format(chegada, 'HH:mm')}</Text>
-          </TouchableOpacity>
-        </View>
-
-        <TouchableOpacity style={styles.btn3} onPress={() => funcaoReservar()}>
-          <Text style={styles.txt2}>CONFIRMAR RESERVA</Text>
-        </TouchableOpacity>
-
-        {show && (
-          <DatePicker
-            onClose={fecharCalendario}
-            date={newDate}
-            setDateNow={setNewDate}
-            mode="datetime"
-            onChange={onChange}
-          />
-        )}
-        {showSaida && (
-          <DatePicker
-            onClose={fecharSaida}
-            date={saida}
-            setDateNow={setSaida}
-            mode="time"
-            onChange={onChangeSaida}
-          />
-        )}
-        {showChegada && (
-          <DatePicker
-            onClose={fecharChegada}
-            date={chegada}
-            setDateNow={setChegada}
-            mode="time"
-            onChange={onChangeChegada}
-          />
-        )}
-        <Text />
         <View>
           {ListaReservasGerais.map((data) => (
             <ModeloListaReserva data={data} />

@@ -36,24 +36,6 @@ export default function ListaDashboard({data}) {
         <View style={styles.container}>
           <View>
             <View>
-              <View>
-                <View style={{flexDirection: 'row'}}>
-                  <Image
-                    style={{height: 50, width: 50}}
-                    source={require('../../../assets/exclamacaovermelho.png')}
-                  />
-                  <Text
-                    style={{
-                      marginTop: 10,
-                      fontSize: 20,
-                      color: '#3F5C57',
-                      fontWeight: 'normal',
-                    }}>
-                    Hoje
-                  </Text>
-                </View>
-              </View>
-
               <View
                 style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
                 <View style={{flex: 2.5}}>
@@ -87,11 +69,11 @@ export default function ListaDashboard({data}) {
                       {data.termino}
                     </Text>
                   </View>
-                </View>
-
-                <View style={{flex: 1}}>
-                  <Text style={styles.tempo}>{tempo}</Text>
-                  <Text style={styles.tempo2}>min</Text>
+                  <View style={styles.textosView}>
+                    <Text style={styles.tempo}>
+                      Tempo Restante: {tempo} min
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -105,39 +87,26 @@ export default function ListaDashboard({data}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
-    marginTop: 20,
-    marginLeft: 20,
-    marginRight: 20,
+    padding: 10,
+    borderRadius: 1,
+    borderWidth: 1,
+    marginHorizontal: 58,
+    marginTop: 5,
+    borderTopColor: '#9ECEC5',
+    borderBottomColor: '#3F5C57',
+    borderRightColor: '#3F5C57',
+    borderLeftColor: '#3F5C57',
   },
   textosView: {
     flex: 1,
     marginLeft: 10,
   },
   textoNegrito: {
-    color: 'black',
+    color: 'white',
     fontSize: 20,
-  },
-  container2: {
-    flex: 1,
-    backgroundColor: '#FFF',
-    alignItems: 'center',
-    marginBottom: 10,
-    padding: 10,
-    borderRadius: 5,
-    borderWidth: 5,
-    marginHorizontal: 15,
-    marginTop: 5,
-    borderColor: '#9ECEC5',
-  },
-  tempo: {
-    backgroundColor: 'black',
-    fontSize: 20,
-    color: '#FFF',
     textAlign: 'center',
   },
-  tempo2: {
-    backgroundColor: 'black',
+  tempo: {
     fontSize: 20,
     color: '#FFF',
     textAlign: 'center',
