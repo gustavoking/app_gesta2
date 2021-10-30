@@ -98,7 +98,7 @@ export default function AddTransporte() {
           value={modelo}
           autoCapitalize="none"
         />
-        <Text style={styles.text}>Combustivel</Text>
+        <Text style={styles.text}>Combustível</Text>
         <TextInput
           style={styles.txtinput}
           color="black"

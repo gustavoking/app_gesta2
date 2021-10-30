@@ -115,7 +115,7 @@ export default function ReservaAmbiente({route, navigation}) {
       });
       ToastAndroid.show('Reserva de Ambiente Realizada', ToastAndroid.LONG);
     } else {
-      alert('Por favor insira um horario de chegada maior do que de saida');
+      alert('Por favor insira um horário de chegada maior do que de saida');
     }
   }
 

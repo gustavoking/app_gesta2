@@ -5,14 +5,9 @@ export default function Motorista({data}) {
   return (
     <View style={styles.container}>
       <View style={styles.textosView}>
-        <Text style={{color: '#FFF'}}>
-          <Text style={styles.textoNegrito}>Nome: </Text>
-          {data.nome}
-        </Text>
-        <Text style={{color: '#FFF'}}>
-          <Text style={styles.textoNegrito}>Numero: </Text>
-          {data.numero}
-        </Text>
+        <Text style={styles.textoNegrito}>Nome: {data.nome}</Text>
+
+        <Text style={styles.textoNegrito}>Número: {data.numero}</Text>
       </View>
     </View>
   );
@@ -21,28 +16,23 @@ export default function Motorista({data}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    backgroundColor: '#172220',
-    alignItems: 'center',
-    marginBottom: 10,
     padding: 10,
-    borderRadius: 5,
-    borderWidth: 2,
-    marginHorizontal: 15,
+    borderRadius: 1,
+    borderWidth: 1,
+    marginHorizontal: 58,
     marginTop: 5,
+    borderTopColor: '#9ECEC5',
+    borderBottomColor: '#3F5C57',
+    borderRightColor: '#3F5C57',
+    borderLeftColor: '#3F5C57',
   },
   textosView: {
     flex: 1,
     marginLeft: 10,
+    textAlign: 'center',
   },
   textoNegrito: {
-    color: '#9ECEC5',
-    fontWeight: 'normal',
-  },
-  imagem: {
-    backgroundColor: 'white',
-    width: 70,
-    height: 70,
-    resizeMode: 'stretch',
+    color: '#FFF',
+    textAlign: 'center',
   },
 });

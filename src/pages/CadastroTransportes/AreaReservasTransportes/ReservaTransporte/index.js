@@ -99,7 +99,7 @@ export default function ReservaTransporte({route, navigation}) {
         ToastAndroid.LONG,
       );
     } else {
-      alert('Por favor insira um horario de chegada maior do que de saida');
+      alert('Por favor insira um horário de chegada maior do que de saida');
     }
   }
 
