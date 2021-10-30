@@ -1,10 +1,16 @@
 import React from 'react';
-import {View, StyleSheet, Text, ToastAndroid} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  ToastAndroid,
+  TouchableOpacity,
+} from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import Header from '../../../../components/Header';
 import firebase from '../../../../services/firebase';
 
-export default function QrCodeConfirmarA({route}) {
+export default function QrCodeConfirmarA({route, navigation}) {
   const {data} = route.params;
   const valor = data.salaReservada + '-' + data.blocoReservado;
 
@@ -80,6 +86,9 @@ export default function QrCodeConfirmarA({route}) {
         SCANEIE O QR CODE PARA CONFIRMAR O AMBIENTE
       </Text>
       <QRCodeScanner onRead={success} />
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Text style={styles.textbutton}>Voltar</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -93,6 +102,13 @@ const styles = StyleSheet.create({
     color: '#9ECEC5',
     fontWeight: 'normal',
     fontSize: 20,
+    textAlign: 'center',
+  },
+  textbutton: {
+    marginVertical: 15,
+    fontSize: 20,
+    marginTop: 50,
+    color: '#9ECEC5',
     textAlign: 'center',
   },
 });

@@ -53,8 +53,6 @@ export default function Confirmar({navigation}) {
 
       <ScrollView>
         <View>
-          <Text style={styles.reservaisgerais}>CONFIRMAR USO DO AMBIENTE</Text>
-
           {listaUserReserva.map((data) => (
             <ListaAmbiente touch data={data} />
           ))}
@@ -69,7 +67,7 @@ export default function Confirmar({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#172220',
+    backgroundColor: '#3F5C57',
     flex: 1,
   },
   reservaisgerais: {

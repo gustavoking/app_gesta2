@@ -48,10 +48,6 @@ export default function Cancelar({navigation}) {
 
       <ScrollView>
         <View>
-          <Text style={styles.reservaisgerais}>
-            RESERVAS PESSOAIS DE TRANSPORTE
-          </Text>
-
           {listaUserReserva.map((data) => (
             <ModeloListaReservaPessoal data={data} />
           ))}
@@ -66,7 +62,7 @@ export default function Cancelar({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#172220',
+    backgroundColor: '#3F5C57',
     flex: 1,
   },
   reservaisgerais: {

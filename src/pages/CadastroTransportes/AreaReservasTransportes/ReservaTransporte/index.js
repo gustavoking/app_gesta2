@@ -166,7 +166,7 @@ export default function ReservaTransporte({route, navigation}) {
       </View>
 
       <TouchableOpacity style={styles.btn3} onPress={() => funcaoReservar()}>
-        <Text style={styles.txt2}>CONFIRMAR RESERVA</Text>
+        <Text style={styles.txt2}>Confirmar Reserva</Text>
       </TouchableOpacity>
 
       {show && (

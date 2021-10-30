@@ -12,84 +12,65 @@ export default function ListaAmbiente({data, touch = false}) {
       {!touch ? (
         <View style={styles.container}>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Data: </Text>
-              {data.data}
+            <Text style={styles.textoNegrito}>Data: {data.data}</Text>
+          </View>
+          <View style={styles.textosView}>
+            <Text style={styles.textoNegrito}>Inicio: {data.inicio}</Text>
+          </View>
+          <View style={styles.textosView}>
+            <Text style={styles.textoNegrito}>Termino: {data.termino}</Text>
+          </View>
+          <View style={styles.textosView}>
+            <Text style={styles.textoNegrito}>Sala: {data.salaReservada}</Text>
+          </View>
+          <View style={styles.textosView}>
+            <Text style={styles.textoNegrito}>
+              Bloco: {data.blocoReservado}
             </Text>
           </View>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Inicio: </Text>
-              {data.inicio}
-            </Text>
-          </View>
-          <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Termino: </Text>
-              {data.termino}
-            </Text>
-          </View>
-          <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Sala: </Text>
-              {data.salaReservada}
-            </Text>
-          </View>
-          <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Bloco: </Text>
-              {data.blocoReservado}
-            </Text>
-          </View>
-          <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Usuario: </Text>
-              {data.nomeUsuarioReserva}
+            <Text style={styles.textoNegrito}>
+              Usuario: {data.nomeUsuarioReserva}
             </Text>
           </View>
           <TouchableOpacity
             onPress={() =>
               navigation.navigate('QrCodeCancelarA', {data: data})
             }>
-            <Text style={styles.cancelar}>DEVOLVER</Text>
+            <Text style={styles.confirmar}>Devolver</Text>
           </TouchableOpacity>
         </View>
       ) : (
         <View style={styles.container}>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
+            <Text style={styles.textoNegrito}>
               <Text style={styles.textoNegrito}>Data: </Text>
               {data.data}
             </Text>
           </View>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
+            <Text style={styles.textoNegrito}>
               <Text style={styles.textoNegrito}>Inicio: </Text>
               {data.inicio}
             </Text>
           </View>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
+            <Text style={styles.textoNegrito}>
               <Text style={styles.textoNegrito}>Termino: </Text>
               {data.termino}
             </Text>
           </View>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Sala: </Text>
-              {data.salaReservada}
+            <Text style={styles.textoNegrito}>Sala: {data.salaReservada}</Text>
+          </View>
+          <View style={styles.textosView}>
+            <Text style={styles.textoNegrito}>
+              Bloco: {data.blocoReservado}
             </Text>
           </View>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Bloco: </Text>
-              {data.blocoReservado}
-            </Text>
-          </View>
-          <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Usuario: </Text>
-              {data.nomeUsuarioReserva}
+            <Text style={styles.textoNegrito}>
+              Usuario: {data.nomeUsuarioReserva}
             </Text>
           </View>
           <TouchableOpacity
@@ -98,7 +79,7 @@ export default function ListaAmbiente({data, touch = false}) {
                 data: data,
               })
             }>
-            <Text style={styles.confirmar}>CONFIRMAR</Text>
+            <Text style={styles.confirmar}>Confirmar</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -109,62 +90,32 @@ export default function ListaAmbiente({data, touch = false}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#172220',
-    alignItems: 'center',
-    marginBottom: 10,
     padding: 10,
-    borderRadius: 5,
-    borderWidth: 5,
-    marginHorizontal: 15,
+    borderRadius: 1,
+    borderWidth: 1,
+    marginHorizontal: 58,
     marginTop: 5,
-    borderColor: '#9ECEC5',
+    borderTopColor: '#9ECEC5',
+    borderBottomColor: '#3F5C57',
+    borderRightColor: '#3F5C57',
+    borderLeftColor: '#3F5C57',
   },
   textosView: {
     flex: 1,
     marginLeft: 10,
+    textAlign: 'center',
   },
   textoNegrito: {
-    color: '#9ECEC5',
-    fontWeight: 'normal',
-  },
-  imagem: {
-    backgroundColor: 'white',
-    width: 70,
-    height: 70,
-    resizeMode: 'stretch',
-  },
-  container2: {
-    flex: 1,
-    backgroundColor: '#FFF',
-    alignItems: 'center',
-    marginBottom: 10,
-    padding: 10,
-    borderRadius: 5,
-    borderWidth: 5,
-    marginHorizontal: 15,
-    marginTop: 5,
-    borderColor: '#9ECEC5',
-  },
-  cancelar: {
-    backgroundColor: '#2E8B57',
-    borderWidth: 1,
-    borderColor: '#9ECEC5',
-    borderRadius: 10,
-    padding: 5,
-    marginTop: 10,
-    paddingLeft: 50,
-    paddingRight: 50,
-    fontSize: 20,
+    color: '#FFF',
+    textAlign: 'center',
   },
   confirmar: {
-    backgroundColor: 'green',
-    borderWidth: 1,
-    borderColor: '#9ECEC5',
+    backgroundColor: 'white',
     borderRadius: 10,
     padding: 5,
     marginTop: 10,
-    paddingLeft: 50,
-    paddingRight: 50,
     fontSize: 20,
+    color: '#3F5C57',
+    textAlign: 'center',
   },
 });

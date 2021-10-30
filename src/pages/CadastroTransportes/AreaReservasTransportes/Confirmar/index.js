@@ -53,10 +53,6 @@ export default function Confirmar({navigation}) {
 
       <ScrollView>
         <View>
-          <Text style={styles.reservaisgerais}>
-            CONFIRMAR USO DO TRANSPORTE
-          </Text>
-
           {listaUserReserva.map((data) => (
             <ListaTransporte touch data={data} />
           ))}
@@ -71,7 +67,7 @@ export default function Confirmar({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#172220',
+    backgroundColor: '#3F5C57',
     flex: 1,
   },
   reservaisgerais: {

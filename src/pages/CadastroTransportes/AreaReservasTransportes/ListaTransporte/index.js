@@ -17,77 +17,59 @@ export default function ModeloListaReservaPessoal({data, touch = false}) {
       {!touch ? (
         <View style={styles.container}>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Data: </Text>
-              {data.dataReserva}
+            <Text style={styles.textoNegrito}>Data: {data.dataReserva}</Text>
+          </View>
+          <View style={styles.textosView}>
+            <Text style={styles.textoNegrito}>
+              Hora Saida: {data.saidaReserva}
             </Text>
           </View>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Hora Saida: </Text>
-              {data.saidaReserva}
+            <Text style={styles.textoNegrito}>
+              Hora Chegada: {data.chegadaReserva}
             </Text>
           </View>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Hora Chegada: </Text>
-              {data.chegadaReserva}
+            <Text style={styles.textoNegrito}>
+              Placa do Transporte: {data.placaTransporteReserva}{' '}
             </Text>
           </View>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Placa do Transporte: </Text>
-              {data.placaTransporteReserva}
-            </Text>
-          </View>
-          <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Usuario: </Text>
-              {data.userReserva}
-            </Text>
+            <Text style={styles.textoNegrito}>Usuario: {data.userReserva}</Text>
           </View>
           <TouchableOpacity
             onPress={() => navigation.navigate('QrCodeCancelar', {data: data})}>
-            <Text style={styles.cancelar}>DEVOLVER</Text>
+            <Text style={styles.confirmar}>Devolver</Text>
           </TouchableOpacity>
         </View>
       ) : (
         <View style={styles.container}>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Data: </Text>
-              {data.dataReserva}
+            <Text style={styles.textoNegrito}>Data: {data.dataReserva}</Text>
+          </View>
+          <View style={styles.textosView}>
+            <Text style={styles.textoNegrito}>
+              Hora Saida: {data.saidaReserva}
             </Text>
           </View>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Hora Saida: </Text>
-              {data.saidaReserva}
+            <Text style={styles.textoNegrito}>
+              Hora Chegada: {data.chegadaReserva}
             </Text>
           </View>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Hora Chegada: </Text>
-              {data.chegadaReserva}
+            <Text style={styles.textoNegrito}>
+              Placa do Transporte: {data.placaTransporteReserva}
             </Text>
           </View>
           <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Placa do Transporte: </Text>
-              {data.placaTransporteReserva}
-            </Text>
-          </View>
-          <View style={styles.textosView}>
-            <Text style={{color: '#FFF'}}>
-              <Text style={styles.textoNegrito}>Usuario: </Text>
-              {data.userReserva}
-            </Text>
+            <Text style={styles.textoNegrito}>Usuario: {data.userReserva}</Text>
           </View>
           <TouchableOpacity
             onPress={() =>
               navigation.navigate('QrCodeConfirmar', {data: data})
             }>
-            <Text style={styles.confirmar}>CONFIRMAR</Text>
+            <Text style={styles.confirmar}>Confirmar</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -98,50 +80,32 @@ export default function ModeloListaReservaPessoal({data, touch = false}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#172220',
-    alignItems: 'center',
-    marginBottom: 10,
     padding: 10,
-    borderRadius: 5,
-    borderWidth: 5,
-    marginHorizontal: 15,
+    borderRadius: 1,
+    borderWidth: 1,
+    marginHorizontal: 58,
     marginTop: 5,
-    borderColor: '#9ECEC5',
+    borderTopColor: '#9ECEC5',
+    borderBottomColor: '#3F5C57',
+    borderRightColor: '#3F5C57',
+    borderLeftColor: '#3F5C57',
   },
   textosView: {
     flex: 1,
     marginLeft: 10,
+    textAlign: 'center',
   },
   textoNegrito: {
-    color: '#9ECEC5',
-    fontWeight: 'normal',
-  },
-  imagem: {
-    backgroundColor: 'white',
-    width: 70,
-    height: 70,
-    resizeMode: 'stretch',
-  },
-  cancelar: {
-    backgroundColor: '#2E8B57',
-    borderWidth: 1,
-    borderColor: '#9ECEC5',
-    borderRadius: 10,
-    padding: 5,
-    marginTop: 10,
-    paddingLeft: 50,
-    paddingRight: 50,
-    fontSize: 20,
+    color: '#FFF',
+    textAlign: 'center',
   },
   confirmar: {
-    backgroundColor: 'green',
-    borderWidth: 1,
-    borderColor: '#9ECEC5',
+    backgroundColor: 'white',
     borderRadius: 10,
     padding: 5,
     marginTop: 10,
-    paddingLeft: 50,
-    paddingRight: 50,
     fontSize: 20,
+    color: '#3F5C57',
+    textAlign: 'center',
   },
 });

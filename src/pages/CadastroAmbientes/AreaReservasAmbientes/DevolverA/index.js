@@ -50,8 +50,6 @@ export default function DevolverA({navigation}) {
 
       <ScrollView>
         <View>
-          <Text style={styles.reservaisgerais}>DEVOLVER AMBIENTE</Text>
-
           {listaUserReserva.map((data) => (
             <ListaAmbiente data={data} />
           ))}
@@ -66,7 +64,7 @@ export default function DevolverA({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#172220',
+    backgroundColor: '#3F5C57',
     flex: 1,
   },
   reservaisgerais: {
