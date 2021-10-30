@@ -50,35 +50,38 @@ export default function ListaMotorista({navigation}) {
   }, [search, ListaMotoristas]);
 
   return (
-    <ScrollView style={styles.container}>
-      <View>
-        <Header titulo="Lista de Motoristas" />
-        <Item style={styles.iconpesquisar}>
-          <Input
-            placeholder="   Pesquisar"
-            placeholderTextColor="black"
-            onChangeText={(text) => setSearch(text)}
-            value={search}
-          />
-          <Icon
-            style={{marginRight: 15}}
-            name="search1"
-            size={18}
-            color="black"
-          />
-        </Item>
-        <Text></Text>
+    <View style={styles.container}>
+      <Header titulo="Lista de Motoristas" />
 
+      <ScrollView>
         <View>
-          {ListaMotoristasFiltradas.map((data) => (
-            <Motorista key={data.key} data={data} />
-          ))}
+          <Item style={styles.iconpesquisar}>
+            <Input
+              placeholder="   Pesquisar"
+              placeholderTextColor="black"
+              onChangeText={(text) => setSearch(text)}
+              value={search}
+            />
+            <Icon
+              style={{marginRight: 15}}
+              name="search1"
+              size={18}
+              color="black"
+            />
+          </Item>
+          <Text></Text>
+
+          <View>
+            {ListaMotoristasFiltradas.map((data) => (
+              <Motorista key={data.key} data={data} />
+            ))}
+          </View>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Text style={styles.textbutton}>Voltar</Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={styles.textbutton}>Voltar</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -97,7 +100,7 @@ const styles = StyleSheet.create({
   },
   textbutton: {
     marginVertical: 15,
-    fontSize: 23,
+    fontSize: 20,
     marginTop: 50,
     color: '#9ECEC5',
     textAlign: 'center',

@@ -14,14 +14,14 @@ export default function CustomDrawer(props) {
     <DrawerContentScrollView {...props}>
       <View
         style={{alignItems: 'center', justifyContent: 'center', marginTop: 25}}>
-        <Text style={{color: '#FFF', fontSize: 18, marginTop: 5}}>
+        <Text style={{color: '#FFF', fontSize: 20, marginTop: 5}}>
           Bem Vindo
         </Text>
         <Text
           style={{
             color: '#FFF',
-            fontSize: 17,
-            fontWeight: 'bold',
+            fontSize: 20,
+            fontWeight: 'normal',
             paddingBottom: 25,
           }}>
           {user && user.nome}

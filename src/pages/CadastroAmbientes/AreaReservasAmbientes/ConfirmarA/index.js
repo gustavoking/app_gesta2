@@ -49,8 +49,9 @@ export default function Confirmar({navigation}) {
 
   return (
     <View style={styles.container}>
+      <Header titulo="Confirmar" />
+
       <ScrollView>
-        <Header titulo="Confirmar" />
         <View>
           <Text style={styles.reservaisgerais}>CONFIRMAR USO DO AMBIENTE</Text>
 
@@ -72,8 +73,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   reservaisgerais: {
-    fontSize: 17,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: 'normal',
     color: '#172220',
     backgroundColor: '#FECEA5',
     marginLeft: 10,
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
   },
   textbutton: {
     marginVertical: 15,
-    fontSize: 23,
+    fontSize: 20,
     marginTop: 50,
     color: '#9ECEC5',
     textAlign: 'center',

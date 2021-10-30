@@ -72,15 +72,15 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <Header titulo="Bem-Vindo" />
+      <Header titulo="Bem-Vindo" />
 
+      <ScrollView>
         <View>
           <Text
             style={{
               textAlign: 'center',
               color: '#3F5C57',
-              fontSize: 40,
+              fontSize: 20,
               marginTop: 10,
             }}>
             GESTA
@@ -121,8 +121,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   reservaisgerais: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: 'normal',
     color: '#172220',
     backgroundColor: '#9ECEC5',
     marginLeft: 20,

@@ -97,13 +97,14 @@ const styles = StyleSheet.create({
     borderColor: '#9ECEC5',
     marginLeft: 50,
     marginRight: 50,
-    height: 40,
+    height: '4%',
     marginTop: 5,
+    borderRadius: 90,
   },
   text: {
     marginTop: 10,
     color: '#FECEA5',
-    fontSize: 16,
+    fontSize: 20,
     textAlign: 'center',
     marginTop: 40,
   },
@@ -111,7 +112,7 @@ const styles = StyleSheet.create({
     color: '#9ECEC5',
     textAlign: 'center',
     marginTop: 40,
-    fontWeight: 'bold',
+    fontWeight: 'normal',
     fontSize: 20,
   },
   btn: {
@@ -124,14 +125,14 @@ const styles = StyleSheet.create({
   },
   btntext: {
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontWeight: 'normal',
     color: '#3F5C57',
   },
   novoKm: {
     color: '#9ECEC5',
     textAlign: 'center',
     marginTop: 50,
-    fontWeight: 'bold',
+    fontWeight: 'normal',
     fontSize: 20,
   },
 });

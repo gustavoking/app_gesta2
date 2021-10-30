@@ -57,9 +57,10 @@ export default function ListaTransporte({navigation}) {
   }, [search, ListaTransportes]);
 
   return (
-    <ScrollView style={styles.container}>
-      <View>
-        <Header titulo="Lista de Transportes" />
+    <View style={styles.container}>
+      <Header titulo="Lista de Transportes" />
+
+      <ScrollView>
         <Item style={styles.iconpesquisar}>
           <Input
             placeholder="   Pesquisar"
@@ -83,8 +84,8 @@ export default function ListaTransporte({navigation}) {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text style={styles.textbutton}>Voltar</Text>
         </TouchableOpacity>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
   },
   textbutton: {
     marginVertical: 15,
-    fontSize: 23,
+    fontSize: 20,
     marginTop: 50,
     color: '#9ECEC5',
     textAlign: 'center',

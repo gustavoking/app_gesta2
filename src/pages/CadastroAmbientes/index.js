@@ -41,13 +41,13 @@ const styles = StyleSheet.create({
   },
   textbutton: {
     marginVertical: 15,
-    fontSize: 23,
+    fontSize: 20,
     marginTop: 45,
     marginLeft: '22%',
     color: '#9ECEC5',
   },
   textbutton1: {
-    fontSize: 23,
+    fontSize: 20,
     marginTop: '6%',
     color: '#9ECEC5',
     textAlign: 'center',

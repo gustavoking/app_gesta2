@@ -58,8 +58,9 @@ export default function ListaTransporte({navigation}) {
 
   return (
     <ScrollView style={styles.container}>
+      <Header titulo="Lista de Transportes" />
+
       <View>
-        <Header titulo="Lista de Transportes" />
         <Item style={styles.iconpesquisar}>
           <Input
             placeholder="   Pesquisar"
@@ -74,7 +75,7 @@ export default function ListaTransporte({navigation}) {
             color="black"
           />
         </Item>
-
+        <Text></Text>
         <View>
           {ListaTransportesFiltradas.map((data) => (
             <Transporte touch key={data.key} data={data} />
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
   },
   textbutton: {
     marginVertical: 15,
-    fontSize: 23,
+    fontSize: 20,
     marginTop: 50,
     color: '#9ECEC5',
     textAlign: 'center',

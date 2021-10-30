@@ -45,9 +45,9 @@ export default function ListaDashboard({data}) {
                   <Text
                     style={{
                       marginTop: 10,
-                      fontSize: 18,
+                      fontSize: 20,
                       color: '#3F5C57',
-                      fontWeight: 'bold',
+                      fontWeight: 'normal',
                     }}>
                     Hoje
                   </Text>
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   textoNegrito: {
     color: 'black',
-    fontSize: 15,
+    fontSize: 20,
   },
   container2: {
     flex: 1,
@@ -126,13 +126,13 @@ const styles = StyleSheet.create({
   },
   tempo: {
     backgroundColor: 'black',
-    fontSize: 25,
+    fontSize: 20,
     color: '#FFF',
     textAlign: 'center',
   },
   tempo2: {
     backgroundColor: 'black',
-    fontSize: 13,
+    fontSize: 20,
     color: '#FFF',
     textAlign: 'center',
   },

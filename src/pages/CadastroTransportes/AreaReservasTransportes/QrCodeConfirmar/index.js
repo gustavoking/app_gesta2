@@ -87,8 +87,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#9ECEC5',
-    fontWeight: 'bold',
-    fontSize: 16,
+    fontWeight: 'normal',
+    fontSize: 20,
     textAlign: 'center',
   },
 });

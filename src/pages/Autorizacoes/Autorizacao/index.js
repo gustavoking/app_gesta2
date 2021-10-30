@@ -92,13 +92,13 @@ export default function Autorizacao({data}) {
         <TouchableOpacity
           onPress={() => handleAccept()}
           style={styles.btnaceitar}>
-          <Text style={{fontSize: 18}}>AUTORIZAR</Text>
+          <Text style={{fontSize: 20}}>AUTORIZAR</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           onPress={() => handleDelete()}
           style={styles.btnrecusar}>
-          <Text style={{fontSize: 18}}>RECUSAR</Text>
+          <Text style={{fontSize: 20}}>RECUSAR</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   },
   textoNegrito: {
     color: '#9ECEC5',
-    fontWeight: 'bold',
+    fontWeight: 'normal',
   },
   imagem: {
     backgroundColor: 'white',

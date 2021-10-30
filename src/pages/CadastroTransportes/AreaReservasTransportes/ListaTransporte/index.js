@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   textoNegrito: {
     color: '#9ECEC5',
-    fontWeight: 'bold',
+    fontWeight: 'normal',
   },
   imagem: {
     backgroundColor: 'white',
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingLeft: 50,
     paddingRight: 50,
-    fontSize: 18,
+    fontSize: 20,
   },
   confirmar: {
     backgroundColor: 'green',
@@ -142,6 +142,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingLeft: 50,
     paddingRight: 50,
-    fontSize: 18,
+    fontSize: 20,
   },
 });

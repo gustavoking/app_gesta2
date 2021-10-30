@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+  View,
   TouchableOpacity,
   Keyboard,
   Text,
@@ -66,121 +67,103 @@ export default function AddTransporte() {
   }
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <Header titulo="Adicionar Transporte" />
 
-      <Image
-        style={styles.carroimg}
-        source={require('../../../assets/carroimg.png')}
-      />
-      <Text style={styles.text}>Marca</Text>
-      <TextInput
-        style={styles.txtinput}
-        placeholder="  PREENCHER"
-        placeholderTextColor="#9ECEC5"
-        color="#9ECEC5"
-        onChangeText={(text) => setMarca(text)}
-        autoCorrect={false}
-        value={marca}
-        autoCapitalize="none"
-      />
-      <Text style={styles.text}>Quilometragem</Text>
-      <TextInput
-        style={styles.txtinput}
-        placeholder="  PREENCHER"
-        placeholderTextColor="#9ECEC5"
-        color="#9ECEC5"
-        onChangeText={(text) => setQuilometragem(text)}
-        autoCorrect={false}
-        value={quilometragem}
-        autoCapitalize="none"
-      />
-      <Text style={styles.text}>Modelo</Text>
-      <TextInput
-        style={styles.txtinput}
-        placeholder="  PREENCHER"
-        placeholderTextColor="#9ECEC5"
-        color="#9ECEC5"
-        onChangeText={(text) => setModelo(text)}
-        autoCorrect={false}
-        value={modelo}
-        autoCapitalize="none"
-      />
-      <Text style={styles.text}>Combustivel</Text>
-      <TextInput
-        style={styles.txtinput}
-        placeholder="  PREENCHER"
-        placeholderTextColor="#9ECEC5"
-        color="#9ECEC5"
-        onChangeText={(text) => setCombustivel(text)}
-        autoCorrect={false}
-        value={combustivel}
-        autoCapitalize="none"
-      />
-      <Text style={styles.text}>Placa</Text>
-      <TextInput
-        style={styles.txtinput}
-        placeholder="  PREENCHER"
-        placeholderTextColor="#9ECEC5"
-        color="#9ECEC5"
-        onChangeText={(text) => setPlaca(text)}
-        autoCorrect={false}
-        value={placa}
-        autoCapitalize="none"
-      />
-      <Text style={styles.text}>Tipo</Text>
-      <TextInput
-        style={styles.txtinput}
-        placeholder="  PREENCHER"
-        placeholderTextColor="#9ECEC5"
-        color="#9ECEC5"
-        onChangeText={(text) => setTipo(text)}
-        autoCorrect={false}
-        value={tipo}
-        autoCapitalize="none"
-      />
-      <Text style={styles.text}>Ano</Text>
-      <TextInput
-        style={styles.txtinput}
-        placeholder="  PREENCHER"
-        placeholderTextColor="#9ECEC5"
-        color="#9ECEC5"
-        onChangeText={(text) => setAno(text)}
-        autoCorrect={false}
-        value={ano}
-        autoCapitalize="none"
-      />
-      <TouchableOpacity style={styles.btn} onPress={addCar}>
-        <Text style={styles.btntext}>CONTINUAR</Text>
-      </TouchableOpacity>
-    </ScrollView>
+      <ScrollView>
+        <Text style={styles.text}>Marca</Text>
+        <TextInput
+          style={styles.txtinput}
+          color="black"
+          onChangeText={(text) => setMarca(text)}
+          autoCorrect={false}
+          value={marca}
+          autoCapitalize="none"
+        />
+        <Text style={styles.text}>Quilometragem</Text>
+        <TextInput
+          style={styles.txtinput}
+          color="black"
+          onChangeText={(text) => setQuilometragem(text)}
+          autoCorrect={false}
+          value={quilometragem}
+          autoCapitalize="none"
+        />
+        <Text style={styles.text}>Modelo</Text>
+        <TextInput
+          style={styles.txtinput}
+          color="black"
+          onChangeText={(text) => setModelo(text)}
+          autoCorrect={false}
+          value={modelo}
+          autoCapitalize="none"
+        />
+        <Text style={styles.text}>Combustivel</Text>
+        <TextInput
+          style={styles.txtinput}
+          color="black"
+          onChangeText={(text) => setCombustivel(text)}
+          autoCorrect={false}
+          value={combustivel}
+          autoCapitalize="none"
+        />
+        <Text style={styles.text}>Placa</Text>
+        <TextInput
+          style={styles.txtinput}
+          color="black"
+          onChangeText={(text) => setPlaca(text)}
+          autoCorrect={false}
+          value={placa}
+          autoCapitalize="none"
+        />
+        <Text style={styles.text}>Tipo</Text>
+        <TextInput
+          style={styles.txtinput}
+          color="black"
+          onChangeText={(text) => setTipo(text)}
+          autoCorrect={false}
+          value={tipo}
+          autoCapitalize="none"
+        />
+        <Text style={styles.text}>Ano</Text>
+        <TextInput
+          style={styles.txtinput}
+          color="black"
+          onChangeText={(text) => setAno(text)}
+          autoCorrect={false}
+          value={ano}
+          autoCapitalize="none"
+        />
+        <TouchableOpacity onPress={addCar}>
+          <Text style={styles.textbutton}>Continuar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={styles.textbutton}>Voltar</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#172220',
+    backgroundColor: '#3F5C57',
   },
   txtinput: {
     borderWidth: 1,
     borderColor: '#9ECEC5',
     marginLeft: 50,
     marginRight: 50,
-    height: 40,
+    height: '4%',
+    borderRadius: 90,
     marginTop: 5,
-  },
-  carroimg: {
-    width: 360,
-    height: 130,
-    resizeMode: 'contain',
-    borderColor: 'black',
-    borderWidth: 1,
+    backgroundColor: 'white',
   },
   text: {
     marginTop: 10,
-    color: '#FECEA5',
-    fontSize: 16,
+    color: '#9ECEC5',
+    fontSize: 20,
     textAlign: 'center',
   },
   btn: {
@@ -191,7 +174,14 @@ const styles = StyleSheet.create({
   },
   btntext: {
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontWeight: 'normal',
     color: '#3F5C57',
+  },
+  textbutton: {
+    marginVertical: 15,
+    fontSize: 20,
+    marginTop: 25,
+    color: '#9ECEC5',
+    textAlign: 'center',
   },
 });

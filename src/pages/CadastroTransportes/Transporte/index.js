@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   },
   textoNegrito: {
     color: '#9ECEC5',
-    fontWeight: 'bold',
+    fontWeight: 'normal',
   },
   imagem: {
     backgroundColor: 'white',

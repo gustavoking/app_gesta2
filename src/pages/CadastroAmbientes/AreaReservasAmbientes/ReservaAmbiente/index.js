@@ -149,9 +149,9 @@ export default function ReservaAmbiente({route, navigation}) {
 
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <Header titulo="Reservar" />
+      <Header titulo="Reservar" />
 
+      <ScrollView>
         <TouchableOpacity style={styles.btn} onPress={abrirCalendario}>
           <Text style={styles.btntext}>Abrir Calendário Para Reservar</Text>
         </TouchableOpacity>
@@ -241,19 +241,19 @@ const styles = StyleSheet.create({
   },
   btntext: {
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontWeight: 'normal',
     color: '#3F5C57',
   },
   btntext2: {
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontWeight: 'normal',
     color: '#FECEA5',
-    fontSize: 18,
+    fontSize: 20,
     marginTop: 10,
   },
   txt: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: 'normal',
     color: '#FFF',
     textAlign: 'center',
     marginTop: 40,
@@ -263,7 +263,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     marginTop: 20,
-    fontWeight: 'bold',
+    fontWeight: 'normal',
   },
   container2: {
     flexDirection: 'row',
@@ -281,9 +281,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#FFF',
-    fontSize: 25,
+    fontSize: 20,
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontWeight: 'normal',
   },
   btn2: {
     marginTop: 15,
@@ -293,8 +293,8 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   reservaisgerais: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: 'normal',
     color: '#172220',
     backgroundColor: '#FECEA5',
     marginLeft: 20,
@@ -306,7 +306,7 @@ const styles = StyleSheet.create({
   },
   textbutton: {
     marginVertical: 15,
-    fontSize: 23,
+    fontSize: 20,
     marginTop: 50,
     color: '#9ECEC5',
     textAlign: 'center',

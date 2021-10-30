@@ -143,9 +143,10 @@ export default function ReservaTransporte({route, navigation}) {
 
   return (
     <View style={styles.container}>
+      <Header titulo="Reservar" />
+
       <ScrollView>
-        <Header titulo="Reservar" />
-        <TouchableOpacity onPress={abrirCalendario}>
+        <TouchableOpacity style={styles.btn3} onPress={abrirCalendario}>
           <Text style={styles.txt2}>
             {titleCase(format(newDate, 'eeee, dd MMMM, yyyy ', {locale: ptBR}))}
           </Text>
@@ -165,8 +166,8 @@ export default function ReservaTransporte({route, navigation}) {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.btn} onPress={() => funcaoReservar()}>
-          <Text style={styles.btntext}>CONFIRMAR RESERVA</Text>
+        <TouchableOpacity style={styles.btn3} onPress={() => funcaoReservar()}>
+          <Text style={styles.txt2}>CONFIRMAR RESERVA</Text>
         </TouchableOpacity>
 
         {show && (
@@ -202,6 +203,7 @@ export default function ReservaTransporte({route, navigation}) {
             <ModeloListaReserva data={data} />
           ))}
         </View>
+        <View style={styles.linha}></View>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text style={styles.textbutton}>Voltar</Text>
         </TouchableOpacity>
@@ -213,40 +215,46 @@ export default function ReservaTransporte({route, navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#172220',
+    backgroundColor: '#3F5C57',
+  },
+  linha: {
+    borderTopColor: '#9ECEC5',
+    borderWidth: 1,
+    borderRightColor: '#3F5C57',
+    borderLeftColor: '#3F5C57',
+    borderBottomColor: '#3F5C57',
+    borderRadius: 1,
+    marginHorizontal: 53,
   },
   btn: {
     marginTop: 15,
     borderWidth: 1,
-    padding: 10,
+    height: '7%',
     backgroundColor: 'white',
-    marginLeft: 50,
-    marginRight: 50,
     borderRadius: 50,
   },
   btntext: {
     textAlign: 'center',
-    fontWeight: 'bold',
     color: '#3F5C57',
+    fontSize: 20,
   },
   btntext2: {
     textAlign: 'center',
     color: '#9ECEC5',
-    fontSize: 18,
+    fontSize: 20,
     marginTop: 10,
   },
   txt: {
     fontSize: 20,
-    fontWeight: 'bold',
     color: '#9ECEC5',
     textAlign: 'center',
     marginTop: '3%',
   },
   txt2: {
-    color: '#9ECEC5',
+    color: '#3F5C57',
     fontSize: 20,
     textAlign: 'center',
-    marginTop: 20,
+    marginTop: '3%',
   },
   container2: {
     flexDirection: 'row',
@@ -263,32 +271,23 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   text: {
-    color: '#FFF',
+    color: 'white',
     fontSize: 20,
     textAlign: 'center',
   },
-  btn2: {
-    marginTop: 15,
+
+  btn3: {
+    backgroundColor: 'white',
+    borderRadius: 90,
+    marginTop: '5%',
+    marginHorizontal: '10%',
     borderWidth: 1,
-    padding: 10,
-    backgroundColor: '#FECEA5',
-    borderRadius: 30,
+    height: '7%',
   },
-  reservaisgerais: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#172220',
-    backgroundColor: '#FECEA5',
-    marginLeft: 20,
-    marginTop: 10,
-    marginRight: 20,
-    textAlign: 'center',
-    borderWidth: 1,
-    borderRadius: 20,
-  },
+
   textbutton: {
     marginVertical: 15,
-    fontSize: 23,
+    fontSize: 20,
     marginTop: 50,
     color: '#9ECEC5',
     textAlign: 'center',

@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   textbotao: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: 'normal',
     color: '#3F5C57',
   },
 });

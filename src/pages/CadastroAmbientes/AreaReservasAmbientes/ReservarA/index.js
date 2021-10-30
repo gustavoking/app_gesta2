@@ -51,9 +51,10 @@ export default function ListaAmbiente({navigation}) {
   }, [search, ListaAmbientes]);
 
   return (
-    <ScrollView style={styles.container}>
-      <View>
-        <Header titulo="Lista de Ambientes" />
+    <View style={styles.container}>
+      <Header titulo="Lista de Ambientes" />
+
+      <ScrollView>
         <Item style={styles.iconpesquisar}>
           <Input
             placeholder="   Pesquisar"
@@ -68,7 +69,7 @@ export default function ListaAmbiente({navigation}) {
             color="black"
           />
         </Item>
-
+        <Text></Text>
         <View>
           {ListaAmbientesFiltradas.map((data) => (
             <Ambiente touch key={data.key} data={data} />
@@ -77,8 +78,8 @@ export default function ListaAmbiente({navigation}) {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text style={styles.textbutton}>Voltar</Text>
         </TouchableOpacity>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
   },
   textbutton: {
     marginVertical: 15,
-    fontSize: 23,
+    fontSize: 20,
     marginTop: 50,
     color: '#9ECEC5',
     textAlign: 'center',

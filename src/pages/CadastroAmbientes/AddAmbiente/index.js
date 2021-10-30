@@ -91,7 +91,7 @@ export default function AddTransporte() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#172220',
+    backgroundColor: '#3F5C57',
   },
 
   txtinput: {
@@ -100,6 +100,8 @@ const styles = StyleSheet.create({
     marginTop: '5%',
     marginHorizontal: '10%',
     backgroundColor: 'white',
+    borderRadius: 90,
+    height: '5%',
   },
 
   text: {
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   textbutton: {
-    fontSize: 23,
+    fontSize: 20,
     marginTop: '10%',
     color: '#9ECEC5',
     textAlign: 'center',
