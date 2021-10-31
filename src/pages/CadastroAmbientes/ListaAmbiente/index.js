@@ -24,9 +24,7 @@ export default function ListaAmbiente({navigation}) {
         .ref('ambientes')
         .on('value', (snapshot) => {
           setListaAmbientes([]);
-          console.log('snapshot', snapshot);
           snapshot.forEach((maquina) => {
-            console.log('maquina' + maquina);
             let data = {
               key: maquina.key,
               sala: maquina.val().sala,
@@ -87,10 +85,10 @@ export default function ListaAmbiente({navigation}) {
 const styles = StyleSheet.create({
   iconpesquisar: {
     backgroundColor: 'white',
-    marginHorizontal: '10',
+    marginHorizontal: 10,
     borderRadius: 20,
     marginTop: '2%',
-    height: 30,
+    height: 50,
   },
   container: {
     flex: 1,
@@ -98,8 +96,9 @@ const styles = StyleSheet.create({
   },
   textbutton: {
     fontSize: 20,
-    marginTop: '10%',
+    marginTop: '5%',
     color: '#9ECEC5',
     textAlign: 'center',
+    marginBottom: 40,
   },
 });

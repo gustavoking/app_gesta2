@@ -10,7 +10,6 @@ import {
 import firebase from '../../../services/firebase';
 
 export default function ModeloListaReservaPessoal({data}) {
-  console.log(data);
   const handleDelete = async () => {
     await firebase
       .database()

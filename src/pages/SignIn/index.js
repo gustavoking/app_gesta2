@@ -7,6 +7,7 @@ import {
   Image,
   TextInput,
   KeyboardAvoidingView,
+  ScrollView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {AuthContext} from '../../contexts/auth';
@@ -25,54 +26,44 @@ export default function SignIn() {
 
   return (
     <View style={{backgroundColor: '#3F5C57', flex: 1}}>
-      <KeyboardAvoidingView behavior="position" enabled>
+      <KeyboardAvoidingView behavior="padding" enabled>
         <Image
           style={styles.ImageTelaLogin}
           source={require('../../assets/gestaLogo.png')}
         />
-        <View>
-          <TextInput
-            style={styles.container}
-            placeholder="Email"
-            placeholderTextColor="black"
-            autoCorrect={false}
-            autoCapitalize="none"
-            onChangeText={(text) => setEmail(text)}></TextInput>
+        <TextInput
+          style={styles.container}
+          placeholder="Email"
+          placeholderTextColor="#9ECEC5"
+          autoCorrect={false}
+          autoCapitalize="none"
+          onChangeText={(text) => setEmail(text)}></TextInput>
 
-          <TextInput
-            style={styles.container}
-            placeholder="Senha"
-            placeholderTextColor="black"
-            onChangeText={(text) => setPassword(text)}
-            autoCorrect={false}
-            autoCapitalize="none"
-            secureTextEntry={true}></TextInput>
+        <TextInput
+          style={styles.container}
+          placeholder="Senha"
+          placeholderTextColor="#9ECEC5"
+          onChangeText={(text) => setPassword(text)}
+          autoCorrect={false}
+          autoCapitalize="none"
+          secureTextEntry={true}></TextInput>
 
-          <TouchableOpacity style={styles.BotaoLogin} onPress={handleLogin}>
-            <Text style={styles.Txtcolor}>ENTRAR</Text>
-          </TouchableOpacity>
+        <TouchableOpacity style={styles.BotaoLogin} onPress={handleLogin}>
+          <Text style={styles.Txtcolor}>ENTRAR</Text>
+        </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.BotaoAcessoSenha}
-            onPress={() =>
-              navigation.navigate(
-                'SignUp',
-                alert(
-                  'Para ter acesso ao aplicativo fale com algum dos administradores',
-                ),
-              )
-            }>
-            <Text style={styles.Txtcolor2}>Primeiro acesso?</Text>
-          </TouchableOpacity>
-          {/*
-                    <TouchableOpacity style={styles.BotaoAcessoSenha}>
-                        <Text style={styles.Txtcolor2}>Esqueceu a senha?</Text>
-                    </TouchableOpacity>
-
-                    <Image style={styles.ImageDigital}
-                        source={require('../../assets/DigitalGesta.png')}
-                    /> */}
-        </View>
+        <TouchableOpacity
+          style={styles.BotaoAcessoSenha}
+          onPress={() =>
+            navigation.navigate(
+              'SignUp',
+              alert(
+                'Para ter acesso ao aplicativo fale com algum dos administradores',
+              ),
+            )
+          }>
+          <Text style={styles.Txtcolor2}>Primeiro acesso?</Text>
+        </TouchableOpacity>
       </KeyboardAvoidingView>
     </View>
   );
@@ -86,7 +77,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 0,
     borderWidth: 2,
     width: '70%',
-    marginTop: '5%',
+    marginTop: '1%',
     marginLeft: '15%',
     height: '17%',
     fontSize: 20,
@@ -96,12 +87,12 @@ const styles = StyleSheet.create({
   ImageTelaLogin: {
     alignSelf: 'center',
     width: '50%',
-    height: '35%',
+    height: 180,
   },
   BotaoLogin: {
     marginLeft: '15%',
     width: '70%',
-    marginTop: '10%',
+    marginTop: '5%',
     height: '10%',
     backgroundColor: 'white',
     borderRadius: 30,

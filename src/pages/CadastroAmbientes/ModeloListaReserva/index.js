@@ -4,8 +4,6 @@ import {View, StyleSheet, Text, Image, TouchableOpacity} from 'react-native';
 
 export default function ModeloListaReserva({data}) {
   // const navigation = useNavigation();
-  console.log(data);
-  console.log(data.reservaEstado);
 
   return (
     <View style={styles.container}>

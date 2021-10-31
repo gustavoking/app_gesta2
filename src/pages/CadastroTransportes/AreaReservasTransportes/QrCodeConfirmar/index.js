@@ -47,13 +47,11 @@ export default function QrCodeConfirmar({route, navigation}) {
           .ref('reservasGeraisTransporte')
           .child(data.id)
           .remove();
-        console.log('passou');
         ToastAndroid.show(
           'Reserva Expirada, passaram-se 10 minutos',
           ToastAndroid.LONG,
         );
       } else {
-        console.log('nao passou');
         if (dataMenos3.getTime() >= dataItemMenos10.getTime()) {
           ToastAndroid.show('Reserva Confirmada', ToastAndroid.LONG);
           await firebase

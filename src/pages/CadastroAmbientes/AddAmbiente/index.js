@@ -24,7 +24,6 @@ export default function AddTransporte() {
     if (sala !== '' && bloco !== '' && qtdPessoas !== '') {
       let ambiente = firebase.database().ref('ambientes');
       let id = ambiente.push().key;
-      console.log(sala + '-' + bloco + '-' + qtdPessoas);
       await ambiente.child(id).set({
         sala: sala,
         bloco: bloco,

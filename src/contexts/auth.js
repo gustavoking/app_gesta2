@@ -45,7 +45,6 @@ function AuthProvider({children}) {
           .once('value')
           .then((snapshot) => {
             if (verifyTipo[1] === 'aluno.ifsc.edu.br') {
-              console.log(value.user.email.split('@'));
               let data = {
                 uid: uid,
                 nome: snapshot.val().nome,
@@ -57,7 +56,6 @@ function AuthProvider({children}) {
               setLoading(false);
             }
             if (verifyTipo[1] === 'ifsc.edu.br') {
-              console.log(value.user.email.split('@'));
               let data = {
                 uid: uid,
                 nome: snapshot.val().nome,
@@ -69,7 +67,6 @@ function AuthProvider({children}) {
               setLoading(false);
             }
             if (verifyTipo[1] === 'gmail.com') {
-              console.log(value.user.email.split('@'));
               let data = {
                 uid: uid,
                 nome: snapshot.val().nome,

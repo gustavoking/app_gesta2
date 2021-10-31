@@ -34,7 +34,6 @@ export default function ListaAmbiente({navigation}) {
             };
 
             setListaAmbientes((oldArray) => [...oldArray, data]);
-            console.log(data);
           });
         });
     }
@@ -89,7 +88,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     borderRadius: 20,
     marginTop: '2%',
-    height: '3%',
+    height: 50,
   },
   container: {
     flex: 1,

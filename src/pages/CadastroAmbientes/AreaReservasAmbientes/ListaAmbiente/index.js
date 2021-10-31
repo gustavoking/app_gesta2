@@ -5,8 +5,6 @@ import {useNavigation} from '@react-navigation/native';
 export default function ListaAmbiente({data, touch = false}) {
   const navigation = useNavigation();
 
-  console.log('data', data);
-
   return (
     <View>
       {!touch ? (

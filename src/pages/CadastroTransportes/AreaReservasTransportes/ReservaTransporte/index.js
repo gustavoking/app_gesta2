@@ -17,6 +17,52 @@ import ModeloListaReserva from '../ModeloListaReserva';
 import ptBR from 'date-fns/locale/pt-BR';
 
 export default function ReservaTransporte({route, navigation}) {
+  // const [dataSaidaString, setDataSaidaString] = useState('');
+
+  // const [dataChegadaString, setDataChegadaString] = useState('');
+  // const [dataItemSaida, setDataItemSaida] = useState(new Date());
+  // const [dataItemChegada, setDataItemChegada] = useState(new Date());
+
+  // useEffect(() => {
+  //   console.log('newDate', format(newDate, 'dd/MM/yyyy'));
+  //   setDataSaidaString(format(newDate, 'dd/MM/yyyy'));
+  //   setDataChegadaString(format(newDateChegada, 'dd/MM/yyyy'));
+  //   const [diaItem, mesItem, anoItem] = dataSaidaString.split('/');
+  //   const [horaItemSaida, minutoItemSaida] = format(saida, 'HH:mm').split(':');
+  //   const [horaItemChegada, minutoItemChegada] = format(chegada, 'HH:mm').split(
+  //     ':',
+  //   );
+  //   if (dataSaidaString === dataChegadaString) {
+  //     setDataItemSaida(
+  //       dataItemSaida.setDate(
+  //         anoItem,
+  //         mesItem - 1,
+  //         diaItem,
+  //         horaItemSaida - 3,
+  //         minutoItemSaida,
+  //       ),
+  //     );
+  //     setDataItemChegada(
+  //       dataItemChegada.setDate(
+  //         anoItem,
+  //         mesItem - 1,
+  //         diaItem,
+  //         horaItemChegada - 3,
+  //         minutoItemChegada,
+  //       ),
+  //     );
+  //     console.log(
+  //       'comparacao',
+  //       dataItemSaida.getTime() === dataItemChegada.getTime(),
+  //     );
+  //     console.log('dataItemSaida', dataItemSaida);
+  //   } else {
+  //     console.log('nao é iguaaal');
+  //   }
+  //   console.log('dataSaidaString', dataSaidaString);
+  //   console.log('dataChegadaString', dataChegadaString);
+  // }, [newDate]);
+
   function titleCase(str) {
     var splitStr = str.toLowerCase().split(' ');
 
@@ -110,22 +156,18 @@ export default function ReservaTransporte({route, navigation}) {
 
   const onChange = (date) => {
     setNewDate(date);
-    console.log(date);
     setShow(false);
   };
   const onChangeDataChegada = (date) => {
     setNewDateChegada(date);
-    console.log(date);
     setShowDataChegada(false);
   };
   const onChangeSaida = (horario) => {
     setSaida(horario);
-    console.log(horario);
     setShowSaida(false);
   };
   const onChangeChegada = (horario) => {
     setChegada(horario);
-    console.log(horario);
     setShowChegada(false);
   };
 
@@ -173,7 +215,6 @@ export default function ReservaTransporte({route, navigation}) {
       <TouchableOpacity onPress={abrirSaida}>
         <Text style={styles.text}>{format(saida, 'HH:mm')}</Text>
       </TouchableOpacity>
-
       <TouchableOpacity style={styles.btn3} onPress={abrirCalendarioChegada}>
         <Text style={styles.txt2}>
           {titleCase(
@@ -182,7 +223,6 @@ export default function ReservaTransporte({route, navigation}) {
         </Text>
       </TouchableOpacity>
       <Text style={styles.btntext2}>Hora Chegada</Text>
-
       <TouchableOpacity onPress={abrirChegada}>
         <Text style={styles.text}>{format(chegada, 'HH:mm')}</Text>
       </TouchableOpacity>
@@ -258,13 +298,6 @@ const styles = StyleSheet.create({
     borderRadius: 1,
     marginHorizontal: 53,
   },
-  btn: {
-    marginTop: 15,
-    borderWidth: 1,
-    height: '7%',
-    backgroundColor: 'white',
-    borderRadius: 50,
-  },
   btntext: {
     textAlign: 'center',
     color: '#3F5C57',
@@ -272,9 +305,10 @@ const styles = StyleSheet.create({
   },
   btntext2: {
     textAlign: 'center',
+    fontWeight: 'normal',
     color: '#9ECEC5',
     fontSize: 20,
-    marginTop: '5%',
+    marginTop: 10,
   },
   txt: {
     fontSize: 20,
@@ -287,18 +321,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     marginTop: '3%',
-  },
-  container2: {
-    flexDirection: 'row',
-    marginTop: 20,
-    marginHorizontal: 60,
-    justifyContent: 'space-between',
-  },
-  container3: {
-    flexDirection: 'row',
-    marginTop: '3%',
-    marginHorizontal: 40,
-    justifyContent: 'space-between',
   },
   text: {
     color: 'white',
@@ -318,7 +340,7 @@ const styles = StyleSheet.create({
   textbutton: {
     marginVertical: 15,
     fontSize: 20,
-    marginTop: 50,
+    marginTop: '10%',
     color: '#9ECEC5',
     textAlign: 'center',
   },

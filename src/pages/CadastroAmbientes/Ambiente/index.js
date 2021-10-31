@@ -5,7 +5,6 @@ import {useNavigation} from '@react-navigation/native';
 export default function Ambiente({data, touch = false}) {
   const navigation = useNavigation();
 
-  console.log('data', data);
   return (
     <View>
       {!touch ? (

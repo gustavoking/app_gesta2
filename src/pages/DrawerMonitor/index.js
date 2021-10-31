@@ -75,7 +75,7 @@ export default function DrawerMonitor() {
       drawerStyle={{
         backgroundColor: '#3F5C57',
         marginTop: '12%',
-        width: '62%',
+        width: '65%',
       }}
       drawerContentOptions={{
         labelStyle: {
@@ -85,10 +85,10 @@ export default function DrawerMonitor() {
         activeTintColor: '#FFF',
         inactiveTintColor: '#DDD',
       }}>
-      <AppDrawer.Screen name="Home" component={Home} />
+      <AppDrawer.Screen name="Início" component={Home} />
+      <AppDrawer.Screen name="Área de Ambientes" component={AmbienteRoutes} />
       <AppDrawer.Screen name="Perfil" component={Profile} />
       <AppDrawer.Screen name="Sobre" component={SobreRoutes} />
-      <AppDrawer.Screen name="Área de Ambientes" component={AmbienteRoutes} />
     </AppDrawer.Navigator>
   );
 }

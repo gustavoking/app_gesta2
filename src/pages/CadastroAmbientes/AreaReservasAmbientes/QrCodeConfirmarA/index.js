@@ -15,8 +15,6 @@ export default function QrCodeConfirmarA({route, navigation}) {
   const valor = data.salaReservada + '-' + data.blocoReservado;
 
   const success = async (e) => {
-    console.log('valor', valor);
-    console.log('e.data', e.data);
     if (valor === e.data) {
       const [diaItem, mesItem, anoItem] = data.data.split('/');
       const [horaItem, minutoItem] = data.inicio.split(':');
@@ -50,15 +48,12 @@ export default function QrCodeConfirmarA({route, navigation}) {
           .ref('reservasGeraisAmbiente')
           .child(data.id)
           .remove();
-        console.log('passou');
         ToastAndroid.show(
           'Reserva Expirada, passaram-se 10 minutos',
           ToastAndroid.LONG,
         );
       } else {
-        console.log('nao passou');
         if (dataMenos3.getTime() >= dataItemMenos10.getTime()) {
-          console.log('reserva confirmada com sucesso!!');
           ToastAndroid.show('Reserva Confirmada', ToastAndroid.LONG);
           await firebase
             .database()

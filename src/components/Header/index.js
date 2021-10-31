@@ -22,7 +22,7 @@ export default function Header({titulo = 'GESTA'}) {
                 onPress={() => navigation.goBack()}>
                 <Icon name="keyboard-backspace" color="#FECEA5" size={25} style={{ marginRight: 5 }} />
             </TouchableWithoutFeedback> */}
-      <View />
+      <Icon name="menu" color="#3F5C57" size={25} style={{marginLeft: -10}} />
     </SafeAreaView>
   );
 }

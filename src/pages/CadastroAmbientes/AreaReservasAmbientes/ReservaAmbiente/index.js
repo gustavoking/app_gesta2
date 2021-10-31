@@ -74,7 +74,6 @@ export default function ReservaAmbiente({route, navigation}) {
               dataChegada: maquina.val().dataChegada,
             };
             setListaReservasGerais((oldArray) => [...oldArray, data]);
-            console.log(data);
           });
         });
     }
@@ -125,24 +124,20 @@ export default function ReservaAmbiente({route, navigation}) {
 
   const onChange = (date) => {
     setNewDate(date);
-    console.log(date);
     setShow(false);
   };
   const onChangeSaida = (horario) => {
     setSaida(horario);
-    console.log(horario);
     setShowSaida(false);
   };
 
   const onChangeDataChegada = (date) => {
     setNewDateChegada(date);
-    console.log(date);
     setShowDataChegada(false);
   };
 
   const onChangeChegada = (horario) => {
     setChegada(horario);
-    console.log(horario);
     setShowChegada(false);
   };
 
@@ -171,7 +166,6 @@ export default function ReservaAmbiente({route, navigation}) {
 
       <TouchableOpacity style={styles.btn3} onPress={abrirCalendario}>
         <Text style={styles.txt2}>
-          {' '}
           {titleCase(format(newDate, 'eeee, dd MMMM, yyyy ', {locale: ptBR}))}
         </Text>
       </TouchableOpacity>
@@ -281,18 +275,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: '10%',
     fontWeight: 'normal',
-  },
-  container2: {
-    flexDirection: 'row',
-    marginTop: '5%',
-    marginHorizontal: 60,
-    justifyContent: 'space-between',
-  },
-  container3: {
-    flexDirection: 'row',
-    marginTop: 10,
-    marginHorizontal: 40,
-    justifyContent: 'space-between',
   },
   text: {
     color: '#FFF',

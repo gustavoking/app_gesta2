@@ -28,7 +28,6 @@ export default function ListaAutorizacoes({navigation}) {
           setListaAutorizacoes([]);
 
           snapshot.forEach((maquina) => {
-            console.log(maquina);
             let data = {
               id: maquina.val().id,
               data: maquina.val().data,
@@ -42,7 +41,6 @@ export default function ListaAutorizacoes({navigation}) {
               dataChegada: maquina.val().dataChegada,
             };
             setListaAutorizacoes((oldArray) => [...oldArray, data]);
-            console.log(data);
           });
         });
     }
@@ -102,7 +100,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     borderRadius: 20,
     marginTop: 10,
-    height: 30,
+    height: 50,
   },
   container: {
     flex: 1,

@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
   },
   text: {
-    color: '#9ECEC5',
+    color: 'white',
     fontSize: 20,
     textAlign: 'center',
   },

@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontSize: 20,
     textAlign: 'center',
+    lineHeight: 30,
   },
   textbutton: {
     fontSize: 20,

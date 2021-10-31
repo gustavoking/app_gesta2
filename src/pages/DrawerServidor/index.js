@@ -114,7 +114,7 @@ export default function DrawerServidor() {
       drawerStyle={{
         backgroundColor: '#3F5C57',
         marginTop: '12%',
-        width: '62%',
+        width: '65%',
       }}
       drawerContentOptions={{
         labelStyle: {
@@ -124,7 +124,7 @@ export default function DrawerServidor() {
         activeTintColor: '#FFF',
         inactiveTintColor: '#DDD',
       }}>
-      <AppDrawer.Screen name="Inicio" component={Home} />
+      <AppDrawer.Screen name="Início" component={Home} />
 
       <AppDrawer.Screen name="Área de Ambientes" component={AmbienteRoutes} />
       <AppDrawer.Screen name="Área de Transportes" component={StackRoutes} />

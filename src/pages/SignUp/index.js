@@ -4,24 +4,26 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 export default function SignUp() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Administradores do aplicativo</Text>
       <Image
         style={styles.img}
         source={require('../../assets/fresegesta.png')}
       />
-      <Text style={styles.textadm}>Arthur </Text>
+      <Text style={styles.textadm}>Arthur Varnier Frese</Text>
       <Text style={styles.textemail}>arthur.vf@aluno.ifsc.edu.br</Text>
+      <Text></Text>
       <Image
         style={styles.img}
         source={require('../../assets/caiogesta.png')}
       />
-      <Text style={styles.textadm}>Caio </Text>
+      <Text style={styles.textadm}>Caio Sulzbacher Pessoa</Text>
       <Text style={styles.textemail}>caio.p01@aluno.ifsc.edu.br</Text>
+      <Text></Text>
+
       <Image
         style={styles.img}
         source={require('../../assets/gustavogesta.png')}
       />
-      <Text style={styles.textadm}>Gustavo </Text>
+      <Text style={styles.textadm}>Gustavo Rostirolla</Text>
       <Text style={styles.textemail}>gustavo.r2003@aluno.ifsc.edu.br</Text>
     </View>
   );
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
   },
   textadm: {
-    color: '#FECEA5',
+    color: '#FFF',
     fontWeight: 'normal',
     marginTop: '2%',
     fontSize: 20,

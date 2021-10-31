@@ -40,7 +40,6 @@ export default function ListaTransporte({navigation}) {
             };
 
             setListaTransportes((oldArray) => [...oldArray, data]);
-            console.log(data);
           });
         });
     }
@@ -95,7 +94,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     borderRadius: 20,
     marginTop: '3%',
-    height: '3%',
+    height: 50,
   },
   container: {
     flex: 1,
