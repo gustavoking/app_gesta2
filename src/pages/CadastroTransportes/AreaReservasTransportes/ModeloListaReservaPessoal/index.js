@@ -37,7 +37,12 @@ export default function ModeloListaReservaPessoal({data}) {
         <Text style={styles.textoNegrito}>Data: {data.dataReserva}</Text>
       </View>
       <View style={styles.textosView}>
-        <Text style={styles.textoNegrito}>Hora Saida: {data.saidaReserva}</Text>
+        <Text style={styles.textoNegrito}>Hora Saída: {data.saidaReserva}</Text>
+      </View>
+      <View style={styles.textosView}>
+        <Text style={styles.textoNegrito}>
+          Data Chegada: {data.dataChegada}
+        </Text>
       </View>
       <View style={styles.textosView}>
         <Text style={styles.textoNegrito}>
@@ -62,7 +67,7 @@ export default function ModeloListaReservaPessoal({data}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    padding: '3%',
     borderRadius: 1,
     borderWidth: 1,
     marginHorizontal: 58,
@@ -84,8 +89,8 @@ const styles = StyleSheet.create({
   cancelar: {
     backgroundColor: 'white',
     borderRadius: 10,
-    padding: 5,
-    marginTop: 10,
+    padding: '1%',
+    marginTop: '5%',
     fontSize: 20,
     color: '#3F5C57',
     textAlign: 'center',

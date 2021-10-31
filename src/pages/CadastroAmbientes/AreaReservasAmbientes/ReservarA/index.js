@@ -86,11 +86,10 @@ export default function ListaAmbiente({navigation}) {
 const styles = StyleSheet.create({
   iconpesquisar: {
     backgroundColor: 'white',
-    marginLeft: 10,
-    marginRight: 10,
+    marginHorizontal: 10,
     borderRadius: 20,
-    marginTop: 10,
-    height: 30,
+    marginTop: '2%',
+    height: '3%',
   },
   container: {
     flex: 1,
@@ -99,7 +98,7 @@ const styles = StyleSheet.create({
   textbutton: {
     marginVertical: 15,
     fontSize: 20,
-    marginTop: 50,
+    marginTop: '10%',
     color: '#9ECEC5',
     textAlign: 'center',
   },

@@ -34,7 +34,9 @@ export default function ReservaAmbiente({route, navigation}) {
   const [show, setShow] = useState(false);
   const [showSaida, setShowSaida] = useState(false);
   const [showChegada, setShowChegada] = useState(false);
+  const [showDataChegada, setShowDataChegada] = useState(false);
   const [newDate, setNewDate] = useState(new Date());
+  const [newDateChegada, setNewDateChegada] = useState(new Date());
   const [saida, setSaida] = useState(new Date());
   const [chegada, setChegada] = useState(new Date());
 
@@ -69,6 +71,7 @@ export default function ReservaAmbiente({route, navigation}) {
               blocoReservado: maquina.val().blocoReservado,
               id: maquina.val().id,
               reservaEstado: maquina.val().reservaEstado,
+              dataChegada: maquina.val().dataChegada,
             };
             setListaReservasGerais((oldArray) => [...oldArray, data]);
             console.log(data);
@@ -85,38 +88,39 @@ export default function ReservaAmbiente({route, navigation}) {
 
     let dataAgora = new Date();
 
-    if (chegada > saida && dataAgora < saida && dataAgora < chegada) {
-      reserva.child(id).set({
-        id: id,
-        data: format(newDate, 'dd/MM/yyyy'),
-        inicio: format(saida, 'HH:mm'),
-        termino: format(chegada, 'HH:mm'),
-        idUsuarioReserva: user.uid,
-        nomeUsuarioReserva: user.nome,
-        salaReservada: salaReservada,
-        blocoReservado: blocoReservado,
-        reservaEstado: 'reservado',
-      });
+    // if (chegada > saida && dataAgora < saida && dataAgora < chegada) {
+    reserva.child(id).set({
+      id: id,
+      data: format(newDate, 'dd/MM/yyyy'),
+      dataChegada: format(newDateChegada, 'dd/MM/yyyy'),
+      inicio: format(saida, 'HH:mm'),
+      termino: format(chegada, 'HH:mm'),
+      idUsuarioReserva: user.uid,
+      nomeUsuarioReserva: user.nome,
+      salaReservada: salaReservada,
+      blocoReservado: blocoReservado,
+      reservaEstado: 'reservado',
+    });
 
-      let reservaHistorico = await firebase
-        .database()
-        .ref('historicoReservasAmbiente');
-      let idHist = reservaHistorico.push().key;
+    let reservaHistorico = await firebase
+      .database()
+      .ref('historicoReservasAmbiente');
+    let idHist = reservaHistorico.push().key;
 
-      reservaHistorico.child(idHist).set({
-        id: idHist,
-        data: format(newDate, 'dd/MM/yyyy'),
-        inicio: format(saida, 'HH:mm'),
-        termino: format(chegada, 'HH:mm'),
-        idUsuarioReserva: user.uid,
-        nomeUsuarioReserva: user.nome,
-        salaReservada: salaReservada,
-        blocoReservado: blocoReservado,
-      });
-      ToastAndroid.show('Reserva de Ambiente Realizada', ToastAndroid.LONG);
-    } else {
-      alert('Por favor insira um horário de chegada maior do que de saida');
-    }
+    reservaHistorico.child(idHist).set({
+      id: idHist,
+      data: format(newDate, 'dd/MM/yyyy'),
+      inicio: format(saida, 'HH:mm'),
+      termino: format(chegada, 'HH:mm'),
+      idUsuarioReserva: user.uid,
+      nomeUsuarioReserva: user.nome,
+      salaReservada: salaReservada,
+      blocoReservado: blocoReservado,
+    });
+    ToastAndroid.show('Reserva de Ambiente Realizada', ToastAndroid.LONG);
+    // } else {
+    //   alert('Por favor insira um horário de chegada maior do que de saida');
+    // }
   }
 
   const onChange = (date) => {
@@ -129,6 +133,13 @@ export default function ReservaAmbiente({route, navigation}) {
     console.log(horario);
     setShowSaida(false);
   };
+
+  const onChangeDataChegada = (date) => {
+    setNewDateChegada(date);
+    console.log(date);
+    setShowDataChegada(false);
+  };
+
   const onChangeChegada = (horario) => {
     setChegada(horario);
     console.log(horario);
@@ -147,6 +158,13 @@ export default function ReservaAmbiente({route, navigation}) {
     setShowChegada(true);
   }
 
+  function abrirCalendarioChegada() {
+    setShowDataChegada(true);
+  }
+  function fecharCalendarioChegada() {
+    setShowDataChegada(false);
+  }
+
   return (
     <View style={styles.container}>
       <Header titulo="Reservar" />
@@ -158,19 +176,23 @@ export default function ReservaAmbiente({route, navigation}) {
         </Text>
       </TouchableOpacity>
 
-      <View style={styles.container3}>
-        <Text style={styles.btntext2}>Hora Início</Text>
+      <Text style={styles.btntext2}>Hora Início</Text>
 
-        <Text style={styles.btntext2}>Hora Término</Text>
-      </View>
-      <View style={styles.container2}>
-        <TouchableOpacity onPress={abrirSaida}>
-          <Text style={styles.text}>{format(saida, 'HH:mm')}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={abrirChegada}>
-          <Text style={styles.text}>{format(chegada, 'HH:mm')}</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity onPress={abrirSaida}>
+        <Text style={styles.text}>{format(saida, 'HH:mm')}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.btn3} onPress={abrirCalendarioChegada}>
+        <Text style={styles.txt2}>
+          {titleCase(
+            format(newDateChegada, 'eeee, dd MMMM, yyyy ', {locale: ptBR}),
+          )}
+        </Text>
+      </TouchableOpacity>
+      <Text style={styles.btntext2}>Hora Término</Text>
+      <TouchableOpacity onPress={abrirChegada}>
+        <Text style={styles.text}>{format(chegada, 'HH:mm')}</Text>
+      </TouchableOpacity>
+
       <TouchableOpacity style={styles.btn3} onPress={() => funcaoReservar()}>
         <Text style={styles.txt2}>Confirmar Reserva</Text>
       </TouchableOpacity>
@@ -196,6 +218,15 @@ export default function ReservaAmbiente({route, navigation}) {
         />
       ) : (
         <View></View>
+      )}
+      {showDataChegada && (
+        <DatePicker
+          onClose={fecharCalendarioChegada}
+          date={newDateChegada}
+          setDateNow={setNewDateChegada}
+          mode="datetime"
+          onChange={onChangeDataChegada}
+        />
       )}
       {showChegada ? (
         <DatePicker
@@ -244,32 +275,23 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 10,
   },
-  txt: {
-    fontSize: 20,
-    fontWeight: 'normal',
-    color: '#FFF',
-    textAlign: 'center',
-    marginTop: 40,
-  },
   txt2: {
     color: '#9ECEC5',
     fontSize: 20,
     textAlign: 'center',
-    marginTop: 20,
+    marginTop: '10%',
     fontWeight: 'normal',
   },
   container2: {
     flexDirection: 'row',
-    marginTop: 20,
-    marginLeft: 60,
-    marginRight: 60,
+    marginTop: '5%',
+    marginHorizontal: 60,
     justifyContent: 'space-between',
   },
   container3: {
     flexDirection: 'row',
     marginTop: 10,
-    marginRight: 30,
-    marginLeft: 40,
+    marginHorizontal: 40,
     justifyContent: 'space-between',
   },
   text: {
@@ -281,7 +303,7 @@ const styles = StyleSheet.create({
   textbutton: {
     marginVertical: 15,
     fontSize: 20,
-    marginTop: 50,
+    marginTop: '10%',
     color: '#9ECEC5',
     textAlign: 'center',
   },

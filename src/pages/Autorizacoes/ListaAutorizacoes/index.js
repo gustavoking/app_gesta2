@@ -38,6 +38,8 @@ export default function ListaAutorizacoes({navigation}) {
               placaTransporte: maquina.val().placaTransporte,
               nomeUsuarioReserva: maquina.val().nomeUsuarioReserva,
               idUsuarioReserva: maquina.val().idUsuarioReserva,
+              idUsuarioReserva: maquina.val().idUsuarioReserva,
+              dataChegada: maquina.val().dataChegada,
             };
             setListaAutorizacoes((oldArray) => [...oldArray, data]);
             console.log(data);

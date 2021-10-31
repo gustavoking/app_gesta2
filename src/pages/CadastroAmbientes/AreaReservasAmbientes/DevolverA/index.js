@@ -35,6 +35,7 @@ export default function DevolverA({navigation}) {
                 blocoReservado: maquina.val().blocoReservado,
                 id: maquina.val().id,
                 reservaEstado: maquina.val().reservaEstado,
+                dataChegada: maquina.val().dataChegada,
               };
               setListaUserReserva((oldArray) => [...oldArray, data]);
             }

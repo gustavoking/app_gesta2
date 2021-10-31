@@ -47,19 +47,25 @@ export default function ListaDashboard({data}) {
                   </View>
                   <View style={styles.textosView}>
                     <Text style={styles.textoNegrito}>
-                      <Text style={styles.textoNegrito}>Data: </Text>
+                      <Text style={styles.textoNegrito}>Data Saída: </Text>
                       {data.dataReserva}
                     </Text>
                   </View>
                   <View style={styles.textosView}>
                     <Text style={styles.textoNegrito}>
-                      <Text style={styles.textoNegrito}>Saida: </Text>
+                      <Text style={styles.textoNegrito}>Hora Saída: </Text>
                       {data.saidaReserva}
                     </Text>
                   </View>
                   <View style={styles.textosView}>
                     <Text style={styles.textoNegrito}>
-                      <Text style={styles.textoNegrito}>Chegada: </Text>
+                      <Text style={styles.textoNegrito}>Data Chegada: </Text>
+                      {data.dataChegada}
+                    </Text>
+                  </View>
+                  <View style={styles.textosView}>
+                    <Text style={styles.textoNegrito}>
+                      <Text style={styles.textoNegrito}>Hora Chegada: </Text>
                       {data.chegadaReserva}
                     </Text>
                   </View>
@@ -85,7 +91,7 @@ const styles = StyleSheet.create({
     borderRadius: 1,
     borderWidth: 1,
     marginHorizontal: 58,
-    marginTop: 5,
+    marginTop: '1%',
     borderTopColor: '#9ECEC5',
     borderBottomColor: '#3F5C57',
     borderRightColor: '#3F5C57',
@@ -93,7 +99,7 @@ const styles = StyleSheet.create({
   },
   textosView: {
     flex: 1,
-    marginLeft: 10,
+    marginLeft: '2%',
   },
   textoNegrito: {
     color: 'white',

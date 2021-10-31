@@ -33,7 +33,9 @@ export default function ReservaTransporte({route, navigation}) {
   const [show, setShow] = useState(false);
   const [showSaida, setShowSaida] = useState(false);
   const [showChegada, setShowChegada] = useState(false);
+  const [showDataChegada, setShowDataChegada] = useState(false);
   const [newDate, setNewDate] = useState(new Date());
+  const [newDateChegada, setNewDateChegada] = useState(new Date());
   const [saida, setSaida] = useState(new Date());
   const [chegada, setChegada] = useState(new Date());
 
@@ -67,6 +69,7 @@ export default function ReservaTransporte({route, navigation}) {
               userReserva: maquina.val().userReserva,
               id: maquina.val().id,
               reservaEstado: maquina.val().reservaEstado,
+              dataChegada: maquina.val().dataChegada,
             };
             setListaReservasGerais((oldArray) => [...oldArray, data]);
           });
@@ -82,31 +85,38 @@ export default function ReservaTransporte({route, navigation}) {
 
     let dataAgora = new Date();
 
-    if (chegada > saida && dataAgora < saida && dataAgora < chegada) {
-      reserva.child(id).set({
-        id: id,
-        data: format(newDate, 'dd/MM/yyyy'),
-        saida: format(saida, 'HH:mm'),
-        chegada: format(chegada, 'HH:mm'),
-        idUsuarioReserva: user.uid,
-        idTransporteReservado: idTransporteReservado,
-        placaTransporte: placaTransporte,
-        nomeUsuarioReserva: user.nome,
-        reservaEstado: 'aguardando autorizacao',
-      });
-      ToastAndroid.show(
-        'Reserva de Transporte Realizada, Aguarde Confirmação do Administrador',
-        ToastAndroid.LONG,
-      );
-    } else {
-      alert('Por favor insira um horário de chegada maior do que de saida');
-    }
+    // if (chegada > saida && dataAgora < saida && dataAgora < chegada) {
+    // if(newDate === newDateChegada){
+    reserva.child(id).set({
+      id: id,
+      data: format(newDate, 'dd/MM/yyyy'),
+      dataChegada: format(newDateChegada, 'dd/MM/yyyy'),
+      saida: format(saida, 'HH:mm'),
+      chegada: format(chegada, 'HH:mm'),
+      idUsuarioReserva: user.uid,
+      idTransporteReservado: idTransporteReservado,
+      placaTransporte: placaTransporte,
+      nomeUsuarioReserva: user.nome,
+      reservaEstado: 'aguardando autorizacao',
+    });
+    ToastAndroid.show(
+      'Reserva de Transporte Realizada, Aguarde Confirmação do Administrador',
+      ToastAndroid.LONG,
+    );
+    // } else {
+    //   alert('Por favor insira um horário de chegada maior do que de saida');
+    // }
   }
 
   const onChange = (date) => {
     setNewDate(date);
     console.log(date);
     setShow(false);
+  };
+  const onChangeDataChegada = (date) => {
+    setNewDateChegada(date);
+    console.log(date);
+    setShowDataChegada(false);
   };
   const onChangeSaida = (horario) => {
     setSaida(horario);
@@ -125,6 +135,13 @@ export default function ReservaTransporte({route, navigation}) {
 
   function fecharCalendario() {
     setShow(false);
+  }
+
+  function abrirCalendarioChegada() {
+    setShowDataChegada(true);
+  }
+  function fecharCalendarioChegada() {
+    setShowDataChegada(false);
   }
   function abrirSaida() {
     setShowSaida(true);
@@ -151,19 +168,24 @@ export default function ReservaTransporte({route, navigation}) {
         </Text>
       </TouchableOpacity>
 
-      <View style={styles.container3}>
-        <Text style={styles.btntext2}>Hora Saída</Text>
+      <Text style={styles.btntext2}>Hora Saída</Text>
 
-        <Text style={styles.btntext2}>Hora Chegada</Text>
-      </View>
-      <View style={styles.container2}>
-        <TouchableOpacity onPress={abrirSaida}>
-          <Text style={styles.text}>{format(saida, 'HH:mm')}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={abrirChegada}>
-          <Text style={styles.text}>{format(chegada, 'HH:mm')}</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity onPress={abrirSaida}>
+        <Text style={styles.text}>{format(saida, 'HH:mm')}</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.btn3} onPress={abrirCalendarioChegada}>
+        <Text style={styles.txt2}>
+          {titleCase(
+            format(newDateChegada, 'eeee, dd MMMM, yyyy ', {locale: ptBR}),
+          )}
+        </Text>
+      </TouchableOpacity>
+      <Text style={styles.btntext2}>Hora Chegada</Text>
+
+      <TouchableOpacity onPress={abrirChegada}>
+        <Text style={styles.text}>{format(chegada, 'HH:mm')}</Text>
+      </TouchableOpacity>
 
       <TouchableOpacity style={styles.btn3} onPress={() => funcaoReservar()}>
         <Text style={styles.txt2}>Confirmar Reserva</Text>
@@ -178,6 +200,15 @@ export default function ReservaTransporte({route, navigation}) {
           onChange={onChange}
         />
       )}
+      {showDataChegada && (
+        <DatePicker
+          onClose={fecharCalendarioChegada}
+          date={newDateChegada}
+          setDateNow={setNewDateChegada}
+          mode="datetime"
+          onChange={onChangeDataChegada}
+        />
+      )}
       {showSaida && (
         <DatePicker
           onClose={fecharSaida}
@@ -187,6 +218,7 @@ export default function ReservaTransporte({route, navigation}) {
           onChange={onChangeSaida}
         />
       )}
+
       {showChegada && (
         <DatePicker
           onClose={fecharChegada}
@@ -242,7 +274,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#9ECEC5',
     fontSize: 20,
-    marginTop: 10,
+    marginTop: '5%',
   },
   txt: {
     fontSize: 20,
@@ -259,15 +291,13 @@ const styles = StyleSheet.create({
   container2: {
     flexDirection: 'row',
     marginTop: 20,
-    marginLeft: 60,
-    marginRight: 60,
+    marginHorizontal: 60,
     justifyContent: 'space-between',
   },
   container3: {
     flexDirection: 'row',
-    marginTop: 10,
-    marginRight: 30,
-    marginLeft: 40,
+    marginTop: '3%',
+    marginHorizontal: 40,
     justifyContent: 'space-between',
   },
   text: {

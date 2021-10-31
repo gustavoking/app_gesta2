@@ -153,11 +153,10 @@ const styles = StyleSheet.create({
   txtinput: {
     borderWidth: 1,
     borderColor: '#9ECEC5',
-    marginLeft: 50,
-    marginRight: 50,
+    marginHorizontal: 50,
     height: '4%',
     borderRadius: 90,
-    marginTop: 5,
+    marginTop: '2%',
     backgroundColor: 'white',
   },
   text: {
@@ -165,12 +164,6 @@ const styles = StyleSheet.create({
     color: '#9ECEC5',
     fontSize: 20,
     textAlign: 'center',
-  },
-  btn: {
-    marginTop: 10,
-    borderWidth: 1,
-    padding: 10,
-    backgroundColor: '#FECEA5',
   },
   btntext: {
     textAlign: 'center',
@@ -180,7 +173,7 @@ const styles = StyleSheet.create({
   textbutton: {
     marginVertical: 15,
     fontSize: 20,
-    marginTop: 25,
+    marginTop: '10%',
     color: '#9ECEC5',
     textAlign: 'center',
   },

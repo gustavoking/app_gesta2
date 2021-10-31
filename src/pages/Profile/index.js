@@ -41,38 +41,23 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFF',
     textAlign: 'center',
-    marginTop: 10,
+    marginTop: '5%',
   },
   content: {
     color: '#9ECEC5',
     fontSize: 20,
-    marginTop: 25,
+    marginTop: '10%',
     textAlign: 'center',
   },
 
   content2: {
-    marginTop: 6,
+    marginTop: '2%',
     color: '#FFF',
     fontSize: 20,
 
     textAlign: 'center',
   },
-  imagem: {
-    height: 100,
-    width: 100,
-    resizeMode: 'contain',
-    borderRadius: 90,
-    marginTop: 10,
-    alignSelf: 'center',
-  },
-  viewicone: {
-    backgroundColor: '#273936',
-    borderRadius: 5,
-    borderWidth: 2,
-    marginHorizontal: 15,
-    marginTop: 10,
-    padding: 5,
-  },
+
   textbutton: {
     fontSize: 20,
     marginTop: '6%',

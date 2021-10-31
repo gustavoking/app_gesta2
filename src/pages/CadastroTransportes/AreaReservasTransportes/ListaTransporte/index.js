@@ -21,7 +21,12 @@ export default function ModeloListaReservaPessoal({data, touch = false}) {
           </View>
           <View style={styles.textosView}>
             <Text style={styles.textoNegrito}>
-              Hora Saida: {data.saidaReserva}
+              Hora Saída: {data.saidaReserva}
+            </Text>
+          </View>
+          <View style={styles.textosView}>
+            <Text style={styles.textoNegrito}>
+              Data Chegada: {data.dataChegada}
             </Text>
           </View>
           <View style={styles.textosView}>
@@ -49,7 +54,12 @@ export default function ModeloListaReservaPessoal({data, touch = false}) {
           </View>
           <View style={styles.textosView}>
             <Text style={styles.textoNegrito}>
-              Hora Saida: {data.saidaReserva}
+              Hora Saída: {data.saidaReserva}
+            </Text>
+          </View>
+          <View style={styles.textosView}>
+            <Text style={styles.textoNegrito}>
+              Data Chegada: {data.dataChegada}
             </Text>
           </View>
           <View style={styles.textosView}>
@@ -80,11 +90,11 @@ export default function ModeloListaReservaPessoal({data, touch = false}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    padding: '2%',
     borderRadius: 1,
     borderWidth: 1,
     marginHorizontal: 58,
-    marginTop: 5,
+    marginTop: '2%',
     borderTopColor: '#9ECEC5',
     borderBottomColor: '#3F5C57',
     borderRightColor: '#3F5C57',
@@ -102,8 +112,8 @@ const styles = StyleSheet.create({
   confirmar: {
     backgroundColor: 'white',
     borderRadius: 10,
-    padding: 5,
-    marginTop: 10,
+    padding: '2%',
+    marginTop: '3%',
     fontSize: 20,
     color: '#3F5C57',
     textAlign: 'center',

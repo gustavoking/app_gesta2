@@ -34,6 +34,7 @@ export default function Cancelar({navigation}) {
                 nomeUsuarioReserva: maquina.val().nomeUsuarioReserva,
                 blocoReservado: maquina.val().blocoReservado,
                 id: maquina.val().id,
+                dataChegada: maquina.val().dataChegada,
               };
               setListaUserReserva((oldArray) => [...oldArray, data]);
             }

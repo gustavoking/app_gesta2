@@ -12,13 +12,20 @@ export default function ListaAmbiente({data, touch = false}) {
       {!touch ? (
         <View style={styles.container}>
           <View style={styles.textosView}>
-            <Text style={styles.textoNegrito}>Data: {data.data}</Text>
+            <Text style={styles.textoNegrito}>Data Início: {data.data}</Text>
           </View>
           <View style={styles.textosView}>
-            <Text style={styles.textoNegrito}>Inicio: {data.inicio}</Text>
+            <Text style={styles.textoNegrito}>Hora Início: {data.inicio}</Text>
           </View>
           <View style={styles.textosView}>
-            <Text style={styles.textoNegrito}>Termino: {data.termino}</Text>
+            <Text style={styles.textoNegrito}>
+              Data Término: {data.dataChegada}
+            </Text>
+          </View>
+          <View style={styles.textosView}>
+            <Text style={styles.textoNegrito}>
+              Hora Término: {data.termino}
+            </Text>
           </View>
           <View style={styles.textosView}>
             <Text style={styles.textoNegrito}>Sala: {data.salaReservada}</Text>
@@ -44,19 +51,25 @@ export default function ListaAmbiente({data, touch = false}) {
         <View style={styles.container}>
           <View style={styles.textosView}>
             <Text style={styles.textoNegrito}>
-              <Text style={styles.textoNegrito}>Data: </Text>
+              <Text style={styles.textoNegrito}>Data Início: </Text>
               {data.data}
             </Text>
           </View>
           <View style={styles.textosView}>
             <Text style={styles.textoNegrito}>
-              <Text style={styles.textoNegrito}>Inicio: </Text>
+              <Text style={styles.textoNegrito}>Hora Início: </Text>
               {data.inicio}
             </Text>
           </View>
           <View style={styles.textosView}>
             <Text style={styles.textoNegrito}>
-              <Text style={styles.textoNegrito}>Termino: </Text>
+              <Text style={styles.textoNegrito}>Data Término: </Text>
+              {data.dataChegada}
+            </Text>
+          </View>
+          <View style={styles.textosView}>
+            <Text style={styles.textoNegrito}>
+              <Text style={styles.textoNegrito}>Hora Término: </Text>
               {data.termino}
             </Text>
           </View>
@@ -94,7 +107,7 @@ const styles = StyleSheet.create({
     borderRadius: 1,
     borderWidth: 1,
     marginHorizontal: 58,
-    marginTop: 5,
+    marginTop: '1%',
     borderTopColor: '#9ECEC5',
     borderBottomColor: '#3F5C57',
     borderRightColor: '#3F5C57',
@@ -112,8 +125,8 @@ const styles = StyleSheet.create({
   confirmar: {
     backgroundColor: 'white',
     borderRadius: 10,
-    padding: 5,
-    marginTop: 10,
+    padding: '1%',
+    marginTop: '2%',
     fontSize: 20,
     color: '#3F5C57',
     textAlign: 'center',

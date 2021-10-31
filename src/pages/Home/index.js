@@ -34,6 +34,7 @@ export default function Home() {
                 termino: maquina.val().termino,
                 salaReservada: maquina.val().salaReservada,
                 blocoReservado: maquina.val().blocoReservado,
+                dataChegada: maquina.val().dataChegada,
               };
               setListaUserReservaAmbiente((oldArray) => [...oldArray, data]);
             }
@@ -60,6 +61,7 @@ export default function Home() {
                 placaTransporteReserva: maquina.val().placaTransporteReserva,
                 userReserva: maquina.val().userReserva,
                 id: maquina.val().id,
+                dataChegada: maquina.val().dataChegada,
               };
               setListaUserReserva((oldArray) => [...oldArray, data]);
             }
@@ -135,15 +137,13 @@ const styles = StyleSheet.create({
   reservaisgerais: {
     fontSize: 20,
     color: '#9ECEC5',
-    marginLeft: 20,
-    marginRight: 20,
+    marginHorizontal: 20,
     textAlign: 'center',
   },
   reservaisgerais2: {
     fontSize: 20,
     color: '#9ECEC5',
-    marginLeft: 20,
-    marginRight: 20,
+    marginHorizontal: 20,
     textAlign: 'center',
     marginTop: '5%',
   },

@@ -10,13 +10,13 @@ export default function ModeloListaReserva({data}) {
     <View style={styles.container}>
       <View style={styles.textosView}>
         <Text style={{color: '#FFF'}}>
-          <Text style={styles.textoNegrito}>Data: </Text>
+          <Text style={styles.textoNegrito}>Data Saída: </Text>
           {data.dataReserva}
         </Text>
       </View>
       <View style={styles.textosView}>
         <Text style={{color: '#FFF'}}>
-          <Text style={styles.textoNegrito}>Hora Saida: </Text>
+          <Text style={styles.textoNegrito}>Hora Saída: </Text>
           {data.saidaReserva}
         </Text>
       </View>
@@ -24,6 +24,12 @@ export default function ModeloListaReserva({data}) {
         <Text style={{color: '#FFF'}}>
           <Text style={styles.textoNegrito}>Hora Chegada: </Text>
           {data.chegadaReserva}
+        </Text>
+      </View>
+      <View style={styles.textosView}>
+        <Text style={{color: '#FFF'}}>
+          <Text style={styles.textoNegrito}>Data Chegada: </Text>
+          {data.dataChegada}
         </Text>
       </View>
       <View style={styles.textosView}>
@@ -44,7 +50,7 @@ export default function ModeloListaReserva({data}) {
           {data.reservaEstado === 'autorizado' ? (
             <Text>Autorizada para uso</Text>
           ) : (
-            <Text>Sendo utilizada no momento</Text>
+            <Text style={styles.textoNegrito}>Sendo utilizada no momento</Text>
           )}
         </Text>
       </View>
@@ -58,9 +64,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#3F5C57',
     alignItems: 'center',
     marginBottom: 10,
-    padding: 10,
+    padding: '2%',
     marginHorizontal: 53,
-    marginTop: 5,
+    marginTop: '3%',
     borderTopColor: '#9ECEC5',
     borderWidth: 1,
     borderRightColor: '#3F5C57',
@@ -81,11 +87,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     alignItems: 'center',
     marginBottom: 10,
-    padding: 10,
+    padding: '2%',
     borderRadius: 5,
     borderWidth: 5,
     marginHorizontal: 15,
-    marginTop: 5,
+    marginTop: '1%',
     borderColor: '#9ECEC5',
   },
 });

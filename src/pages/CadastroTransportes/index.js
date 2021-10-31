@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   textbutton: {
     marginVertical: 15,
     fontSize: 20,
-    marginTop: 50,
+    marginTop: '12%',
     color: '#9ECEC5',
     textAlign: 'center',
   },

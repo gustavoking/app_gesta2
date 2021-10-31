@@ -11,19 +11,25 @@ export default function ModeloListaReserva({data}) {
     <View style={styles.container}>
       <View style={styles.textosView}>
         <Text style={{color: '#FFF'}}>
-          <Text style={styles.textoNegrito}>Data: </Text>
+          <Text style={styles.textoNegrito}>Data Início: </Text>
           {data.data}
         </Text>
       </View>
       <View style={styles.textosView}>
         <Text style={{color: '#FFF'}}>
-          <Text style={styles.textoNegrito}>Inicio: </Text>
+          <Text style={styles.textoNegrito}>Hora Início: </Text>
           {data.inicio}
         </Text>
       </View>
       <View style={styles.textosView}>
         <Text style={{color: '#FFF'}}>
-          <Text style={styles.textoNegrito}>Termino: </Text>
+          <Text style={styles.textoNegrito}>Data Término: </Text>
+          {data.dataChegada}
+        </Text>
+      </View>
+      <View style={styles.textosView}>
+        <Text style={{color: '#FFF'}}>
+          <Text style={styles.textoNegrito}>Hora Término: </Text>
           {data.termino}
         </Text>
       </View>
@@ -65,9 +71,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#3F5C57',
     alignItems: 'center',
     marginBottom: 10,
-    padding: 10,
+    padding: '3%',
     marginHorizontal: 53,
-    marginTop: 5,
+    marginTop: '1%',
     borderTopColor: '#9ECEC5',
     borderWidth: 1,
     borderRightColor: '#3F5C57',
@@ -77,22 +83,10 @@ const styles = StyleSheet.create({
   },
   textosView: {
     flex: 1,
-    marginLeft: 10,
+    marginLeft: '2%',
   },
   textoNegrito: {
     color: 'white',
     fontWeight: 'normal',
-  },
-  container2: {
-    flex: 1,
-    backgroundColor: '#FFF',
-    alignItems: 'center',
-    marginBottom: 10,
-    padding: 10,
-    borderRadius: 5,
-    borderWidth: 5,
-    marginHorizontal: 15,
-    marginTop: 5,
-    borderColor: '#9ECEC5',
   },
 });

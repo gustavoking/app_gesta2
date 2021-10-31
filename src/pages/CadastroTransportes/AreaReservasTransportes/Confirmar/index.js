@@ -38,6 +38,7 @@ export default function Confirmar({navigation}) {
                 id: maquina.val().id,
                 userId: maquina.val().userId,
                 reservaEstado: maquina.val().reservaEstado,
+                dataChegada: maquina.val().dataChegada,
               };
               setListaUserReserva((oldArray) => [...oldArray, data]);
             }
@@ -70,22 +71,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#3F5C57',
     flex: 1,
   },
-  reservaisgerais: {
-    fontSize: 20,
-    fontWeight: 'normal',
-    color: '#172220',
-    backgroundColor: '#FECEA5',
-    marginLeft: 10,
-    marginTop: 10,
-    marginRight: 20,
-    textAlign: 'center',
-    borderWidth: 1,
-    borderRadius: 20,
-  },
+
   textbutton: {
     marginVertical: 15,
     fontSize: 20,
-    marginTop: 50,
+    marginTop: '10%',
     color: '#9ECEC5',
     textAlign: 'center',
   },

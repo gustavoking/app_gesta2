@@ -38,6 +38,7 @@ export default function Confirmar({navigation}) {
                 blocoReservado: maquina.val().blocoReservado,
                 id: maquina.val().id,
                 reservaEstado: maquina.val().reservaEstado,
+                dataChegada: maquina.val().dataChegada,
               };
               setListaUserReserva((oldArray) => [...oldArray, data]);
             }

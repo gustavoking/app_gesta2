@@ -45,11 +45,11 @@ export default function Ambiente({data, touch = false}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    padding: '2%',
     borderRadius: 1,
     borderWidth: 1,
     marginHorizontal: 58,
-    marginTop: 5,
+    marginTop: '1%',
     borderTopColor: '#9ECEC5',
     borderBottomColor: '#3F5C57',
     borderRightColor: '#3F5C57',

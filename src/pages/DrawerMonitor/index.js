@@ -74,8 +74,8 @@ export default function DrawerMonitor() {
       drawerContent={(props) => <CustomDrawer {...props} />}
       drawerStyle={{
         backgroundColor: '#3F5C57',
-        marginTop: 50,
-        width: 250,
+        marginTop: '12%',
+        width: '62%',
       }}
       drawerContentOptions={{
         labelStyle: {

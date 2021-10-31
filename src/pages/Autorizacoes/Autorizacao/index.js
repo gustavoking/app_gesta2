@@ -17,6 +17,7 @@ export default function Autorizacao({data}) {
       placaTransporteReserva: data.placaTransporte,
       userReserva: data.nomeUsuarioReserva,
       reservaEstado: 'autorizado',
+      dataChegada: data.dataChegada,
     });
 
     let historico = await firebase
@@ -53,10 +54,15 @@ export default function Autorizacao({data}) {
   return (
     <View style={styles.container}>
       <View style={styles.textosView}>
-        <Text style={styles.textoNegrito}>Data: {data.data}</Text>
+        <Text style={styles.textoNegrito}>Data Saída: {data.data}</Text>
       </View>
       <View style={styles.textosView}>
-        <Text style={styles.textoNegrito}>Hora Saida: {data.saida}</Text>
+        <Text style={styles.textoNegrito}>Hora Saída: {data.saida}</Text>
+      </View>
+      <View style={styles.textosView}>
+        <Text style={styles.textoNegrito}>
+          Data Chegada: {data.dataChegada}
+        </Text>
       </View>
       <View style={styles.textosView}>
         <Text style={styles.textoNegrito}>Hora Chegada: {data.chegada}</Text>
