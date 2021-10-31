@@ -83,6 +83,8 @@ export default function ReservaTransporte({route, navigation}) {
     loadListaReservasGerais();
   }, []);
 
+  console.log('showSaida', showSaida);
+
   async function funcaoReservar() {
     let dataAgora = new Date();
 
@@ -123,59 +125,61 @@ export default function ReservaTransporte({route, navigation}) {
       ) {
         console.log('fzd reserva d data igual');
 
-        // let reserva = await firebase.database().ref('listaAutorizacoesAdm');
-        // let id = reserva.push().key;
+        let reserva = await firebase.database().ref('listaAutorizacoesAdm');
+        let id = reserva.push().key;
 
-        // reserva.child(id).set({
-        //   id: id,
-        //   data: format(newDate, 'dd/MM/yyyy'),
-        //   dataChegada: format(newDateChegada, 'dd/MM/yyyy'),
-        //   saida: format(saida, 'HH:mm'),
-        //   chegada: format(chegada, 'HH:mm'),
-        //   idUsuarioReserva: user.uid,
-        //   idTransporteReservado: idTransporteReservado,
-        //   placaTransporte: placaTransporte,
-        //   nomeUsuarioReserva: user.nome,
-        //   reservaEstado: 'aguardando autorizacao',
-        // });
-        // ToastAndroid.show(
-        //   'Reserva de Transporte Realizada, Aguarde Confirmação do Administrador',
-        //   ToastAndroid.LONG,
-        // );
+        reserva.child(id).set({
+          id: id,
+          data: format(newDate, 'dd/MM/yyyy'),
+          dataChegada: format(newDateChegada, 'dd/MM/yyyy'),
+          saida: format(saida, 'HH:mm'),
+          chegada: format(chegada, 'HH:mm'),
+          idUsuarioReserva: user.uid,
+          idTransporteReservado: idTransporteReservado,
+          placaTransporte: placaTransporte,
+          nomeUsuarioReserva: user.nome,
+          reservaEstado: 'aguardando autorizacao',
+        });
+        ToastAndroid.show(
+          'Reserva de Transporte Realizada, Aguarde Confirmação do Administrador',
+          ToastAndroid.LONG,
+        );
       } else {
         alert('Por favor insira um horário de chegada maior do que de saida');
       }
     } else {
       console.log('nao é igual, só reservar');
-      // let reserva = await firebase.database().ref('listaAutorizacoesAdm');
-      // let id = reserva.push().key;
+      let reserva = await firebase.database().ref('listaAutorizacoesAdm');
+      let id = reserva.push().key;
 
-      // reserva.child(id).set({
-      //   id: id,
-      //   data: format(newDate, 'dd/MM/yyyy'),
-      //   dataChegada: format(newDateChegada, 'dd/MM/yyyy'),
-      //   saida: format(saida, 'HH:mm'),
-      //   chegada: format(chegada, 'HH:mm'),
-      //   idUsuarioReserva: user.uid,
-      //   idTransporteReservado: idTransporteReservado,
-      //   placaTransporte: placaTransporte,
-      //   nomeUsuarioReserva: user.nome,
-      //   reservaEstado: 'aguardando autorizacao',
-      // });
-      // ToastAndroid.show(
-      //   'Reserva de Transporte Realizada, Aguarde Confirmação do Administrador',
-      //   ToastAndroid.LONG,
-      // );
+      reserva.child(id).set({
+        id: id,
+        data: format(newDate, 'dd/MM/yyyy'),
+        dataChegada: format(newDateChegada, 'dd/MM/yyyy'),
+        saida: format(saida, 'HH:mm'),
+        chegada: format(chegada, 'HH:mm'),
+        idUsuarioReserva: user.uid,
+        idTransporteReservado: idTransporteReservado,
+        placaTransporte: placaTransporte,
+        nomeUsuarioReserva: user.nome,
+        reservaEstado: 'aguardando autorizacao',
+      });
+      ToastAndroid.show(
+        'Reserva de Transporte Realizada, Aguarde Confirmação do Administrador',
+        ToastAndroid.LONG,
+      );
     }
   }
 
   const onChange = (date) => {
     setNewDate(date);
     setShow(false);
+    fecharCalendario();
   };
   const onChangeDataChegada = (date) => {
     setNewDateChegada(date);
     setShowDataChegada(false);
+    fecharCalendarioChegada();
   };
   const onChangeSaida = (horario) => {
     setSaida(horario);
@@ -184,6 +188,7 @@ export default function ReservaTransporte({route, navigation}) {
   const onChangeChegada = (horario) => {
     setChegada(horario);
     setShowChegada(false);
+    fecharChegada();
   };
 
   function abrirCalendario() {
@@ -271,6 +276,7 @@ export default function ReservaTransporte({route, navigation}) {
           setDateNow={setSaida}
           mode="time"
           onChange={onChangeSaida}
+          setShowDatePicker={showSaida}
         />
       )}
 
