@@ -57,26 +57,22 @@ export default function TrocarQuilometragem({route}) {
   return (
     <View style={styles.container}>
       <Header titulo="Trocar Quilometragem" />
+      <TextInput
+        style={styles.txtinput}
+        color="black"
+        placeholder="  Inserir Quilometragem Atual"
+        placeholderTextColor="black"
+        onChangeText={(text) => setQuilometragem(text)}
+        autoCorrect={false}
+        value={quilometragem}
+        autoCapitalize="none"
+        keyboardType="numeric"
+      />
 
       {show ? (
-        <View>
-          <Text style={styles.text2}>INSIRA A NOVA QUILOMETRAGEM</Text>
-          <Text style={styles.text}>Quilometragem</Text>
-          <TextInput
-            style={styles.txtinput}
-            placeholder="  PREENCHER"
-            placeholderTextColor="#9ECEC5"
-            color="#9ECEC5"
-            onChangeText={(text) => setQuilometragem(text)}
-            autoCorrect={false}
-            value={quilometragem}
-            keyboardType="numeric"
-            autoCapitalize="none"
-          />
-          <TouchableOpacity style={styles.btn} onPress={trocarKm}>
-            <Text style={styles.btntext}>TROCAR QUILOMETRAGEM</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity style={styles.btn3} onPress={() => trocarKm()}>
+          <Text style={styles.txt2}>Confirmar</Text>
+        </TouchableOpacity>
       ) : (
         <View>
           <Text style={styles.text}>Nova Quilometragem do Transporte</Text>
@@ -95,11 +91,13 @@ const styles = StyleSheet.create({
   txtinput: {
     borderWidth: 1,
     borderColor: '#9ECEC5',
-    marginLeft: 50,
-    marginRight: 50,
-    height: '4%',
-    marginTop: 5,
+    marginTop: '5%',
+    marginHorizontal: '10%',
+    backgroundColor: 'white',
     borderRadius: 90,
+    height: '7%',
+    fontSize: 20,
+    textAlign: 'center',
   },
   text: {
     marginTop: 10,
@@ -134,5 +132,19 @@ const styles = StyleSheet.create({
     marginTop: 50,
     fontWeight: 'normal',
     fontSize: 20,
+  },
+  btn3: {
+    backgroundColor: 'white',
+    borderRadius: 90,
+    marginTop: '5%',
+    marginHorizontal: '10%',
+    borderWidth: 1,
+    height: '7%',
+  },
+  txt2: {
+    color: '#3F5C57',
+    fontSize: 20,
+    textAlign: 'center',
+    marginTop: '3%',
   },
 });

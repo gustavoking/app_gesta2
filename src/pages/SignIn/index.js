@@ -34,7 +34,7 @@ export default function SignIn() {
           <TextInput
             style={styles.container}
             placeholder="Email"
-            placeholderTextColor="#9ECEC5"
+            placeholderTextColor="black"
             autoCorrect={false}
             autoCapitalize="none"
             onChangeText={(text) => setEmail(text)}></TextInput>
@@ -42,7 +42,7 @@ export default function SignIn() {
           <TextInput
             style={styles.container}
             placeholder="Senha"
-            placeholderTextColor="#9ECEC5"
+            placeholderTextColor="black"
             onChangeText={(text) => setPassword(text)}
             autoCorrect={false}
             autoCapitalize="none"
