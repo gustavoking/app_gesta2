@@ -17,51 +17,9 @@ import ModeloListaReserva from '../ModeloListaReserva';
 import ptBR from 'date-fns/locale/pt-BR';
 
 export default function ReservaTransporte({route, navigation}) {
-  // const [dataSaidaString, setDataSaidaString] = useState('');
+  const [dataSaidaString, setDataSaidaString] = useState('');
 
-  // const [dataChegadaString, setDataChegadaString] = useState('');
-  // const [dataItemSaida, setDataItemSaida] = useState(new Date());
-  // const [dataItemChegada, setDataItemChegada] = useState(new Date());
-
-  // useEffect(() => {
-  //   console.log('newDate', format(newDate, 'dd/MM/yyyy'));
-  //   setDataSaidaString(format(newDate, 'dd/MM/yyyy'));
-  //   setDataChegadaString(format(newDateChegada, 'dd/MM/yyyy'));
-  //   const [diaItem, mesItem, anoItem] = dataSaidaString.split('/');
-  //   const [horaItemSaida, minutoItemSaida] = format(saida, 'HH:mm').split(':');
-  //   const [horaItemChegada, minutoItemChegada] = format(chegada, 'HH:mm').split(
-  //     ':',
-  //   );
-  //   if (dataSaidaString === dataChegadaString) {
-  //     setDataItemSaida(
-  //       dataItemSaida.setDate(
-  //         anoItem,
-  //         mesItem - 1,
-  //         diaItem,
-  //         horaItemSaida - 3,
-  //         minutoItemSaida,
-  //       ),
-  //     );
-  //     setDataItemChegada(
-  //       dataItemChegada.setDate(
-  //         anoItem,
-  //         mesItem - 1,
-  //         diaItem,
-  //         horaItemChegada - 3,
-  //         minutoItemChegada,
-  //       ),
-  //     );
-  //     console.log(
-  //       'comparacao',
-  //       dataItemSaida.getTime() === dataItemChegada.getTime(),
-  //     );
-  //     console.log('dataItemSaida', dataItemSaida);
-  //   } else {
-  //     console.log('nao é iguaaal');
-  //   }
-  //   console.log('dataSaidaString', dataSaidaString);
-  //   console.log('dataChegadaString', dataChegadaString);
-  // }, [newDate]);
+  const [dataChegadaString, setDataChegadaString] = useState('');
 
   function titleCase(str) {
     var splitStr = str.toLowerCase().split(' ');
@@ -126,32 +84,89 @@ export default function ReservaTransporte({route, navigation}) {
   }, []);
 
   async function funcaoReservar() {
-    let reserva = await firebase.database().ref('listaAutorizacoesAdm');
-    let id = reserva.push().key;
-
     let dataAgora = new Date();
 
-    // if (chegada > saida && dataAgora < saida && dataAgora < chegada) {
-    // if(newDate === newDateChegada){
-    reserva.child(id).set({
-      id: id,
-      data: format(newDate, 'dd/MM/yyyy'),
-      dataChegada: format(newDateChegada, 'dd/MM/yyyy'),
-      saida: format(saida, 'HH:mm'),
-      chegada: format(chegada, 'HH:mm'),
-      idUsuarioReserva: user.uid,
-      idTransporteReservado: idTransporteReservado,
-      placaTransporte: placaTransporte,
-      nomeUsuarioReserva: user.nome,
-      reservaEstado: 'aguardando autorizacao',
-    });
-    ToastAndroid.show(
-      'Reserva de Transporte Realizada, Aguarde Confirmação do Administrador',
-      ToastAndroid.LONG,
+    dataAgora.setHours(dataAgora.getHours() - 3);
+
+    setDataSaidaString(format(newDate, 'dd/MM/yyyy'));
+    setDataChegadaString(format(newDateChegada, 'dd/MM/yyyy'));
+    const [diaItem, mesItem, anoItem] = dataSaidaString.split('/');
+    const [horaItemSaida, minutoItemSaida] = format(saida, 'HH:mm').split(':');
+    const [horaItemChegada, minutoItemChegada] = format(chegada, 'HH:mm').split(
+      ':',
     );
-    // } else {
-    //   alert('Por favor insira um horário de chegada maior do que de saida');
-    // }
+
+    const dataItemSaida = new Date(
+      anoItem,
+      mesItem - 1,
+      diaItem,
+      horaItemSaida - 3,
+      minutoItemSaida,
+    );
+
+    const dataItemChegada = new Date(
+      anoItem,
+      mesItem - 1,
+      diaItem,
+      horaItemChegada - 3,
+      minutoItemChegada,
+    );
+
+    dataItemSaida.setHours(dataItemSaida.getHours() - 3);
+    dataItemChegada.setHours(dataItemChegada.getHours() - 3);
+
+    if (dataSaidaString === dataChegadaString) {
+      console.log('é igual a data');
+      if (
+        dataItemSaida.getTime() < dataItemChegada.getTime() &&
+        dataAgora.getTime() < dataItemSaida.getTime()
+      ) {
+        console.log('fzd reserva d data igual');
+
+        // let reserva = await firebase.database().ref('listaAutorizacoesAdm');
+        // let id = reserva.push().key;
+
+        // reserva.child(id).set({
+        //   id: id,
+        //   data: format(newDate, 'dd/MM/yyyy'),
+        //   dataChegada: format(newDateChegada, 'dd/MM/yyyy'),
+        //   saida: format(saida, 'HH:mm'),
+        //   chegada: format(chegada, 'HH:mm'),
+        //   idUsuarioReserva: user.uid,
+        //   idTransporteReservado: idTransporteReservado,
+        //   placaTransporte: placaTransporte,
+        //   nomeUsuarioReserva: user.nome,
+        //   reservaEstado: 'aguardando autorizacao',
+        // });
+        // ToastAndroid.show(
+        //   'Reserva de Transporte Realizada, Aguarde Confirmação do Administrador',
+        //   ToastAndroid.LONG,
+        // );
+      } else {
+        alert('Por favor insira um horário de chegada maior do que de saida');
+      }
+    } else {
+      console.log('nao é igual, só reservar');
+      // let reserva = await firebase.database().ref('listaAutorizacoesAdm');
+      // let id = reserva.push().key;
+
+      // reserva.child(id).set({
+      //   id: id,
+      //   data: format(newDate, 'dd/MM/yyyy'),
+      //   dataChegada: format(newDateChegada, 'dd/MM/yyyy'),
+      //   saida: format(saida, 'HH:mm'),
+      //   chegada: format(chegada, 'HH:mm'),
+      //   idUsuarioReserva: user.uid,
+      //   idTransporteReservado: idTransporteReservado,
+      //   placaTransporte: placaTransporte,
+      //   nomeUsuarioReserva: user.nome,
+      //   reservaEstado: 'aguardando autorizacao',
+      // });
+      // ToastAndroid.show(
+      //   'Reserva de Transporte Realizada, Aguarde Confirmação do Administrador',
+      //   ToastAndroid.LONG,
+      // );
+    }
   }
 
   const onChange = (date) => {
