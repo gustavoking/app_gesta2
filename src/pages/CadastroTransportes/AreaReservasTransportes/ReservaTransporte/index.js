@@ -83,45 +83,55 @@ export default function ReservaTransporte({route, navigation}) {
     loadListaReservasGerais();
   }, []);
 
-  console.log('showSaida', showSaida);
-
   async function funcaoReservar() {
     let dataAgora = new Date();
 
-    dataAgora.setHours(dataAgora.getHours() - 3);
+    // dataAgora.setHours(dataAgora.getHours() - 3);
 
     setDataSaidaString(format(newDate, 'dd/MM/yyyy'));
     setDataChegadaString(format(newDateChegada, 'dd/MM/yyyy'));
-    const [diaItem, mesItem, anoItem] = dataSaidaString.split('/');
-    const [horaItemSaida, minutoItemSaida] = format(saida, 'HH:mm').split(':');
-    const [horaItemChegada, minutoItemChegada] = format(chegada, 'HH:mm').split(
-      ':',
-    );
+    // const [diaItem, mesItem, anoItem] = dataSaidaString.split('/');
+    // const [horaItemSaida, minutoItemSaida] = format(saida, 'HH:mm').split(':');
+    // const [horaItemChegada, minutoItemChegada] = format(chegada, 'HH:mm').split(
+    //   ':',
+    // );
 
-    const dataItemSaida = new Date(
-      anoItem,
-      mesItem - 1,
-      diaItem,
-      horaItemSaida - 3,
-      minutoItemSaida,
-    );
+    // const dataItemSaida = new Date(
+    //   anoItem,
+    //   mesItem - 1,
+    //   diaItem,
+    //   horaItemSaida,
+    //   minutoItemSaida,
+    // );
 
-    const dataItemChegada = new Date(
-      anoItem,
-      mesItem - 1,
-      diaItem,
-      horaItemChegada - 3,
-      minutoItemChegada,
-    );
+    // const dataItemChegada = new Date(
+    //   anoItem,
+    //   mesItem - 1,
+    //   diaItem,
+    //   horaItemChegada,
+    //   minutoItemChegada,
+    // );
 
-    dataItemSaida.setHours(dataItemSaida.getHours() - 3);
-    dataItemChegada.setHours(dataItemChegada.getHours() - 3);
+    // dataItemSaida.setHours(dataItemSaida.getHours() - 3);
+    // dataItemChegada.setHours(dataItemChegada.getHours() - 3);
 
     if (dataSaidaString === dataChegadaString) {
       console.log('é igual a data');
+      // console.log('dataItemSaida1', dataItemSaida);
+      // console.log('dataItemChegada1', dataItemChegada);
+      // console.log(
+      //   ' saida < chegada ',
+      //   dataItemSaida.getTime() < dataItemChegada.getTime(),
+      // );
+      // console.log('dataAgora', dataAgora);
+      // console.log('dataItemSaida2', dataItemSaida);
+      // console.log(
+      //   'data agora < saida ',
+      //   dataAgora.getTime() < dataItemSaida.getTime(),
+      // );
       if (
-        dataItemSaida.getTime() < dataItemChegada.getTime() &&
-        dataAgora.getTime() < dataItemSaida.getTime()
+        saida.getTime() < chegada.getTime() &&
+        dataAgora.getTime() < saida.getTime()
       ) {
         console.log('fzd reserva d data igual');
 
@@ -175,18 +185,23 @@ export default function ReservaTransporte({route, navigation}) {
     setNewDate(date);
     setShow(false);
     fecharCalendario();
+    setSaida(date);
   };
   const onChangeDataChegada = (date) => {
     setNewDateChegada(date);
     setShowDataChegada(false);
     fecharCalendarioChegada();
+    setChegada(date);
   };
   const onChangeSaida = (horario) => {
     setSaida(horario);
-    setShowSaida(false);
+    setNewDate(horario);
+    fecharSaida();
   };
+
   const onChangeChegada = (horario) => {
     setChegada(horario);
+    setNewDateChegada(horario);
     setShowChegada(false);
     fecharChegada();
   };
@@ -276,7 +291,6 @@ export default function ReservaTransporte({route, navigation}) {
           setDateNow={setSaida}
           mode="time"
           onChange={onChangeSaida}
-          setShowDatePicker={showSaida}
         />
       )}
 

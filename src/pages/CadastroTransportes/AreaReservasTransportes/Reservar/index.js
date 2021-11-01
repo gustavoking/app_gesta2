@@ -40,6 +40,7 @@ export default function ListaTransporte({navigation}) {
             };
 
             setListaTransportes((oldArray) => [...oldArray, data]);
+            console.log('carros', data);
           });
         });
     }

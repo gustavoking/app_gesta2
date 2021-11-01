@@ -30,6 +30,8 @@ function AuthProvider({children}) {
 
   //Funcao para logar o usario
   async function signIn(email, password) {
+    console.log('usuario22222');
+
     setLoading(true);
     await firebase
       .auth()
@@ -73,6 +75,7 @@ function AuthProvider({children}) {
                 email: value.user.email,
                 tipo: 'administrador',
               };
+              console.log('usuario', data);
               setUser(data);
               storageUser(data);
               setLoading(false);

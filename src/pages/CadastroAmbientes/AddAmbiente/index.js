@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '10%',
     backgroundColor: 'white',
     borderRadius: 90,
-    height: '5%',
+    height: 40,
   },
 
   text: {
