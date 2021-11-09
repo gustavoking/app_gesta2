@@ -114,7 +114,7 @@ export default function DrawerServidor() {
       drawerStyle={{
         backgroundColor: '#3F5C57',
         marginTop: '12%',
-        width: '65%',
+        width: 270,
       }}
       drawerContentOptions={{
         labelStyle: {
