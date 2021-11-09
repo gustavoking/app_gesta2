@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     marginTop: '5%',
     marginHorizontal: '10%',
     borderWidth: 1,
-    height: '7%',
+    height: 55,
   },
   txt2: {
     color: '#3F5C57',

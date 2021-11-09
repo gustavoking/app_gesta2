@@ -33,6 +33,12 @@ export default function ModeloListaReserva({data}) {
       </View>
       <View style={styles.textosView}>
         <Text style={{color: '#FFF'}}>
+          <Text style={styles.textoNegrito}>Marca: </Text>
+          {data.marca}
+        </Text>
+      </View>
+      <View style={styles.textosView}>
+        <Text style={{color: '#FFF'}}>
           <Text style={styles.textoNegrito}>Placa do Transporte: </Text>
           {data.placaTransporteReserva}
         </Text>
@@ -49,7 +55,7 @@ export default function ModeloListaReserva({data}) {
           {data.reservaEstado === 'autorizado' ? (
             <Text>Autorizada para uso</Text>
           ) : (
-            <Text style={styles.textoNegrito}>Sendo utilizada no momento</Text>
+            <Text style={styles.textoNegrito}>Sendo utilizada agora</Text>
           )}
         </Text>
       </View>

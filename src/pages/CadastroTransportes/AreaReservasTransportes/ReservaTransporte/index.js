@@ -17,10 +17,6 @@ import ModeloListaReserva from '../ModeloListaReserva';
 import ptBR from 'date-fns/locale/pt-BR';
 
 export default function ReservaTransporte({route, navigation}) {
-  const [dataSaidaString, setDataSaidaString] = useState('');
-
-  const [dataChegadaString, setDataChegadaString] = useState('');
-
   function titleCase(str) {
     var splitStr = str.toLowerCase().split(' ');
 
@@ -42,6 +38,8 @@ export default function ReservaTransporte({route, navigation}) {
   const [newDateChegada, setNewDateChegada] = useState(new Date());
   const [saida, setSaida] = useState(new Date());
   const [chegada, setChegada] = useState(new Date());
+  const [dataSaidaString, setDataSaidaString] = useState('');
+  const [dataChegadaString, setDataChegadaString] = useState('');
 
   const {
     idTransporteReservado,
@@ -51,7 +49,7 @@ export default function ReservaTransporte({route, navigation}) {
     setPlacaTransporte,
   } = useContext(AuthContext);
 
-  const {idTrans, placaTrans} = route.params;
+  const {idTrans, placaTrans, marca} = route.params;
 
   setIdTransporteReservado(idTrans);
   setPlacaTransporte(placaTrans);
@@ -74,6 +72,7 @@ export default function ReservaTransporte({route, navigation}) {
               id: maquina.val().id,
               reservaEstado: maquina.val().reservaEstado,
               dataChegada: maquina.val().dataChegada,
+              marca: maquina.val().marca,
             };
             setListaReservasGerais((oldArray) => [...oldArray, data]);
           });
@@ -149,11 +148,13 @@ export default function ReservaTransporte({route, navigation}) {
           placaTransporte: placaTransporte,
           nomeUsuarioReserva: user.nome,
           reservaEstado: 'aguardando autorizacao',
+          marca: marca,
         });
         ToastAndroid.show(
           'Reserva de Transporte Realizada, Aguarde Confirmação do Administrador',
           ToastAndroid.LONG,
         );
+        navigation.goBack();
       } else {
         alert('Por favor insira um horário de chegada maior do que de saida');
       }
@@ -173,11 +174,13 @@ export default function ReservaTransporte({route, navigation}) {
         placaTransporte: placaTransporte,
         nomeUsuarioReserva: user.nome,
         reservaEstado: 'aguardando autorizacao',
+        marca: marca,
       });
       ToastAndroid.show(
         'Reserva de Transporte Realizada, Aguarde Confirmação do Administrador',
         ToastAndroid.LONG,
       );
+      navigation.goBack();
     }
   }
 
@@ -369,7 +372,7 @@ const styles = StyleSheet.create({
     marginTop: '5%',
     marginHorizontal: '10%',
     borderWidth: 1,
-    height: '7%',
+    height: 55,
   },
 
   textbutton: {

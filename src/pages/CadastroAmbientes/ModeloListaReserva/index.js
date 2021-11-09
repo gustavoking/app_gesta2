@@ -55,7 +55,7 @@ export default function ModeloListaReserva({data}) {
           {data.reservaEstado === 'reservado' ? (
             <Text>Reservado</Text>
           ) : (
-            <Text>Sendo utilizada no momento</Text>
+            <Text>Sendo utilizada agora</Text>
           )}
         </Text>
       </View>

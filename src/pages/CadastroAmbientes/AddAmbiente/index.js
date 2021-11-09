@@ -45,7 +45,7 @@ export default function AddTransporte() {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Header titulo="Adicionar Ambiente" />
       <Text style={styles.text}>Sala</Text>
 
@@ -83,7 +83,7 @@ export default function AddTransporte() {
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Text style={styles.textbutton}>Voltar</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
 

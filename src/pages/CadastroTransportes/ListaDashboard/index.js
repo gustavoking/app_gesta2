@@ -41,6 +41,12 @@ export default function ListaDashboard({data}) {
                 <View style={{flex: 2.5}}>
                   <View style={styles.textosView}>
                     <Text style={styles.textoNegrito}>
+                      <Text style={styles.textoNegrito}>Marca: </Text>
+                      {data.marca}
+                    </Text>
+                  </View>
+                  <View style={styles.textosView}>
+                    <Text style={styles.textoNegrito}>
                       <Text style={styles.textoNegrito}>Placa: </Text>
                       {data.placaTransporteReserva}
                     </Text>

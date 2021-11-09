@@ -39,6 +39,7 @@ export default function ListaAutorizacoes({navigation}) {
               idUsuarioReserva: maquina.val().idUsuarioReserva,
               idUsuarioReserva: maquina.val().idUsuarioReserva,
               dataChegada: maquina.val().dataChegada,
+              marca: maquina.val().marca,
             };
             setListaAutorizacoes((oldArray) => [...oldArray, data]);
           });

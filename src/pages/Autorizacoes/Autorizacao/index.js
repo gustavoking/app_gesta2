@@ -18,6 +18,7 @@ export default function Autorizacao({data}) {
       userReserva: data.nomeUsuarioReserva,
       reservaEstado: 'autorizado',
       dataChegada: data.dataChegada,
+      marca: data.marca,
     });
 
     let historico = await firebase
@@ -34,6 +35,7 @@ export default function Autorizacao({data}) {
       chegadaReserva: data.chegada,
       placaTransporteReserva: data.placaTransporte,
       userReserva: data.nomeUsuarioReserva,
+      marca: data.marca,
     });
 
     await firebase
@@ -66,6 +68,9 @@ export default function Autorizacao({data}) {
       </View>
       <View style={styles.textosView}>
         <Text style={styles.textoNegrito}>Hora Chegada: {data.chegada}</Text>
+      </View>
+      <View style={styles.textosView}>
+        <Text style={styles.textoNegrito}>Marca: {data.marca}</Text>
       </View>
       <View style={styles.textosView}>
         <Text style={styles.textoNegrito}>

@@ -39,6 +39,7 @@ export default function Confirmar({navigation}) {
                 userId: maquina.val().userId,
                 reservaEstado: maquina.val().reservaEstado,
                 dataChegada: maquina.val().dataChegada,
+                marca: maquina.val().marca,
               };
               setListaUserReserva((oldArray) => [...oldArray, data]);
             }

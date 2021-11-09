@@ -50,6 +50,9 @@ export default function ModeloListaReservaPessoal({data}) {
         </Text>
       </View>
       <View style={styles.textosView}>
+        <Text style={styles.textoNegrito}>Marca: {data.marca}</Text>
+      </View>
+      <View style={styles.textosView}>
         <Text style={styles.textoNegrito}>
           Placa do Transporte: {data.placaTransporteReserva}
         </Text>

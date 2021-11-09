@@ -36,6 +36,7 @@ export default function Transporte({data, touch = false}) {
               idTrans: data.key,
               placaTrans: data.placa,
               QrCodeTransporte: data.QrCodeTransporte,
+              marca: data.marca,
             })
           }>
           <View style={styles.container}>

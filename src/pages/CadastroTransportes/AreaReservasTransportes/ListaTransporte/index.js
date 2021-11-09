@@ -35,6 +35,9 @@ export default function ModeloListaReservaPessoal({data, touch = false}) {
             </Text>
           </View>
           <View style={styles.textosView}>
+            <Text style={styles.textoNegrito}>Marca: {data.marca} </Text>
+          </View>
+          <View style={styles.textosView}>
             <Text style={styles.textoNegrito}>
               Placa do Transporte: {data.placaTransporteReserva}{' '}
             </Text>
@@ -66,6 +69,9 @@ export default function ModeloListaReservaPessoal({data, touch = false}) {
             <Text style={styles.textoNegrito}>
               Hora Chegada: {data.chegadaReserva}
             </Text>
+          </View>
+          <View style={styles.textosView}>
+            <Text style={styles.textoNegrito}>Marca: {data.marca}</Text>
           </View>
           <View style={styles.textosView}>
             <Text style={styles.textoNegrito}>

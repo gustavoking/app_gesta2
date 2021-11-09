@@ -42,7 +42,7 @@ export default function AddTransporte({navigation}) {
         <Text style={styles.text}>Nome</Text>
         <TextInput
           style={styles.txtinput}
-          color="#9ECEC5"
+          color="black"
           onChangeText={(text) => setNome(text)}
           autoCorrect={false}
           value={nome}
@@ -50,7 +50,7 @@ export default function AddTransporte({navigation}) {
         <Text style={styles.text}>Número</Text>
         <TextInput
           style={styles.txtinput}
-          color="#9ECEC5"
+          color="black"
           onChangeText={(text) => setNumero(text)}
           autoCorrect={false}
           value={numero}
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#9ECEC5',
     marginHorizontal: 50,
-    height: '8%',
+    height: 40,
     marginTop: '2%',
     backgroundColor: 'white',
     borderRadius: 90,

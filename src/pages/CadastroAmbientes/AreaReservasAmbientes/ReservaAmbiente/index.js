@@ -39,6 +39,8 @@ export default function ReservaAmbiente({route, navigation}) {
   const [newDateChegada, setNewDateChegada] = useState(new Date());
   const [saida, setSaida] = useState(new Date());
   const [chegada, setChegada] = useState(new Date());
+  const [dataSaidaString, setDataSaidaString] = useState('');
+  const [dataChegadaString, setDataChegadaString] = useState('');
 
   const {
     user,
@@ -82,75 +84,110 @@ export default function ReservaAmbiente({route, navigation}) {
   }, []);
 
   async function funcaoReservar() {
-    let reserva = await firebase.database().ref('reservasGeraisAmbiente');
-    let id = reserva.push().key;
-
     let dataAgora = new Date();
 
-    // if (chegada > saida && dataAgora < saida && dataAgora < chegada) {
-    reserva.child(id).set({
-      id: id,
-      data: format(newDate, 'dd/MM/yyyy'),
-      dataChegada: format(newDateChegada, 'dd/MM/yyyy'),
-      inicio: format(saida, 'HH:mm'),
-      termino: format(chegada, 'HH:mm'),
-      idUsuarioReserva: user.uid,
-      nomeUsuarioReserva: user.nome,
-      salaReservada: salaReservada,
-      blocoReservado: blocoReservado,
-      reservaEstado: 'reservado',
-    });
+    setDataSaidaString(format(newDate, 'dd/MM/yyyy'));
+    setDataChegadaString(format(newDateChegada, 'dd/MM/yyyy'));
 
-    let reservaHistorico = await firebase
-      .database()
-      .ref('historicoReservasAmbiente');
-    let idHist = reservaHistorico.push().key;
+    if (dataSaidaString === dataChegadaString) {
+      console.log('é igual a data');
 
-    reservaHistorico.child(idHist).set({
-      id: idHist,
-      data: format(newDate, 'dd/MM/yyyy'),
-      inicio: format(saida, 'HH:mm'),
-      termino: format(chegada, 'HH:mm'),
-      idUsuarioReserva: user.uid,
-      nomeUsuarioReserva: user.nome,
-      salaReservada: salaReservada,
-      blocoReservado: blocoReservado,
-    });
-    ToastAndroid.show('Reserva de Ambiente Realizada', ToastAndroid.LONG);
-    // } else {
-    //   alert('Por favor insira um horário de chegada maior do que de saida');
-    // }
+      if (
+        saida.getTime() < chegada.getTime() &&
+        dataAgora.getTime() < saida.getTime()
+      ) {
+        console.log('fzd reserva d data igual');
+
+        let reserva = await firebase.database().ref('reservasGeraisAmbiente');
+        let id = reserva.push().key;
+
+        reserva.child(id).set({
+          id: id,
+          data: format(newDate, 'dd/MM/yyyy'),
+          dataChegada: format(newDateChegada, 'dd/MM/yyyy'),
+          inicio: format(saida, 'HH:mm'),
+          termino: format(chegada, 'HH:mm'),
+          idUsuarioReserva: user.uid,
+          nomeUsuarioReserva: user.nome,
+          salaReservada: salaReservada,
+          blocoReservado: blocoReservado,
+          reservaEstado: 'reservado',
+        });
+        ToastAndroid.show('Reserva de Ambiente Realizada', ToastAndroid.LONG);
+        navigation.goBack();
+      } else {
+        alert('Por favor insira um horário de chegada maior do que de saida');
+      }
+    } else {
+      console.log('nao é igual, só reservar');
+      let reserva = await firebase.database().ref('reservasGeraisAmbiente');
+      let id = reserva.push().key;
+
+      reserva.child(id).set({
+        id: id,
+        data: format(newDate, 'dd/MM/yyyy'),
+        dataChegada: format(newDateChegada, 'dd/MM/yyyy'),
+        inicio: format(saida, 'HH:mm'),
+        termino: format(chegada, 'HH:mm'),
+        idUsuarioReserva: user.uid,
+        nomeUsuarioReserva: user.nome,
+        salaReservada: salaReservada,
+        blocoReservado: blocoReservado,
+        reservaEstado: 'reservado',
+      });
+      ToastAndroid.show('Reserva de Ambiente Realizada', ToastAndroid.LONG);
+
+      let reservaHistorico = await firebase
+        .database()
+        .ref('historicoReservasAmbiente');
+      let idHist = reservaHistorico.push().key;
+
+      reservaHistorico.child(idHist).set({
+        id: idHist,
+        data: format(newDate, 'dd/MM/yyyy'),
+        inicio: format(saida, 'HH:mm'),
+        termino: format(chegada, 'HH:mm'),
+        idUsuarioReserva: user.uid,
+        nomeUsuarioReserva: user.nome,
+        salaReservada: salaReservada,
+        blocoReservado: blocoReservado,
+      });
+      ToastAndroid.show('Reserva de Ambiente Realizada', ToastAndroid.LONG);
+      navigation.goBack();
+    }
   }
 
   const onChange = (date) => {
     setNewDate(date);
     setShow(false);
+    fecharCalendario();
+    setSaida(date);
   };
-  const onChangeSaida = (horario) => {
-    setSaida(horario);
-    setShowSaida(false);
-  };
-
   const onChangeDataChegada = (date) => {
     setNewDateChegada(date);
     setShowDataChegada(false);
+    fecharCalendarioChegada();
+    setChegada(date);
+  };
+  const onChangeSaida = (horario) => {
+    setSaida(horario);
+    setNewDate(horario);
+    fecharSaida();
   };
 
   const onChangeChegada = (horario) => {
     setChegada(horario);
+    setNewDateChegada(horario);
     setShowChegada(false);
+    fecharChegada();
   };
 
   function abrirCalendario() {
     setShow(true);
   }
 
-  function abrirSaida() {
-    setShowSaida(true);
-  }
-
-  function abrirChegada() {
-    setShowChegada(true);
+  function fecharCalendario() {
+    setShow(false);
   }
 
   function abrirCalendarioChegada() {
@@ -158,6 +195,20 @@ export default function ReservaAmbiente({route, navigation}) {
   }
   function fecharCalendarioChegada() {
     setShowDataChegada(false);
+  }
+  function abrirSaida() {
+    setShowSaida(true);
+  }
+
+  function fecharSaida() {
+    setShowSaida(false);
+  }
+  function abrirChegada() {
+    setShowChegada(true);
+  }
+
+  function fecharChegada() {
+    setShowChegada(false);
   }
 
   return (
@@ -191,27 +242,14 @@ export default function ReservaAmbiente({route, navigation}) {
         <Text style={styles.txt2}>Confirmar Reserva</Text>
       </TouchableOpacity>
 
-      {show ? (
+      {show && (
         <DatePicker
-          onClose={() => setShow(false)}
+          onClose={fecharCalendario}
           date={newDate}
           setDateNow={setNewDate}
           mode="datetime"
           onChange={onChange}
         />
-      ) : (
-        <View></View>
-      )}
-      {showSaida ? (
-        <DatePicker
-          onClose={() => setShowSaida(false)}
-          date={saida}
-          setDateNow={setSaida}
-          mode="time"
-          onChange={onChangeSaida}
-        />
-      ) : (
-        <View></View>
       )}
       {showDataChegada && (
         <DatePicker
@@ -222,16 +260,24 @@ export default function ReservaAmbiente({route, navigation}) {
           onChange={onChangeDataChegada}
         />
       )}
-      {showChegada ? (
+      {showSaida && (
         <DatePicker
-          onClose={() => setShowChegada(false)}
+          onClose={fecharSaida}
+          date={saida}
+          setDateNow={setSaida}
+          mode="time"
+          onChange={onChangeSaida}
+        />
+      )}
+
+      {showChegada && (
+        <DatePicker
+          onClose={fecharChegada}
           date={chegada}
           setDateNow={setChegada}
           mode="time"
           onChange={onChangeChegada}
         />
-      ) : (
-        <View></View>
       )}
 
       <Text />
@@ -301,6 +347,6 @@ const styles = StyleSheet.create({
     marginTop: '5%',
     marginHorizontal: '10%',
     borderWidth: 1,
-    height: '7%',
+    height: 55,
   },
 });

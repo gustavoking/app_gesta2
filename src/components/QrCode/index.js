@@ -80,7 +80,7 @@ export default function QrCode({route}) {
             verify === 'Adicionar Ambiente' ? valueAmbiente : valueTransporte
           }
           // logo={{uri: base64}}
-          // logoSize={20}
+          size={225}
           // logoBackgroundColor="transparent"
           getRef={refQrCode}
         />
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     width: '70%',
     marginTop: 35,
     height: 50,
-    backgroundColor: '#FECEA5',
+    backgroundColor: 'white',
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
